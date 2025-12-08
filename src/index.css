@@ -1,0 +1,513 @@
+:root {
+
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* CSS reset */
+/* Box sizing rules */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Remove list styles on ul, ol elements with a list role */
+ul[role='list'], ol[role='list'] {
+  list-style: none;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4, button, input, label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1, h2, h3, h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img, picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+
+/* Medium font sizes */
+/* Based on a modular scale 1.125 by 1.25 */
+/* Exact values have been refined to be a whole pixel value */
+@media (min-width: 30rem) {
+  :root {
+    --font_size--small: 0.875rem;     /* 14px */
+    --font_size--medium: 1.4375rem;   /* 23px */
+    --font_size--large: 1.75rem;      /* 28px */
+    --font_size--xlarge: 2.1875rem;   /* 35px */
+    --font_size--xxlarge: 2.75rem;    /* 44px */
+    --font_size--xxxlarge: 3.4375rem; /* 55px */
+  }
+}
+
+/* Large font sizes */
+/* Based on a modular scale 1.125 by 1.3 */
+/* Exact values have been refined to be a whole pixel value */
+@media (min-width: 60em) {
+  :root {
+    --font_size--large: 1.875rem;     /* 30px */
+    --font_size--xlarge: 2.5rem;      /* 40px */
+    --font_size--xxlarge: 3.1875rem;  /* 51px */
+    --font_size--xxxlarge: 4.1875rem; /* 67px */
+  }
+}
+:root {
+
+    /* Colors */
+--color_text--default: #18181b;
+--color_text--light: #fff;
+--color_text--subtle: #71717a;
+--color_text--link: #6366f1;
+--color_text--link-alt: #4f46e5;
+--color_text--accent: var(--color_text--link);
+--color_background--surface: white;
+--color_background--element: #f4f4f5;
+--color_background--chip: #e4e4e7;
+--color_accent: var(--color_text--link);
+  /* Font Families */
+--font_body: arial, sans-serif;
+--font_head: inherit;
+--font_mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+
+  /* Font Sizes & Line Heights */
+/* Based on a modular scale 1.125 by 1.2 */
+/* Exact values have been refined to be a whole pixel value */
+--font_size--small: 0.9375rem;    /* 15px */
+--font_size--normal: 1.125rem;    /* 18px */
+--font_size--medium: 1.375rem;    /* 22px */
+--font_size--large: 1.625rem;     /* 26px */
+--font_size--xlarge: 1.9375rem;   /* 31px */
+--font_size--xxlarge: 2.3125rem;  /* 37px */
+--font_size--xxxlarge: 2.8125rem; /* 45px */
+
+/* Line heights */
+--font_height--small: 1.2;
+--font_height--normal: 1.8;
+--font_height--medium: 1.5;
+--font_height--large: 1.3;
+--font_height--xlarge: 1.2;
+--font_height--xxlarge: 1.1;
+--font_height--xxxlarge: 1;
+}
+body {
+  font-family: var(--font_body);
+  font-size: var(--font_size--normal);
+  line-height: var(--font_height--normal);
+  color: var(--color_text--default);
+  background: var(--color_background--surface);
+  
+}
+
+
+
+
+
+
+
+
+header{
+  display: flex;
+  height: 6rem;
+  background: #111;
+  color: var(--color_text--light);
+  padding: 1.4rem;
+  justify-content: space-between;
+  
+}
+.header-right{
+  display: flex;
+  justify-content: space-evenly;
+  background: #444;
+  width: 14rem;
+}
+
+.categories{
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 25.4rem;
+  background: #999;
+  padding: 2rem;
+  
+
+}
+
+.category-items-container{
+  height: 10rem;
+  display: flex;
+  gap: 1rem 2rem;
+  justify-content: flex-start;
+  margin-top: 2rem;
+  background: #888;
+
+  
+}
+.category-item{
+  background: #fff;
+  /* border: 2px solid green; */
+  border-radius: 0rem;
+  
+  height: 9.7rem;
+  width: 9.7rem;
+}
+.restaurants{
+  width: 100%;
+  height: 25.4rem;
+  background: #111;
+  padding: 2rem;
+  color: #fff;
+}
+.restaurants-items-container{
+  display: flex;
+  gap: 1rem 2rem;
+  justify-content: flex-start;
+  margin-top: 2rem;
+  background: #111;
+
+  
+}
+.restaurants-item{
+  background: #333;
+  /* border: 2px solid green; */
+  border-radius: 1rem;
+  height: 15.7rem;
+  width: 25.4rem;
+}
+footer{
+  height: 7rem;
+  background: #111;
+  color: var(--color_text--light);
+}
+
+
+
+
+
+
+
+
+.restaurant{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 25.4rem;
+  background: #888;
+  background: url(cafe.jpg);
+  background-position: 50% 50%;
+  background-size: cover;
+  padding: 2rem;
+  align-content: center;
+}
+.restaurant h1 {
+  width: 10rem;
+  background: #6366f1;
+  text-align: center;
+  align-self: center;
+}
+.restaurant .restaurant-logo {
+  height: 5rem;
+  width: 5rem;
+  background: #8788ce;
+  text-align: center;
+  align-self: center;
+}
+.restaurant-categories {
+  height: 4rem;
+  display: flex;
+  gap: 1rem 1rem;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background: #111;
+}
+.restaurant-category-item {
+  height: 3rem;
+  width: 9rem;
+  padding: 0.25rem;
+  border: 2px solid rgb(37, 177, 100);
+  border-radius: 1rem;
+  text-align: center;
+  color: #fff;
+}
+.products-category-title {
+  height: 6rem;
+  padding: 2rem;
+  padding-left: 2rem;
+}
+.products {
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+  gap: 1rem 1rem;
+  justify-content: center;
+  padding: 1.5rem;
+  padding-top: 5rem;
+  background: #111;
+}
+@media  screen and (max-width: 560px) {
+  .products {
+      padding-left: 0rem;
+      padding-right: 0rem;
+  }
+}
+.product {
+  display: flex;
+  position: relative;
+  background: #444;
+ /*  border: 2px solid green; */
+  border-radius: 1rem;
+  height: 15.7rem;
+  padding: 1.5rem;
+  /* flex-basis: 25.4rem; */
+  flex-basis: 32rem;
+  max-width: 43rem;
+  flex-grow: 1;
+}
+
+.product-text { 
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 200px;
+  width: 60%;
+  padding: 1rem;
+  background: #444;
+  color: #fff;
+}
+.product-text .add-to-cart-button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: rgb(122, 137, 221);
+  border: none;
+  border-radius: 1rem;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+.product-text h3 {
+  padding-bottom: 0.5rem;
+}
+.product-text p {
+  line-height: 1.2;
+}
+.product-text .product-price {
+  
+  align-items: flex-end;
+  position: absolute;
+  bottom: 0;
+}
+.product-image {
+  height: 200px;
+  width: 200px;
+  margin-left: 6%;
+  background: url(https://placehold.co/200x200);
+}
+@media  screen and (max-width: 560px) {
+  .product-image {
+      height: 150px;
+      width: 150px;
+      align-self: center;
+      background: url(https://placehold.co/150x150);
+  }
+}
+
+
+
+
+
+.order-modal {
+  height: auto;
+  width: 38rem;
+  border-radius: 2.5em;
+  background-color: #fff;
+  justify-content: center;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  border: none; 
+  background-color: #f3b250; 
+
+}
+.order-modal-image {
+  height: 20rem; 
+  background-color: #222;
+  background: url(bigburger.jpg);
+  background-position: 50% 60%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top-left-radius: 2.5rem;
+  border-top-right-radius: 2.5rem;
+  
+}
+.order-modal-title {
+  height: 4rem; 
+  padding: 0.5rem;
+  padding-left: 1rem;
+  background-color: #222;
+  color: #fff;
+}
+.order-modal-price {
+  height: 3rem; 
+  padding: 0.5rem;
+  padding-left: 1rem;
+  background-color: #fff;
+}
+.order-modal-description {
+  height: auto;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  background-color: #444; 
+  color: #fff;
+}
+.order-modal-options {
+  height: 15rem; 
+  padding: 0.5rem;
+  padding-left: 1rem;
+  background-color: #fff;
+  font-size: 1.4rem;
+  input[type="checkbox"] {
+      transform:scale(2, 2);
+      
+    }
+}
+.order-modal-options label {
+  padding-left: 1rem;
+}
+.order-modal-options-text { 
+  padding-bottom: 1rem;
+  
+}
+.order-modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  height: 5rem; 
+  padding: 0.5rem;
+  padding-left: 0.5rem;
+  background-color: #222;
+  border-bottom-right-radius: 2.5rem;
+  border-bottom-left-radius: 2.5em;
+}
+/* for small mobile, but use max-width */
+/* @media  screen and (min-width: 25rem) {
+  .order-modal-buttons {
+     
+   padding-right: 0.2rem; 
+   padding-left: 0.2rem; 
+   
+
+  }
+} */
+.amount-container {
+  height: 4rem;
+  width: 10rem;
+  padding: 0.5rem;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 2rem;
+  color: #222;
+  font-size: 1.2rem;
+}
+.amount-button-decrease, .amount-button-increase {
+  height: 3rem;
+  background-color: rgb(104, 183, 189);
+  border: none;
+  border-radius: 1.5rem;
+  color: white;
+  padding:  0px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 32px;
+  cursor: pointer;
+}
+.amount-button-decrease {
+  display: flex;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+  line-height: 1.3;
+}
+.amount-value {
+  padding: 0.6rem;
+}
+.add-to-order-button {
+  height: 4rem;
+  width: 18rem;
+  padding-top: 1.2rem;
+  border: none;
+  background: #6fdbee;
+  display: flex;
+  flex-direction: row;
+  gap: 0rem 2rem;
+  justify-content: center;
+  border-radius: 2rem;
+  
+}
+/* for small mobile, but use max-width */
+/* @media  screen and (min-width: 25rem) {
+  .add-to-order-button {
+     
+     
+     width: 15rem;
+     padding-right: 0;
+
+  }
+} */
+
+.add-to-order-text, .add-to-order-value {
+  
+  font-size: 1.2rem;  
+  
+}
+
