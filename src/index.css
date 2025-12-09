@@ -231,7 +231,7 @@ footer{
 
 
 
-.restaurant{
+.restaurant-image{
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -243,13 +243,13 @@ footer{
   padding: 2rem;
   align-content: center;
 }
-.restaurant h1 {
+.restaurant-image h1 {
   width: 10rem;
   background: #6366f1;
   text-align: center;
   align-self: center;
 }
-.restaurant .restaurant-logo {
+.restaurant-image .restaurant-logo {
   height: 5rem;
   width: 5rem;
   background: #8788ce;
