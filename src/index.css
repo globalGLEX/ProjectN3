@@ -178,22 +178,33 @@ header{
 }
 
 .category-items-container{
-  height: 10rem;
+  height: 11rem;
+  width: auto;
   display: flex;
   gap: 1rem 2rem;
   justify-content: flex-start;
+  flex-shrink: 0;
   margin-top: 2rem;
+  padding-top: 0.5rem;
   background: #888;
+  overflow: scroll;
+
+  touch-action: pan-x;
 
   
 }
 .category-item{
   background: #fff;
   /* border: 2px solid green; */
-  border-radius: 0rem;
+  border-radius: 1rem;
   
   height: 9.7rem;
   width: 9.7rem;
+  min-width: 9.7rem;
+}
+
+.categories-carousel {
+  
 }
 .restaurants{
   width: 100%;
@@ -203,11 +214,17 @@ header{
   color: #fff;
 }
 .restaurants-items-container{
+  height: 17.7rem;
+  
   display: flex;
   gap: 1rem 2rem;
   justify-content: flex-start;
   margin-top: 2rem;
-  background: #111;
+  padding-top: 1rem;
+  background: #555;
+  overflow: scroll;
+
+  touch-action: pan-x;
 
   
 }
@@ -216,7 +233,8 @@ header{
   /* border: 2px solid green; */
   border-radius: 1rem;
   height: 15.7rem;
-  width: 25.4rem;
+  min-width: 25.4rem;
+
 }
 footer{
   height: 7rem;
