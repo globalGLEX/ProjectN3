@@ -6,12 +6,18 @@ function Header() {
   return (
     <header>
     <h1>ProjectN3</h1>
-    <div className="header-right">
-        <div>cart</div>
-        <div>sth</div>
-    </div>
+        <HeaderRight />
     </header>
   );
 }
+
+function HeaderRight() {
+    return (
+        <div className="header-right">
+                  <button className="signup-button">Sign up</button>
+                  <button className="login-button">Log in</button>
+        </div>
+    );
+  }
 export default Header
 
