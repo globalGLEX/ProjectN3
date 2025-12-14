@@ -24,14 +24,14 @@ function OrderModal() {
     return (
         <div className="order-modal-options">
             <p className="order-modal-options-text">Specifiers</p>
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
+            <input type="checkbox" id="vehicle1" name="option" value="0"/>
             <label htmlFor="vehicle1"> No cheese</label><br />
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
-            <label htmlFor="vehicle1"> No lettuce</label><br />
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
-            <label htmlFor="vehicle1"> No onion</label><br />
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
-            <label htmlFor="vehicle1"> No BBQ sauce</label><br />
+            <input type="checkbox" id="vehicle2" name="option" value="Bike"/>
+            <label htmlFor="vehicle2"> No lettuce</label><br />
+            <input type="checkbox" id="vehicle3" name="option" value="Bike"/>
+            <label htmlFor="vehicle3"> No onion</label><br />
+            <input type="checkbox" id="vehicle4" name="option" value="Bike"/>
+            <label htmlFor="vehicle4"> No BBQ sauce</label><br />
         </div>
     );
   }

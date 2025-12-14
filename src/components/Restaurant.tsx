@@ -3,12 +3,7 @@ function Restaurant() {
         <div className="restaurant">
     
             <RestaurantImage />
-            <RestaurantCategories />
-            
-            <div className="products-category-title">
-                <h1>Buckets</h1>
-            </div>
-
+            <FoodCategories />
             <Products />
 
     </div>
@@ -26,34 +21,38 @@ function Restaurant() {
         </div>
     );
   }
-  function RestaurantCategories() {
+  function FoodCategories() {
     return (
         <div className="restaurant-categories">
-            <RestaurantCategoryItem />
-            <RestaurantCategoryItem />
-            <RestaurantCategoryItem />
-            <RestaurantCategoryItem />
-            <RestaurantCategoryItem />
+            <FoodCategoryItem />
+            <FoodCategoryItem />
+            <FoodCategoryItem />
+            <FoodCategoryItem />
+            <FoodCategoryItem />
         </div>
     );
   }
-  function RestaurantCategoryItem() {
+  function FoodCategoryItem() {
     return (
         <div className="restaurant-category-item">Buckets</div>
     );
   }
   function Products() {
     return (
-        
-        <div className="products">
+        <div>
+            <div className="products-category-title">
+                <h1>Buckets</h1>
+            </div>       
+            <div className="products">
+                        
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+                <Product />
 
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-
+            </div>
         </div>
     );
   }
@@ -62,7 +61,7 @@ function Restaurant() {
   function Product() {
     return (
         <div className="product">
-        <div className="product-text">
+        <div className="product-text"> {/* needs productTitle, productDesc, productPrice */}
             <h3>Chicken wings bucket</h3>
             <p>Chicken wings bucket with 12 pieces and bbq sauce</p>
             <h3 className="product-price">10.0 eur</h3>
