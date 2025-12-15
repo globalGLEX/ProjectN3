@@ -1,12 +1,21 @@
+import burger from '../assets/categories-burger.jpg';
+import american from '../assets/categories-american.jpg';
+import japanese from '../assets/categories-japanese.jpg';
+import pizza from '../assets/categories-pizza.jpg';
+import wraps from '../assets/categories-wraps.jpg';
+import cafe from '../assets/categories-cafe.jpg';
+
+
 function Categories() {
     return (
         <div className="categories"><h2>Categories - need scrollable element here</h2>
             <div className="category-items-container">
-                <div className="category-item">BURGER</div>
-                <div className="category-item">AMERICAN</div>
-                <div className="category-item">CAFE</div>
-                <div className="category-item">SUSHI</div>
-                <div className="category-item">PIZZA</div>
+                <div className="category-item"> <img src={burger} alt="Burger" /></div>
+                <div className="category-item"><img src={american} alt="American BBQ" /></div>
+                <div className="category-item"><img src={cafe} alt="Cafe food" /></div>
+                <div className="category-item"><img src={japanese} alt="Japanese ramen" /></div>
+                <div className="category-item"><img src={wraps} alt="Wraps" /></div>
+                <div className="category-item"><img src={pizza} alt="Pizza" /></div>
             </div>
             
         </div>
