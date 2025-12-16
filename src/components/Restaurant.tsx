@@ -24,17 +24,18 @@ function Restaurant() {
   function FoodCategories() {
     return (
         <div className="restaurant-categories">
-            <FoodCategoryItem />
-            <FoodCategoryItem />
-            <FoodCategoryItem />
-            <FoodCategoryItem />
-            <FoodCategoryItem />
+            <FoodCategoryItem catName="Buckets"/>
+            <FoodCategoryItem catName="Fries"/>
+            <FoodCategoryItem catName="Drinks"/>
+            <FoodCategoryItem catName="Ice cream"/>
+            <FoodCategoryItem catName="Coffee"/>
         </div>
     );
   }
-  function FoodCategoryItem() {
+  function FoodCategoryItem(props) {
+    
     return (
-        <div className="restaurant-category-item">Buckets</div>
+        <div className="restaurant-category-item"><p>{props.catName}</p></div>
     );
   }
   function Products() {
