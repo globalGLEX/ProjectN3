@@ -10,12 +10,12 @@ function Categories() {
     return (
         <div className="categories"><h2>Categories - need scrollable element here</h2>
             <div className="category-items-container">
-                <div className="category-item"> <img src={burger} alt="Burger" /></div>
-                <div className="category-item"><img src={american} alt="American BBQ" /></div>
-                <div className="category-item"><img src={cafe} alt="Cafe food" /></div>
-                <div className="category-item"><img src={japanese} alt="Japanese ramen" /></div>
-                <div className="category-item"><img src={wraps} alt="Wraps" /></div>
-                <div className="category-item"><img src={pizza} alt="Pizza" /></div>
+                <div className="category-item"> <img src={burger} alt="Burger" /><p>Burger</p></div>
+                <div className="category-item"><img src={american} alt="American BBQ" /><p>American</p></div>
+                <div className="category-item"><img src={cafe} alt="Cafe food" /><p>Cafe</p></div>
+                <div className="category-item"><img src={japanese} alt="Japanese ramen" /><p>Japanese</p></div>
+                <div className="category-item"><img src={wraps} alt="Wraps" /><p>Wraps</p></div>
+                <div className="category-item"><img src={pizza} alt="Pizza" /><p>Pizza</p></div>
             </div>
             
         </div>
