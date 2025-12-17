@@ -1,10 +1,12 @@
+import {data} from '../modules/data.tsx';
 function Restaurant() {
     return (
         <div className="restaurant">
-    
+          
             <RestaurantImage />
             <FoodCategories />
             <Products />
+            
 
     </div>
     );
@@ -16,18 +18,18 @@ function Restaurant() {
   function RestaurantImage() {
     return (
         <div className="restaurant-image">
-            <div className="restaurant-logo">restologo</div>
-            <h1> RESTO1 </h1>
+            <div className="restaurant-logo"></div>
+            <h1> {data.restaurants[0].name} </h1>
         </div>
     );
   }
   function FoodCategories() {
     return (
         <div className="restaurant-categories">
-            <FoodCategoryItem catName="Buckets"/>
-            <FoodCategoryItem catName="Fries"/>
-            <FoodCategoryItem catName="Drinks"/>
-            <FoodCategoryItem catName="Ice cream"/>
+            <FoodCategoryItem catName={data.restaurants[0].categories[0]}/>
+            <FoodCategoryItem catName={data.restaurants[0].categories[1]}/>
+            <FoodCategoryItem catName={data.restaurants[0].categories[2]}/>
+            <FoodCategoryItem catName={data.restaurants[0].categories[3]}/>
             <FoodCategoryItem catName="Coffee"/>
         </div>
     );
