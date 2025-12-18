@@ -303,7 +303,7 @@ footer{
   height: 4rem;
   display: flex;
   gap: 1rem 1rem;
-  justify-content: space-between;
+  justify-content: flex-left;
   padding: 0.5rem;
   background: #111;
 }
@@ -394,7 +394,7 @@ footer{
   height: 200px;
   width: 200px;
   margin-left: 6%;
-  background: url(https://placehold.co/200x200);
+  /* background: url(https://placehold.co/200x200); */
 }
 @media  screen and (max-width: 560px) {
   .product-image {

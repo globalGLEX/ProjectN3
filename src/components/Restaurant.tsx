@@ -30,7 +30,7 @@ function Restaurant() {
             <FoodCategoryItem catName={data.restaurants[0].categories[1]}/>
             <FoodCategoryItem catName={data.restaurants[0].categories[2]}/>
             <FoodCategoryItem catName={data.restaurants[0].categories[3]}/>
-            <FoodCategoryItem catName="Coffee"/>
+            
         </div>
     );
   }
@@ -44,13 +44,31 @@ function Restaurant() {
     return (
         <div>
             <div className="products-category-title">
-                <h1>Buckets</h1>
+                <h1>{data.restaurants[0].categories[0]}</h1>
             </div>       
             <div className="products">
                         
-                <Product />
-                <Product />
-                <Product />
+                <Product 
+                    name={data.restaurants[0].products[0].name}
+                    desc={data.restaurants[0].products[0].desc}
+                    price={data.restaurants[0].products[0].price}
+                    imageUrl={data.restaurants[0].products[0].imageUrl}
+                    imageAlt={data.restaurants[0].products[0].alt}
+                    />
+                <Product 
+                     name={data.restaurants[0].products[1].name}
+                     desc={data.restaurants[0].products[1].desc}
+                     price={data.restaurants[0].products[1].price}
+                     imageUrl={data.restaurants[0].products[1].imageUrl}
+                     imageAlt={data.restaurants[0].products[1].alt}
+                     />
+                <Product 
+                    name={data.restaurants[0].products[2].name}
+                    desc={data.restaurants[0].products[2].desc}
+                    price={data.restaurants[0].products[2].price}
+                    imageUrl={data.restaurants[0].products[2].imageUrl}
+                    imageAlt={data.restaurants[0].products[2].alt}
+                    />
                 <Product />
                 <Product />
                 <Product />
@@ -61,16 +79,16 @@ function Restaurant() {
   }
 
 
-  function Product() {
+  function Product(props) {
     return (
         <div className="product">
         <div className="product-text"> {/* needs productTitle, productDesc, productPrice */}
-            <h3>Chicken wings bucket</h3>
-            <p>Chicken wings bucket with 12 pieces and bbq sauce</p>
-            <h3 className="product-price">10.0 eur</h3>
+            <h3>{props.name}</h3>
+            <p>{props.desc}</p>
+            <h3 className="product-price">{props.price} €</h3>
             <AddToCartButton />
         </div>
-        <div className="product-image"></div>
+        <div className="product-image"><img src={props.imageUrl || 'https://placehold.co/200x200'} alt={props.imageAlt} /></div>
     </div>
     );
   }
