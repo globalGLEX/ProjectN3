@@ -432,6 +432,14 @@ footer{
   border-top-right-radius: 2.5rem;
   
 }
+.order-modal-image img{
+  display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 2.5rem;
+    border-top-right-radius: 2.5rem;
+}
 .order-modal-title {
   height: 4rem; 
   padding: 0.5rem;

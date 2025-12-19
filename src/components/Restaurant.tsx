@@ -69,9 +69,29 @@ function Restaurant() {
                     imageUrl={data.restaurants[0].products[2].imageUrl}
                     imageAlt={data.restaurants[0].products[2].alt}
                     />
-                <Product />
-                <Product />
-                <Product />
+                <Product 
+                    name={data.restaurants[0].products[3].name}
+                    desc={data.restaurants[0].products[3].desc}
+                    price={data.restaurants[0].products[3].price}
+                    imageUrl={data.restaurants[0].products[3].imageUrl}
+                    imageAlt={data.restaurants[0].products[3].alt}
+                    />
+                <Product 
+                    name={data.restaurants[0].products[4].name}
+                    desc={data.restaurants[0].products[4].desc}
+                    price={data.restaurants[0].products[4].price}
+                    imageUrl={data.restaurants[0].products[4].imageUrl}
+                    imageAlt={data.restaurants[0].products[4].alt}
+                    />
+                <Product 
+                    name={data.restaurants[0].products[5].name}
+                    desc={data.restaurants[0].products[5].desc}
+                    price={data.restaurants[0].products[5].price}
+                    imageUrl={data.restaurants[0].products[5].imageUrl}
+                    imageAlt={data.restaurants[0].products[5].alt}
+                    />
+                
+            
 
             </div>
         </div>

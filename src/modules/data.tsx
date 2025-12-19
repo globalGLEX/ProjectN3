@@ -1,7 +1,7 @@
 export const data = { 
     
     restaurants: [{
-        name: "Hesburger",
+        name: "Tamburger",
         logoUrl: {},
         imageUrl: {},
         categories: ['Burgers','Ice Cream','Fries', 'Drinks', 'Salads'],
@@ -9,7 +9,7 @@ export const data = {
              
                 name: "Cheeseburger",
                 desc: "Classic burger with ketchup, mayo, pickles and onion slices",
-                price: 10,
+                price: 6,
                 options: ['No pickles','No mayo','No ketchup','No onion', 'No cheese'],
                 imageUrl: "/src/assets/categories-burger.jpg",
                 alt: "A cheeseburger on wooden table"
@@ -17,22 +17,45 @@ export const data = {
              {
                 name: "Fries",
                 desc: "Medium size crispy fries",
-                price: 5.5,
+                price: 3,
                 options: ['With ketchup'],
                 imageUrl: "/src/assets/categories-burger.jpg",
                 alt: "A cheeseburger on wooden table"
             },
             {
-                name: "Fries2",
-                desc: "Medium size crispy fries",
-                price: 4,
-                options: ['With ketchup'],
+                name: "Coca Cola 0.33l",
+                desc: "Regular Coke with optional ice",
+                price: 1.5,
+                options: ['With ice'],
+                imageUrl: "/src/assets/categories-burger.jpg",
+                alt: "A cheeseburger on wooden table"
+            },
+            {
+                name: "Fanta 0.33l",
+                desc: "Regular Fanta with optional ice",
+                price: 1.5,
+                options: ['With ice'],
+                imageUrl: "/src/assets/categories-burger.jpg",
+                alt: "A cheeseburger on wooden table"
+            },
+            {
+                name: "Caesar salad",
+                desc: "Salad with chicken, cheese, bread cubes, lettuce",
+                price: 3.5,
+                options: ['Without chicken', 'Without cheese', 'Without bread cubes'],
+                imageUrl: "/src/assets/categories-burger.jpg",
+                alt: "A cheeseburger on wooden table"
+            },{
+                name: "Chocolate ice cream",
+                desc: "Creamy chocolate taste, 150g portion size",
+                price: 3.5,
+                options: [],
                 imageUrl: "/src/assets/categories-burger.jpg",
                 alt: "A cheeseburger on wooden table"
             }
         ]
     },{
-        name: "Herger",
+        name: "Kombi BBQ",
         logoUrl: {},
         imageUrl: {},
         categories: ['Burgers','Fries', 'Drinks', 'Salads']

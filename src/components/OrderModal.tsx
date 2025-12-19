@@ -1,15 +1,16 @@
+import {data} from '../modules/data.tsx';
 function OrderModal() {
     return (
         <div className="order-modal">
-        <div className="order-modal-image"></div>
+        <div className="order-modal-image"><img src={data.restaurants[0].products[0].imageUrl} alt={data.restaurants[0].products[0].alt} /></div>
         <div className="order-modal-title">
-            <h1>Big Burger</h1>
+            <h1>{data.restaurants[0].products[0].name}</h1>
         </div>
         <div className="order-modal-price">
-            <h2>10.5 eur</h2>
+            <h2>{data.restaurants[0].products[0].price} eur</h2>
         </div>
         <div className="order-modal-description">
-            <p>It's two 100% beef patties, melted cheese, onions, pickles, lettuce and special sauce that make the Big Burger an iconic classNameic.</p>
+            <p>{data.restaurants[0].products[0].desc}</p>
         </div>
         <OrderModalOptions />
         <OrderModalButtons />
@@ -25,14 +26,17 @@ function OrderModal() {
         <div className="order-modal-options">
             <p className="order-modal-options-text">Specifiers</p>
             <input type="checkbox" id="vehicle1" name="option" value="0"/>
-            <label htmlFor="vehicle1"> No cheese</label><br />
+            <label htmlFor="vehicle1"> {data.restaurants[0].products[0].options[0]}</label><br />
             <input type="checkbox" id="vehicle2" name="option" value="Bike"/>
-            <label htmlFor="vehicle2"> No lettuce</label><br />
+            <label htmlFor="vehicle2"> {data.restaurants[0].products[0].options[1]}</label><br />
             <input type="checkbox" id="vehicle3" name="option" value="Bike"/>
-            <label htmlFor="vehicle3"> No onion</label><br />
+            <label htmlFor="vehicle3"> {data.restaurants[0].products[0].options[2]}</label><br />
             <input type="checkbox" id="vehicle4" name="option" value="Bike"/>
-            <label htmlFor="vehicle4"> No BBQ sauce</label><br />
+            <label htmlFor="vehicle4"> {data.restaurants[0].products[0].options[3]}</label><br />
+            <input type="checkbox" id="vehicle4" name="option" value="Bike"/>
+            <label htmlFor="vehicle4"> {data.restaurants[0].products[0].options[4]}</label><br />
         </div>
+        
     );
   }
 
@@ -41,17 +45,18 @@ function OrderModal() {
   function OrderModalButtons() {
     return (
         <div className="order-modal-buttons">
-            <AmountContainer />
+            <AmountContainer amount={2} />
             <AddToOrderButton /> 
         </div>
     );
   }
 
-  function AmountContainer() {
+  function AmountContainer(props) {
+    //let amount = 1;
     return (
         <div className="amount-container">
             <button className="amount-button-decrease">-</button>
-            <div className="amount-value">0</div>
+            <div className="amount-value">{props.amount}</div>
             <button className="amount-button-increase">+</button>
         </div>
     );
