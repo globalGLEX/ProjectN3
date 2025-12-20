@@ -2,7 +2,7 @@ import {data} from '../modules/data.tsx';
 function OrderModal() {
     return (
         <div className="order-modal">
-        <div className="order-modal-image"><img src={data.restaurants[0].products[0].imageUrl} alt={data.restaurants[0].products[0].alt} /></div>
+        <div className="order-modal-image"><img src={data.restaurants[0].products[5].imageUrl} alt={data.restaurants[0].products[0].alt} /></div>
         <div className="order-modal-title">
             <h1>{data.restaurants[0].products[0].name}</h1>
         </div>

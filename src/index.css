@@ -399,7 +399,7 @@ footer{
 @media  screen and (max-width: 560px) {
   .product-image {
       height: 150px;
-      width: 150px;
+      min-width: 150px;
       align-self: center;
       background: url(https://placehold.co/150x150);
   }
@@ -407,18 +407,16 @@ footer{
 
 
 
-
-
 .order-modal {
   height: auto;
   width: 38rem;
   border-radius: 2.5em;
-  background-color: #fff;
+  background-color: #111;
   justify-content: center;
   font-size: 1.1rem;
   line-height: 1.5;
   border: none; 
-  background-color: #f3b250; 
+  
 
 }
 .order-modal-image {
@@ -436,7 +434,7 @@ footer{
   display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     border-top-left-radius: 2.5rem;
     border-top-right-radius: 2.5rem;
 }

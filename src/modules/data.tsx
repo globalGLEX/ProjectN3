@@ -1,7 +1,7 @@
 export const data = { 
     
     restaurants: [{
-        name: "Tamburger",
+        name: "Fastburger",
         logoUrl: {},
         imageUrl: {},
         categories: ['Burgers','Ice Cream','Fries', 'Drinks', 'Salads'],
@@ -19,7 +19,7 @@ export const data = {
                 desc: "Medium size crispy fries",
                 price: 3,
                 options: ['With ketchup'],
-                imageUrl: "/src/assets/categories-burger.jpg",
+                imageUrl: "/src/assets/fries.jpg",
                 alt: "A cheeseburger on wooden table"
             },
             {
@@ -27,7 +27,7 @@ export const data = {
                 desc: "Regular Coke with optional ice",
                 price: 1.5,
                 options: ['With ice'],
-                imageUrl: "/src/assets/categories-burger.jpg",
+                imageUrl: "/src/assets/coke.jpg",
                 alt: "A cheeseburger on wooden table"
             },
             {
@@ -35,7 +35,7 @@ export const data = {
                 desc: "Regular Fanta with optional ice",
                 price: 1.5,
                 options: ['With ice'],
-                imageUrl: "/src/assets/categories-burger.jpg",
+                imageUrl: "/src/assets/fanta.jpg",
                 alt: "A cheeseburger on wooden table"
             },
             {
@@ -43,19 +43,19 @@ export const data = {
                 desc: "Salad with chicken, cheese, bread cubes, lettuce",
                 price: 3.5,
                 options: ['Without chicken', 'Without cheese', 'Without bread cubes'],
-                imageUrl: "/src/assets/categories-burger.jpg",
+                imageUrl: "/src/assets/caesar.jpg",
                 alt: "A cheeseburger on wooden table"
             },{
                 name: "Chocolate ice cream",
                 desc: "Creamy chocolate taste, 150g portion size",
                 price: 3.5,
                 options: [],
-                imageUrl: "/src/assets/categories-burger.jpg",
+                imageUrl: "/src/assets/katsucurryrice.jpg",
                 alt: "A cheeseburger on wooden table"
             }
         ]
     },{
-        name: "Kombi BBQ",
+        name: "Shohei Restaurant",
         logoUrl: {},
         imageUrl: {},
         categories: ['Burgers','Fries', 'Drinks', 'Salads']
