@@ -233,20 +233,20 @@ header{
 
 .restaurants{
   width: 100%;
-  height: 25.4rem;
-  background: #111;
+  height: 29rem;
+  background: #444;
   padding: 2rem;
   color: #fff;
 }
 .restaurants-items-container{
-  height: 17.7rem;
+  height: 20.5rem;
   
   display: flex;
   gap: 1rem 2rem;
   justify-content: flex-start;
   margin-top: 2rem;
-  padding-top: 1rem;
-  background: #555;
+  padding-top: 0rem;
+  background: #444;
   overflow: scroll;
 
   touch-action: pan-x;
@@ -259,7 +259,25 @@ header{
   border-radius: 1rem;
   height: 15.7rem;
   min-width: 25.4rem;
+  max-width: 25.4rem;
 
+}
+.restaurants-item h1{
+  
+  padding: 1rem;
+
+  font-size: 2rem;
+  color: #111;
+  width: 100%;
+  background: #fff;
+  border-radius: 0rem;
+}
+.restaurants-item img{
+  
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 footer{
   height: 7rem;
@@ -283,22 +301,37 @@ footer{
   background: url(cafe.jpg);
   background-position: 50% 50%;
   background-size: cover;
-  padding: 2rem;
+  padding: 0rem;
   align-content: center;
 }
 .restaurant-image h1 {
-  width: 10rem;
-  background: #6366f1;
-  text-align: center;
+  position: absolute;
+  padding: 1rem;
+  margin-top: 9rem;
+  font-size: 4rem;
+  width: 23rem;
+  background: #fff;
+  border-radius: 1rem;
+  
   align-self: center;
 }
-.restaurant-image .restaurant-logo {
-  height: 5rem;
-  width: 5rem;
-  background: #8788ce;
-  text-align: center;
+.restaurant-logo {
+  position: absolute;
+  display: block;
+  width: 9rem;
+  height: 9rem;
   align-self: center;
+  
+  background-color: #2cb7ee;
 }
+.restaurant-image img {
+ 
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .restaurant-categories {
   height: 4rem;
   display: flex;

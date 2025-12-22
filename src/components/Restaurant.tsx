@@ -3,7 +3,7 @@ function Restaurant() {
     return (
         <div className="restaurant">
           
-            <RestaurantImage />
+            <RestaurantImage imageUrl={data.restaurants[0].imageUrl} alt={data.restaurants[0].imageUrlAlt}/>
             <FoodCategories />
             <Products />
             
@@ -15,9 +15,10 @@ function Restaurant() {
 
 
 
-  function RestaurantImage() {
+  function RestaurantImage(props) {
     return (
         <div className="restaurant-image">
+            <img src={props.imageUrl || 'https://placehold.co/1920x600'} alt={props.imageUrlAlt} />
             <div className="restaurant-logo"></div>
             <h1> {data.restaurants[0].name} </h1>
         </div>

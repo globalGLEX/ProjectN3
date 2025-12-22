@@ -3,7 +3,8 @@ export const data = {
     restaurants: [{
         name: "Fastburger",
         logoUrl: {},
-        imageUrl: {},
+        imageUrl: "/src/assets/fastburger.jpg",
+        imageUrlAlt: "Fastburger counter with burgers",
         categories: ['Burgers','Ice Cream','Fries', 'Drinks', 'Salads'],
         products :[{
              
@@ -57,12 +58,14 @@ export const data = {
     },{
         name: "Shohei Restaurant",
         logoUrl: {},
-        imageUrl: {},
+        imageUrl: "/src/assets/shohei.jpg",
+        imageUrlAlt: "Japanese restaurant",
         categories: ['Burgers','Fries', 'Drinks', 'Salads']
     },{
         name: "John's Cafe",
         logoUrl: {},
-        imageUrl: {},
+        imageUrl: "/src/assets/johnscafe.jpg",
+        imageUrlAlt: "Cafe counter with cakes",
         categories: ['Coffee','Cocoa', 'Milkshakes', 'Sandwiches']
     }]
         
