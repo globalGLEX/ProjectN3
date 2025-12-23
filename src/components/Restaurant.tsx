@@ -50,39 +50,39 @@ function Restaurant() {
             <div className="products">
                         
                 <Product 
-                    name={data.restaurants[0].products[0].name}
-                    desc={data.restaurants[0].products[0].desc}
-                    price={data.restaurants[0].products[0].price}
-                    imageUrl={data.restaurants[0].products[0].imageUrl}
-                    imageAlt={data.restaurants[0].products[0].alt}
+                    name={data.restaurants[1].products[0].name}
+                    desc={data.restaurants[1].products[0].desc}
+                    price={data.restaurants[1].products[0].price}
+                    imageUrl={data.restaurants[1].products[0].imageUrl}
+                    imageAlt={data.restaurants[1].products[0].alt}
                     />
                 <Product 
-                     name={data.restaurants[0].products[1].name}
-                     desc={data.restaurants[0].products[1].desc}
-                     price={data.restaurants[0].products[1].price}
-                     imageUrl={data.restaurants[0].products[1].imageUrl}
-                     imageAlt={data.restaurants[0].products[1].alt}
+                     name={data.restaurants[1].products[1].name}
+                     desc={data.restaurants[1].products[1].desc}
+                     price={data.restaurants[1].products[1].price}
+                     imageUrl={data.restaurants[1].products[1].imageUrl}
+                     imageAlt={data.restaurants[1].products[1].alt}
                      />
                 <Product 
-                    name={data.restaurants[0].products[2].name}
-                    desc={data.restaurants[0].products[2].desc}
-                    price={data.restaurants[0].products[2].price}
-                    imageUrl={data.restaurants[0].products[2].imageUrl}
-                    imageAlt={data.restaurants[0].products[2].alt}
+                    name={data.restaurants[1].products[2].name}
+                    desc={data.restaurants[1].products[2].desc}
+                    price={data.restaurants[1].products[2].price}
+                    imageUrl={data.restaurants[1].products[2].imageUrl}
+                    imageAlt={data.restaurants[1].products[2].alt}
                     />
                 <Product 
-                    name={data.restaurants[0].products[3].name}
-                    desc={data.restaurants[0].products[3].desc}
-                    price={data.restaurants[0].products[3].price}
-                    imageUrl={data.restaurants[0].products[3].imageUrl}
-                    imageAlt={data.restaurants[0].products[3].alt}
+                    name={data.restaurants[1].products[3].name}
+                    desc={data.restaurants[1].products[3].desc}
+                    price={data.restaurants[1].products[3].price}
+                    imageUrl={data.restaurants[1].products[3].imageUrl}
+                    imageAlt={data.restaurants[1].products[3].alt}
                     />
                 <Product 
-                    name={data.restaurants[0].products[4].name}
-                    desc={data.restaurants[0].products[4].desc}
-                    price={data.restaurants[0].products[4].price}
-                    imageUrl={data.restaurants[0].products[4].imageUrl}
-                    imageAlt={data.restaurants[0].products[4].alt}
+                    name={data.restaurants[1].products[4].name}
+                    desc={data.restaurants[1].products[4].desc}
+                    price={data.restaurants[1].products[4].price}
+                    imageUrl={data.restaurants[1].products[4].imageUrl}
+                    imageAlt={data.restaurants[1].products[4].alt}
                     />
                 <Product 
                     name={data.restaurants[0].products[5].name}

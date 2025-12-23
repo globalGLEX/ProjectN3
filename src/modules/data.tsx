@@ -60,7 +60,50 @@ export const data = {
         logoUrl: {},
         imageUrl: "/src/assets/shohei.jpg",
         imageUrlAlt: "Japanese restaurant",
-        categories: ['Burgers','Fries', 'Drinks', 'Salads']
+        categories: ['Burgers','Fries', 'Drinks', 'Salads'],
+        products: [{
+             
+            name: "Pork Ramen",
+            desc: "Noodles, pork, boiled egg, onion, shrimp and nori sheet  ",
+            price: 6,
+            options: ['No shrimp', 'No nori sheet', 'No egg'],
+            imageUrl: "/src/assets/porkramen.jpg",
+            alt: "A bowl of pork ramen"
+        },{
+             
+            name: "Katsu curry rice",
+            desc: "Crispy, deep-fried cutlet (katsu) served alongside Japanese-style curry and steamed rice.",
+            price: 6.5,
+            options: [''],
+            imageUrl: "/src/assets/katsucurryrice.jpg",
+            alt: "Katsu curry rice bowl"
+        },{
+             
+            name: "Sushi selection",
+            desc: "Tuna, steamed carrot and tofu sushi, 6 pieces",
+            price: 7,
+            options: [''],
+            imageUrl: "/src/assets/sushiselection.jpg",
+            alt: "6 sushi rolls on a wooden plate"
+        },{
+             
+            name: "Tuna nigiri",
+            desc: "Tuna and rice with chilli topping",
+            price: 1.5,
+            options: ['No chilli topping'],
+            imageUrl: "/src/assets/tunanigiri.jpg",
+            alt: "Tuna nigiri held up with chopsticks"
+        },{
+             
+            name: "Tempura bento box",
+            desc: "Crispy, deep-fried shrimp with cabbage, lemon, with rice, and tentsuyu sauce",
+            price: 6,
+            options: [''],
+            imageUrl: "/src/assets/tempurabento.jpg",
+            alt: "Tempura bento box with fried shrimp and cabbage"
+        }
+    
+    ]
     },{
         name: "John's Cafe",
         logoUrl: {},
