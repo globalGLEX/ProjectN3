@@ -109,7 +109,58 @@ export const data = {
         logoUrl: {},
         imageUrl: "/src/assets/johnscafe.jpg",
         imageUrlAlt: "Cafe counter with cakes",
-        categories: ['Coffee','Cocoa', 'Milkshakes', 'Sandwiches']
+        categories: ['Coffee','Cocoa', 'Milkshakes', 'Sandwiches'],
+        products: [{
+             
+            name: "Cappuchino",
+            desc: "With sugar and cream. Delivered in a paper cup",
+            price: 3.5,
+            options: [],
+            imageUrl: "/src/assets/cappuchino.jpg",
+            alt: "A cup of cappuchino on a plate"
+        },{
+             
+            name: "Espresso",
+            desc: "2 shots with optional sugar. Delivered in a paper cup",
+            price: 3,
+            options: ['With sugar'],
+            imageUrl: "/src/assets/espresso.jpg",
+            alt: "A cup of espresso on a plate"
+        },{
+             
+            name: "Cupcake with creamy icing",
+            desc: "",
+            price: 3,
+            options: [],
+            imageUrl: "/src/assets/cupcakecreamyicing.jpg",
+            alt: "A cupcake with white icing"
+        },{
+             
+            name: "Cheesecake",
+            desc: "With strawberry and orange jello",
+            price: 3.5,
+            options: [],
+            imageUrl: "/src/assets/cheesecake.jpg",
+            alt: "A slice of cheesecake with strawberry"
+        },{
+             
+            name: "Biscuit cheesecake",
+            desc: "With chocolate icing and biscuit pieces",
+            price: 4,
+            options: [],
+            imageUrl: "/src/assets/biscuitcheesecake.jpg",
+            alt: "A slice of biscuit cheesecake"
+        },{
+             
+            name: "Chocolate ice cream",
+            desc: "One 50g ball",
+            price: 2.5,
+            options: [],
+            imageUrl: "/src/assets/icecream.jpg",
+            alt: "A ball of chocolete ice cream in a paper cup"
+        }
+    
+    ]
     }]
         
 }; 

@@ -50,11 +50,11 @@ function Restaurant() {
             <div className="products">
                         
                 <Product 
-                    name={data.restaurants[1].products[0].name}
-                    desc={data.restaurants[1].products[0].desc}
-                    price={data.restaurants[1].products[0].price}
-                    imageUrl={data.restaurants[1].products[0].imageUrl}
-                    imageAlt={data.restaurants[1].products[0].alt}
+                    name={data.restaurants[2].products[0].name}
+                    desc={data.restaurants[2].products[0].desc}
+                    price={data.restaurants[2].products[0].price}
+                    imageUrl={data.restaurants[2].products[0].imageUrl}
+                    imageAlt={data.restaurants[2].products[0].alt}
                     />
                 <Product 
                      name={data.restaurants[1].products[1].name}
