@@ -1,4 +1,10 @@
 import {data} from '../modules/data.tsx';
+
+interface RestaurantsItemProps {
+    restaurantName: string;
+    imageUrl: string;
+    imageAlt: string;
+}
 function Restaurants() {
     return (
         <div className="restaurants"><h2>Restaurants</h2>
@@ -13,7 +19,7 @@ function Restaurants() {
   }
   export default Restaurants
 
-  function RestaurantsItem(props) {
+  function RestaurantsItem(props: RestaurantsItemProps) {
     return (
         
             <div className="restaurants-item">

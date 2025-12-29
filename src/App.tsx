@@ -15,11 +15,12 @@ function App() {
 <Header />
 <Categories />
 <Restaurants />
-<Footer />
+
 
 <Restaurant />
 
 <OrderModal />
+<Footer />
 
     </>
   )

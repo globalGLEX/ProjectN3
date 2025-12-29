@@ -1,9 +1,29 @@
 import {data} from '../modules/data.tsx';
+
+interface RestaurantImageProps {
+    /* list of props */
+    imageUrl: string;
+    imageUrlAlt: string;
+    
+    logoUrl: string;
+}
+interface FoodCategoryItemProps{
+    
+    catName: string;
+   
+}
+interface ProductProps {
+    imageUrl: string;
+    imageAlt: string;
+    name: string;
+    desc: string;
+    price: number;
+}
 function Restaurant() {
     return (
         <div className="restaurant">
           
-            <RestaurantImage imageUrl={data.restaurants[0].imageUrl} alt={data.restaurants[0].imageUrlAlt} logoUrl={data.restaurants[2].logoUrl}/>
+            <RestaurantImage imageUrl={data.restaurants[0].imageUrl} imageUrlAlt={data.restaurants[0].imageUrlAlt} logoUrl={data.restaurants[2].logoUrl}/>
             <FoodCategories />
             <Products />
             
@@ -15,7 +35,7 @@ function Restaurant() {
 
 
 
-  function RestaurantImage(props) {
+  function RestaurantImage(props: RestaurantImageProps) {
     return (
         <div className="restaurant-image">
             <img src={props.imageUrl || 'https://placehold.co/1920x600'} alt={props.imageUrlAlt} />
@@ -37,7 +57,7 @@ function Restaurant() {
         </div>
     );
   }
-  function FoodCategoryItem(props) {
+  function FoodCategoryItem(props: FoodCategoryItemProps) {
     
     return (
         <div className="restaurant-category-item"><p>{props.catName}</p></div>
@@ -102,7 +122,7 @@ function Restaurant() {
   }
 
 
-  function Product(props) {
+  function Product(props: ProductProps) {
     return (
         <div className="product">
         <div className="product-text"> {/* needs productTitle, productDesc, productPrice */}

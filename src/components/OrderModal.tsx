@@ -1,4 +1,7 @@
 import {data} from '../modules/data.tsx';
+interface AmountContainerProps {
+    amount: number;
+}
 function OrderModal() {
     return (
         <div className="order-modal">
@@ -51,7 +54,7 @@ function OrderModal() {
     );
   }
 
-  function AmountContainer(props) {
+  function AmountContainer(props: AmountContainerProps) {
     //let amount = 1;
     return (
         <div className="amount-container">
