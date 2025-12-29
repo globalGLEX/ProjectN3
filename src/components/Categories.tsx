@@ -8,7 +8,7 @@ import cafe from '../assets/categories-cafe.jpg';
 
 function Categories() {
     return (
-        <div className="categories"><h2>Categories - need scrollable element here</h2>
+        <div className="categories"><h2>Categories</h2>
             <div className="category-items-container">
                 <div className="category-item"> <img src={burger} alt="Burger" /><p>Burger</p></div>
                 <div className="category-item"><img src={american} alt="American BBQ" /><p>American</p></div>

@@ -224,6 +224,12 @@ header{
   width: 9.7rem;
   min-width: 9.7rem;
 }
+.category-item img{
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  
+ 
+}
 .category-item p{
   padding: 0.5rem;
   padding-left: 1rem;
@@ -427,7 +433,11 @@ footer{
   height: 200px;
   width: 200px;
   margin-left: 6%;
+  
   /* background: url(https://placehold.co/200x200); */
+}
+.product-image img {
+  border-radius: 1rem;
 }
 @media  screen and (max-width: 560px) {
   .product-image {
@@ -435,6 +445,7 @@ footer{
       min-width: 150px;
       align-self: center;
       background: url(https://placehold.co/150x150);
+      
   }
 }
 
