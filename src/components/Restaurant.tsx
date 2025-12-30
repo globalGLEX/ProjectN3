@@ -4,8 +4,8 @@ interface RestaurantImageProps {
     /* list of props */
     imageUrl: string;
     imageUrlAlt: string;
-    
     logoUrl: string;
+    restaurantName: string;
 }
 interface FoodCategoryItemProps{
     
@@ -23,7 +23,10 @@ function Restaurant() {
     return (
         <div className="restaurant">
           
-            <RestaurantImage imageUrl={data.restaurants[0].imageUrl} imageUrlAlt={data.restaurants[0].imageUrlAlt} logoUrl={data.restaurants[2].logoUrl}/>
+            <RestaurantImage imageUrl={data.restaurants[2].imageUrl} 
+                             imageUrlAlt={data.restaurants[2].imageUrlAlt} 
+                             logoUrl={data.restaurants[2].logoUrl} 
+                             restaurantName={data.restaurants[2].name}/>
             <FoodCategories />
             <Products />
             
@@ -42,7 +45,7 @@ function Restaurant() {
             <div className="restaurant-logo">
             <img src={props.logoUrl || 'https://placehold.co/150x150'}  />
             </div>
-            <h1> {data.restaurants[0].name} </h1>
+            <h1> {props.restaurantName} </h1>
         </div>
     );
   }
@@ -60,7 +63,7 @@ function Restaurant() {
   function FoodCategoryItem(props: FoodCategoryItemProps) {
     
     return (
-        <div className="restaurant-category-item"><p>{props.catName}</p></div>
+        <button className="restaurant-category-item"><p>{props.catName}</p></button>
     );
   }
   function Products() {
