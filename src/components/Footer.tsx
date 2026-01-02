@@ -1,7 +1,7 @@
 
 function Footer() {
     return (
-        <footer>footer component</footer>
+        <footer><p>© globalGLEX 2026</p></footer>
     );
   }
   export default Footer
