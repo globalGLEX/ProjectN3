@@ -1,4 +1,5 @@
 import {data} from '../modules/data.tsx';
+import orderModal from './OrderModal.tsx';
 
 interface RestaurantImageProps {
     /* list of props */
@@ -124,10 +125,22 @@ function Restaurant() {
     );
   }
 
-
+  
   function Product(props: ProductProps) {
+
+    const outputBox = document.querySelector("output");
+    /* const increaseBtn = dialog.getElementById("amount-button-increase");
+    const decreaseBtn = dialog.querySelector("#amount-button-decrease");
+    const addToOrderBtn = dialog.querySelector("#add-to-order-button");
+ */
+    function handleClick(){
+        const productCard = document.getElementsByClassName("product");
+        const dialog = document.getElementsByClassName("order-modal");
+        console.log(dialog);
+        /* dialog.showModal(); */
+    }
     return (
-        <div className="product">
+        <div className="product" onClick={handleClick}>
         <div className="product-text"> {/* needs productTitle, productDesc, productPrice */}
             <h3>{props.name}</h3>
             <p>{props.desc}</p>

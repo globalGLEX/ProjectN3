@@ -553,7 +553,7 @@ header{
   color: #222;
   font-size: 1.2rem;
 }
-.amount-button-decrease, .amount-button-increase {
+#amount-button-decrease, #amount-button-increase {
   height: 3rem;
   background-color: rgb(104, 183, 189);
   border: none;
@@ -566,7 +566,7 @@ header{
   font-size: 32px;
   cursor: pointer;
 }
-.amount-button-decrease {
+#amount-button-decrease {
   display: flex;
   padding-left: 1.2rem;
   padding-right: 1.2rem;
@@ -575,7 +575,7 @@ header{
 .amount-value {
   padding: 0.6rem;
 }
-.add-to-order-button {
+#add-to-order-button {
   height: 4rem;
   width: 18rem;
   padding-top: 1.2rem;

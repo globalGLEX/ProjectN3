@@ -4,7 +4,7 @@ interface AmountContainerProps {
 }
 function OrderModal() {
     return (
-        <div className="order-modal">
+        <div className="order-modal" >
         <div className="order-modal-image"><img src={data.restaurants[0].products[5].imageUrl} alt={data.restaurants[0].products[0].alt} /></div>
         <div className="order-modal-title">
             <h1>{data.restaurants[0].products[0].name}</h1>
@@ -58,15 +58,15 @@ function OrderModal() {
     //let amount = 1;
     return (
         <div className="amount-container">
-            <button className="amount-button-decrease">-</button>
+            <button id="amount-button-decrease">-</button>
             <div className="amount-value">{props.amount}</div>
-            <button className="amount-button-increase">+</button>
+            <button id="amount-button-increase">+</button>
         </div>
     );
   }
   function AddToOrderButton() {
     return (
-        <button className="add-to-order-button">
+        <button id="add-to-order-button">
             <p className="add-to-order-text">Add to order</p>
             <p className="add-to-order-value">10.5 E</p>
         </button>
