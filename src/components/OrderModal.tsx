@@ -1,9 +1,12 @@
 import {data} from '../modules/data.tsx';
+
 interface AmountContainerProps {
     amount: number;
 }
 function OrderModal() {
-    return (
+    
+    
+    return(
         <div className="order-modal" >
         <div className="order-modal-image"><img src={data.restaurants[0].products[5].imageUrl} alt={data.restaurants[0].products[0].alt} /></div>
         <div className="order-modal-title">
@@ -17,10 +20,8 @@ function OrderModal() {
         </div>
         <OrderModalOptions />
         <OrderModalButtons />
-
-
-    </div>
-    );
+        </div>
+    )
   }
 
 

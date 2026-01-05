@@ -1,5 +1,8 @@
 import {data} from '../modules/data.tsx';
-import orderModal from './OrderModal.tsx';
+import OrderModal from './OrderModal.tsx';
+
+import { useState } from 'react';
+
 
 interface RestaurantImageProps {
     /* list of props */
@@ -19,7 +22,10 @@ interface ProductProps {
     name: string;
     desc: string;
     price: number;
+   
+    
 }
+
 function Restaurant() {
     return (
         <div className="restaurant">
@@ -67,9 +73,46 @@ function Restaurant() {
         <button className="restaurant-category-item"><p>{props.catName}</p></button>
     );
   }
-  function Products() {
-    return (
+
+
+
+  function ModalTest(){
+    const dialog = document.getElementsByClassName("dial");
+    const showButton = document.querySelector("dialog + button");
+    const closeButton = document.querySelector("dialog button");
+    const shoot = () => {
+        
+      alert("test");
+      }
+    // "Show the dialog" button opens the dialog modally
+    /* showButton.addEventListener("click", () => {
+      dialog.showModal();
+    });
+    
+    // "Close" button closes the dialog
+    closeButton.addEventListener("click", () => {
+      dialog.close();
+    }); */
+    return(
         <div>
+        <dialog className="dial">
+        <button onClick={shoot}>Close</button>
+        <p>This modal dialog has a groovy backdrop!</p>
+        </dialog>
+        <button onClick={shoot}>Show the dialog </button>
+        </div>
+    )
+  }
+  
+
+
+  function Products() {
+    
+
+    return (
+        
+        <div>
+            <ModalTest />
             <div className="products-category-title">
                 <h1>{data.restaurants[0].categories[0]}</h1>
             </div>       
@@ -128,19 +171,19 @@ function Restaurant() {
   
   function Product(props: ProductProps) {
 
-    const outputBox = document.querySelector("output");
-    /* const increaseBtn = dialog.getElementById("amount-button-increase");
-    const decreaseBtn = dialog.querySelector("#amount-button-decrease");
-    const addToOrderBtn = dialog.querySelector("#add-to-order-button");
- */
-    function handleClick(){
-        const productCard = document.getElementsByClassName("product");
-        const dialog = document.getElementsByClassName("order-modal");
-        console.log(dialog);
-        /* dialog.showModal(); */
-    }
+    
+    
+    
+   
     return (
-        <div className="product" onClick={handleClick}>
+
+        
+
+        <div className="product">
+
+       
+
+
         <div className="product-text"> {/* needs productTitle, productDesc, productPrice */}
             <h3>{props.name}</h3>
             <p>{props.desc}</p>
@@ -148,6 +191,8 @@ function Restaurant() {
             <AddToCartButton />
         </div>
         <div className="product-image"><img src={props.imageUrl || 'https://placehold.co/200x200'} alt={props.imageAlt} /></div>
+      
+      
     </div>
     );
   }
