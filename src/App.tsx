@@ -7,7 +7,8 @@ import Restaurants from './components/Restaurants'
 import Restaurant from './components/Restaurant'
 import OrderModal from './components/OrderModal'
 
-function App() {
+
+ function App() {
   
   return (
     <>
@@ -18,8 +19,10 @@ function App() {
 
 
 <Restaurant />
+{/* <div className="clipping-container">
+        <PortalExample />
+      </div> */}
 
-<OrderModal />
 <Footer />
 
     </>

@@ -2,6 +2,7 @@ import {data} from '../modules/data.tsx';
 import OrderModal from './OrderModal.tsx';
 
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 
 
 interface RestaurantImageProps {
@@ -36,6 +37,8 @@ function Restaurant() {
                              restaurantName={data.restaurants[2].name}/>
             <FoodCategories />
             <Products />
+            
+            
             
 
     </div>
@@ -83,6 +86,8 @@ function Restaurant() {
     const shoot = () => {
         
       alert("test");
+      console.log(dialog);
+     
       }
     // "Show the dialog" button opens the dialog modally
     /* showButton.addEventListener("click", () => {
@@ -159,6 +164,7 @@ function Restaurant() {
                     price={data.restaurants[0].products[5].price}
                     imageUrl={data.restaurants[0].products[5].imageUrl}
                     imageAlt={data.restaurants[0].products[5].alt}
+                    
                     />
                 
             
@@ -170,30 +176,28 @@ function Restaurant() {
 
   
   function Product(props: ProductProps) {
-
+    const [showModal, setShowModal] = useState(false);
     
     
     
    
     return (
-
-        
-
-        <div className="product">
-
-       
-
-
-        <div className="product-text"> {/* needs productTitle, productDesc, productPrice */}
+    <>
+    <div className="product" onClick={() => setShowModal(true)}>
+        <div className="product-text"> 
             <h3>{props.name}</h3>
             <p>{props.desc}</p>
             <h3 className="product-price">{props.price} €</h3>
             <AddToCartButton />
         </div>
         <div className="product-image"><img src={props.imageUrl || 'https://placehold.co/200x200'} alt={props.imageAlt} /></div>
-      
-      
+        
     </div>
+        {showModal && createPortal(
+          <OrderModal onClose={() => setShowModal(false)} />,
+          document.body
+        )}
+    </>   
     );
   }
   function AddToCartButton() {
@@ -203,4 +207,27 @@ function Restaurant() {
         
     );
   }
+
+  /*  function ModalContent({ onClose }) {
+    return (
+      <div className="modal">
+        <div>I'm a modal dialog</div>
+        <button onClick={onClose}>Close</button>
+      </div>
+    );
+  } */
+  /*  function PortalExample() {
+    const [showModal, setShowModal] = useState(false);
+    return (
+      <>
+        <button onClick={() => setShowModal(true)}>
+          Show modal using a portal
+        </button>
+        {showModal && createPortal(
+          <OrderModal onClose={() => setShowModal(false)} />,
+          document.body
+        )}
+      </>
+    );
+  } */
   export default Restaurant

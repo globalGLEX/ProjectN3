@@ -3,11 +3,12 @@ import {data} from '../modules/data.tsx';
 interface AmountContainerProps {
     amount: number;
 }
-function OrderModal() {
+function OrderModal({ onClose }) {
     
     
     return(
         <div className="order-modal" >
+            <button onClick={onClose}>Close</button>
         <div className="order-modal-image"><img src={data.restaurants[0].products[5].imageUrl} alt={data.restaurants[0].products[0].alt} /></div>
         <div className="order-modal-title">
             <h1>{data.restaurants[0].products[0].name}</h1>
@@ -20,6 +21,7 @@ function OrderModal() {
         </div>
         <OrderModalOptions />
         <OrderModalButtons />
+        
         </div>
     )
   }
