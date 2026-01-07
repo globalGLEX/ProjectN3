@@ -177,13 +177,13 @@ function Restaurant() {
   
   function Product(props: ProductProps) {
     const [showModal, setShowModal] = useState(false);
-    
+    const [showBackdrop, setShowBackdrop] = useState(false);
     
     
    
     return (
     <>
-    <div className="product" onClick={() => setShowModal(true)}>
+    <div className="product" onClick={() => (setShowModal(true), setShowBackdrop(true))}>
         <div className="product-text"> 
             <h3>{props.name}</h3>
             <p>{props.desc}</p>
@@ -194,12 +194,21 @@ function Restaurant() {
         
     </div>
         {showModal && createPortal(
-          <OrderModal onClose={() => setShowModal(false)} />,
-          document.body
+          <OrderModal onClose={() => (setShowModal(false), setShowBackdrop(false))} />,
+          document.getElementById('modal-root')
         )}
+        {showBackdrop && createPortal(
+          <Backdrop onClose={() => (setShowModal(false), setShowBackdrop(false))} />,
+          document.getElementById('backdrop-root')
+        )}
+        
     </>   
     );
   }
+  function Backdrop({ onClose }) {
+    return <div className="backdrop" onClick={onClose}/>
+  }
+
   function AddToCartButton() {
     return (
        
