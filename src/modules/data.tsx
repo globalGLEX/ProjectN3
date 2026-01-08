@@ -8,7 +8,7 @@ export const data = {
         imageUrlAlt: "Fastburger counter with burgers",
         categories: ['Burgers','Ice Cream','Fries', 'Drinks', 'Salads'],
         products :[{
-             
+                id: 0,
                 name: "Cheeseburger",
                 desc: "Classic burger with ketchup, mayo, pickles and onion slices",
                 price: 6,
@@ -17,6 +17,7 @@ export const data = {
                 alt: "A cheeseburger on wooden table"
             },
              {
+                id: 1,
                 name: "Fries",
                 desc: "Medium size crispy fries",
                 price: 3,
@@ -25,6 +26,7 @@ export const data = {
                 alt: "A cheeseburger on wooden table"
             },
             {
+                id: 2,
                 name: "Coca Cola 0.33l",
                 desc: "Regular Coke with optional ice",
                 price: 1.5,
@@ -33,6 +35,7 @@ export const data = {
                 alt: "A cheeseburger on wooden table"
             },
             {
+                id: 3,
                 name: "Fanta 0.33l",
                 desc: "Regular Fanta with optional ice",
                 price: 1.5,
@@ -41,6 +44,7 @@ export const data = {
                 alt: "A cheeseburger on wooden table"
             },
             {
+                id: 4,
                 name: "Caesar salad",
                 desc: "Salad with chicken, cheese, bread cubes, lettuce",
                 price: 3.5,
@@ -48,6 +52,7 @@ export const data = {
                 imageUrl: "/src/assets/caesar.jpg",
                 alt: "A cheeseburger on wooden table"
             },{
+                id: 5,
                 name: "Chocolate ice cream",
                 desc: "Creamy chocolate taste, 150g portion size",
                 price: 3.5,
@@ -64,7 +69,8 @@ export const data = {
         imageUrlAlt: "Japanese restaurant",
         categories: ['Burgers','Fries', 'Drinks', 'Salads'],
         products: [{
-             
+            
+            id: 0,
             name: "Pork Ramen",
             desc: "Noodles, pork, boiled egg, onion, shrimp and nori sheet  ",
             price: 6,
@@ -72,7 +78,7 @@ export const data = {
             imageUrl: "/src/assets/porkramen.jpg",
             alt: "A bowl of pork ramen"
         },{
-             
+            id: 1,
             name: "Katsu curry rice",
             desc: "Crispy, deep-fried cutlet (katsu) served alongside Japanese-style curry and steamed rice.",
             price: 6.5,
@@ -80,7 +86,7 @@ export const data = {
             imageUrl: "/src/assets/katsucurryrice.jpg",
             alt: "Katsu curry rice bowl"
         },{
-             
+            id: 2,
             name: "Sushi selection",
             desc: "Tuna, steamed carrot and tofu sushi, 6 pieces",
             price: 7,
@@ -88,7 +94,7 @@ export const data = {
             imageUrl: "/src/assets/sushiselection.jpg",
             alt: "6 sushi rolls on a wooden plate"
         },{
-             
+            id: 3,
             name: "Tuna nigiri",
             desc: "Tuna and rice with chilli topping",
             price: 1.5,
@@ -96,7 +102,7 @@ export const data = {
             imageUrl: "/src/assets/tunanigiri.jpg",
             alt: "Tuna nigiri held up with chopsticks"
         },{
-             
+            id: 4,
             name: "Tempura bento box",
             desc: "Crispy, deep-fried shrimp with cabbage, lemon, with rice, and tentsuyu sauce",
             price: 6,
@@ -115,6 +121,7 @@ export const data = {
         categories: ['Coffee','Cocoa', 'Milkshakes', 'Sandwiches'],
         products: [{
              
+            id: 0,
             name: "Cappuchino",
             desc: "With sugar and cream. Delivered in a paper cup",
             price: 3.5,
@@ -123,6 +130,7 @@ export const data = {
             alt: "A cup of cappuchino on a plate"
         },{
              
+            id: 1,
             name: "Espresso",
             desc: "2 shots with optional sugar. Delivered in a paper cup",
             price: 3,
@@ -131,6 +139,7 @@ export const data = {
             alt: "A cup of espresso on a plate"
         },{
              
+            id: 2,
             name: "Cupcake with creamy icing",
             desc: "",
             price: 3,
@@ -139,6 +148,7 @@ export const data = {
             alt: "A cupcake with white icing"
         },{
              
+            id: 3,
             name: "Cheesecake",
             desc: "With strawberry and orange jello",
             price: 3.5,
@@ -146,7 +156,8 @@ export const data = {
             imageUrl: "/src/assets/cheesecake.jpg",
             alt: "A slice of cheesecake with strawberry"
         },{
-             
+            
+            id: 4,
             name: "Biscuit cheesecake",
             desc: "With chocolate icing and biscuit pieces",
             price: 4,
@@ -155,6 +166,7 @@ export const data = {
             alt: "A slice of biscuit cheesecake"
         },{
              
+            id: 5,
             name: "Chocolate ice cream",
             desc: "One 50g ball",
             price: 2.5,

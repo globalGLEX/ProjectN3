@@ -23,6 +23,7 @@ interface ProductProps {
     name: string;
     desc: string;
     price: number;
+    id: number;
    
     
 }
@@ -124,6 +125,7 @@ function Restaurant() {
             <div className="products">
                         
                 <Product 
+                    id={data.restaurants[2].products[0].id}
                     name={data.restaurants[2].products[0].name}
                     desc={data.restaurants[2].products[0].desc}
                     price={data.restaurants[2].products[0].price}
@@ -131,39 +133,44 @@ function Restaurant() {
                     imageAlt={data.restaurants[2].products[0].alt}
                     />
                 <Product 
-                     name={data.restaurants[1].products[1].name}
-                     desc={data.restaurants[1].products[1].desc}
-                     price={data.restaurants[1].products[1].price}
-                     imageUrl={data.restaurants[1].products[1].imageUrl}
-                     imageAlt={data.restaurants[1].products[1].alt}
+                     id={data.restaurants[2].products[1].id}
+                     name={data.restaurants[2].products[1].name}
+                     desc={data.restaurants[2].products[1].desc}
+                     price={data.restaurants[2].products[1].price}
+                     imageUrl={data.restaurants[2].products[1].imageUrl}
+                     imageAlt={data.restaurants[2].products[1].alt}
                      />
                 <Product 
-                    name={data.restaurants[1].products[2].name}
-                    desc={data.restaurants[1].products[2].desc}
-                    price={data.restaurants[1].products[2].price}
-                    imageUrl={data.restaurants[1].products[2].imageUrl}
-                    imageAlt={data.restaurants[1].products[2].alt}
+                    id={data.restaurants[2].products[2].id}
+                    name={data.restaurants[2].products[2].name}
+                    desc={data.restaurants[2].products[2].desc}
+                    price={data.restaurants[2].products[2].price}
+                    imageUrl={data.restaurants[2].products[2].imageUrl}
+                    imageAlt={data.restaurants[2].products[2].alt}
                     />
                 <Product 
-                    name={data.restaurants[1].products[3].name}
-                    desc={data.restaurants[1].products[3].desc}
-                    price={data.restaurants[1].products[3].price}
-                    imageUrl={data.restaurants[1].products[3].imageUrl}
-                    imageAlt={data.restaurants[1].products[3].alt}
+                    id={data.restaurants[2].products[3].id}
+                    name={data.restaurants[2].products[3].name}
+                    desc={data.restaurants[2].products[3].desc}
+                    price={data.restaurants[2].products[3].price}
+                    imageUrl={data.restaurants[2].products[3].imageUrl}
+                    imageAlt={data.restaurants[2].products[3].alt}
                     />
                 <Product 
-                    name={data.restaurants[1].products[4].name}
-                    desc={data.restaurants[1].products[4].desc}
-                    price={data.restaurants[1].products[4].price}
-                    imageUrl={data.restaurants[1].products[4].imageUrl}
-                    imageAlt={data.restaurants[1].products[4].alt}
+                    id={data.restaurants[2].products[4].id}
+                    name={data.restaurants[2].products[4].name}
+                    desc={data.restaurants[2].products[4].desc}
+                    price={data.restaurants[2].products[4].price}
+                    imageUrl={data.restaurants[2].products[4].imageUrl}
+                    imageAlt={data.restaurants[2].products[4].alt}
                     />
                 <Product 
-                    name={data.restaurants[0].products[5].name}
-                    desc={data.restaurants[0].products[5].desc}
-                    price={data.restaurants[0].products[5].price}
-                    imageUrl={data.restaurants[0].products[5].imageUrl}
-                    imageAlt={data.restaurants[0].products[5].alt}
+                    id={data.restaurants[2].products[5].id}
+                    name={data.restaurants[2].products[5].name}
+                    desc={data.restaurants[2].products[5].desc}
+                    price={data.restaurants[2].products[5].price}
+                    imageUrl={data.restaurants[2].products[5].imageUrl}
+                    imageAlt={data.restaurants[2].products[5].alt}
                     
                     />
                 
@@ -178,15 +185,17 @@ function Restaurant() {
   function Product(props: ProductProps) {
     const [showModal, setShowModal] = useState(false);
     const [showBackdrop, setShowBackdrop] = useState(false);
+    const [id, setId] = useState({});
     
     
    
     return (
     <>
-    <div className="product" onClick={() => (setShowModal(true), setShowBackdrop(true))}>
+    <div className="product" onClick={() => (setId(props.id),console.log(props.id),setShowModal(true), setShowBackdrop(true))}>
         <div className="product-text"> 
-            <h3>{props.name}</h3>
+            <h3>{props.name} has id {props.id}</h3>
             <p>{props.desc}</p>
+            
             <h3 className="product-price">{props.price} €</h3>
             <AddToCartButton />
         </div>
@@ -194,7 +203,7 @@ function Restaurant() {
         
     </div>
         {showModal && createPortal(
-          <OrderModal onClose={() => (setShowModal(false), setShowBackdrop(false))} />,
+          <OrderModal id={id} onClose={() => (setShowModal(false), setShowBackdrop(false))} />,
           document.getElementById('modal-root')
         )}
         {showBackdrop && createPortal(
