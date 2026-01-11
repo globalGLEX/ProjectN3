@@ -80,7 +80,7 @@ function Restaurant() {
 
 
 
-  function ModalTest(){
+  /* function ModalTest(){
     const dialog = document.getElementsByClassName("dial");
     const showButton = document.querySelector("dialog + button");
     const closeButton = document.querySelector("dialog button");
@@ -89,16 +89,7 @@ function Restaurant() {
       alert("test");
       console.log(dialog);
      
-      }
-    // "Show the dialog" button opens the dialog modally
-    /* showButton.addEventListener("click", () => {
-      dialog.showModal();
-    });
-    
-    // "Close" button closes the dialog
-    closeButton.addEventListener("click", () => {
-      dialog.close();
-    }); */
+      } 
     return(
         <div>
         <dialog className="dial">
@@ -109,7 +100,7 @@ function Restaurant() {
         </div>
     )
   }
-  
+*/  
 
 
   function Products() {
@@ -118,7 +109,7 @@ function Restaurant() {
     return (
         
         <div>
-            <ModalTest />
+            
             <div className="products-category-title">
                 <h1>{data.restaurants[0].categories[0]}</h1>
             </div>       
@@ -193,7 +184,7 @@ function Restaurant() {
     <>
     <div className="product" onClick={() => (setId(props.id),console.log(props.id),setShowModal(true), setShowBackdrop(true))}>
         <div className="product-text"> 
-            <h3>{props.name} has id {props.id}</h3>
+            <h2>{props.name}</h2>
             <p>{props.desc}</p>
             
             <h3 className="product-price">{props.price} €</h3>

@@ -161,7 +161,7 @@ header{
 .header-right{
   display: flex;
   justify-content: space-evenly;
-  background: #444;
+  background: #111;
   width: 14rem;
 }
 .signup-button{
@@ -193,7 +193,8 @@ header{
   justify-content: space-evenly;
   width: 100%;
   height: 25.4rem;
-  background: #caf8fc;
+  background: #444;
+  color: #fff;
   padding: 2rem;
   
 
@@ -209,7 +210,7 @@ header{
   margin-top: 2rem;
   padding-top: 0rem;
   border-radius: 1rem;
-  background: #c5c5c5;
+  background: #666;
   overflow: scroll;
 
   touch-action: pan-x;
@@ -217,10 +218,10 @@ header{
   
 }
 .category-item{
-  background: #fff;
+  background: #333;
   /* border: 2px solid green; */
   border-radius: 1rem;
-  
+  text-align: center;
   height: 13rem;
   width: 9.7rem;
   min-width: 9.7rem;
@@ -233,7 +234,7 @@ header{
 }
 .category-item p{
   padding: 0.5rem;
-  padding-left: 1rem;
+  
   
  
 }
@@ -254,7 +255,7 @@ header{
   justify-content: flex-start;
   margin-top: 2rem;
   padding-top: 0rem;
-  background: #c5c5c5;
+  background: #666;
   overflow: scroll;
 
   touch-action: pan-x;
@@ -275,9 +276,9 @@ header{
   padding: 1rem;
 
   font-size: 2rem;
-  color: #111;
+  color: #fff;
   width: 100%;
-  background: #fff;
+  background: #333;
   border-radius: 1rem 1rem 0rem 0rem;
 }
 .restaurants-item img{
@@ -338,18 +339,18 @@ header{
 }
 
 .restaurant-categories {
-  height: 4rem;
+  height: 5rem;
   display: flex;
   gap: 1rem 1rem;
   justify-content: flex-left;
-  padding: 0.5rem;
+  padding: 1rem;
   background: #111;
 }
 .restaurant-category-item {
   height: 3rem;
   width: 9rem;
   padding: 0.25rem;
-  border: 2px solid rgb(37, 177, 100);
+  border: 2px solid rgb(248, 248, 248);
   border-radius: 1rem;
   text-align: center;
   background-color: #444;
@@ -361,6 +362,8 @@ header{
   height: 6rem;
   padding: 2rem;
   padding-left: 2rem;
+  color: #fff;
+  background-color: #444;
 }
 .products {
   height: auto;
@@ -400,7 +403,7 @@ header{
   position: relative;
   height: 200px;
   width: 60%;
-  padding: 1rem;
+  padding: 0rem;
   background: #444;
   color: #fff;
 }
@@ -419,8 +422,8 @@ header{
   font-size: 16px;
   cursor: pointer;
 }
-.product-text h3 {
-  padding-bottom: 0.5rem;
+.product-text h2 {
+  padding-bottom: 1rem;
 }
 .product-text p {
   line-height: 1.2;
@@ -435,6 +438,7 @@ header{
   height: 200px;
   width: 200px;
   margin-left: 6%;
+  background-color: #444;
   
   /* background: url(https://placehold.co/200x200); */
 }
@@ -443,10 +447,10 @@ header{
 }
 @media  screen and (max-width: 560px) {
   .product-image {
-      height: 150px;
-      min-width: 150px;
+      height: 200px;
+      min-width: 200px;
       align-self: center;
-      background: url(https://placehold.co/150x150);
+      /* background: url(https://placehold.co/150x150); */
       
   }
 }
@@ -509,14 +513,15 @@ header{
   height: 4rem; 
   padding: 0.5rem;
   padding-left: 1rem;
-  background-color: #222;
+  background-color: #444;
   color: #fff;
 }
 .order-modal-price {
   height: 3rem; 
   padding: 0.5rem;
   padding-left: 1rem;
-  background-color: #fff;
+  background-color: #444;
+  color: #fff;
 }
 .order-modal-description {
   height: auto;
@@ -529,7 +534,8 @@ header{
   height: 15rem; 
   padding: 0.5rem;
   padding-left: 1rem;
-  background-color: #fff;
+  background-color: #333;
+  color: #fff;
   font-size: 1.4rem;
   input[type="checkbox"] {
       transform:scale(2, 2);

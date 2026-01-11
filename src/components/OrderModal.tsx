@@ -23,7 +23,7 @@ function OrderModal({ onClose, id }: OrderModalProps) {
             
         </div>
         <div className="order-modal-price">
-            <h2>{data.restaurants[2].products[id].price} eur</h2>
+            <h2>{data.restaurants[2].products[id].price} €</h2>
         </div>
         <div className="order-modal-description">
             <p>{data.restaurants[2].products[id].desc}</p>
@@ -81,7 +81,7 @@ function OrderModal({ onClose, id }: OrderModalProps) {
     return (
         <button id="add-to-order-button">
             <p className="add-to-order-text">Add to order</p>
-            <p className="add-to-order-value">10.5 E</p>
+            <p className="add-to-order-value">10.5 €</p>
         </button>
     );
   }
