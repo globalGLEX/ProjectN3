@@ -1,6 +1,7 @@
 import {data} from '../modules/data.tsx';
 import OrderModal from './OrderModal.tsx';
 
+
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
 
@@ -182,7 +183,7 @@ function Restaurant() {
    
     return (
     <>
-    <div className="product" onClick={() => (setId(props.id),console.log(props.id),setShowModal(true), setShowBackdrop(true))}>
+    <div className="product" onClick={() => (setId(props.id),setShowModal(true), setShowBackdrop(true))}>
         <div className="product-text"> 
             <h2>{props.name}</h2>
             <p>{props.desc}</p>

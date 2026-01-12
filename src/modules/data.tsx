@@ -82,7 +82,7 @@ export const data = {
             name: "Katsu curry rice",
             desc: "Crispy, deep-fried cutlet (katsu) served alongside Japanese-style curry and steamed rice.",
             price: 6.5,
-            options: [''],
+            options: [],
             imageUrl: "/src/assets/katsucurryrice.jpg",
             alt: "Katsu curry rice bowl"
         },{
@@ -90,7 +90,7 @@ export const data = {
             name: "Sushi selection",
             desc: "Tuna, steamed carrot and tofu sushi, 6 pieces",
             price: 7,
-            options: [''],
+            options: [],
             imageUrl: "/src/assets/sushiselection.jpg",
             alt: "6 sushi rolls on a wooden plate"
         },{
@@ -98,7 +98,7 @@ export const data = {
             name: "Tuna nigiri",
             desc: "Tuna and rice with chilli topping",
             price: 1.5,
-            options: ['No chilli topping'],
+            options: ['Without chilli topping'],
             imageUrl: "/src/assets/tunanigiri.jpg",
             alt: "Tuna nigiri held up with chopsticks"
         },{
@@ -106,7 +106,7 @@ export const data = {
             name: "Tempura bento box",
             desc: "Crispy, deep-fried shrimp with cabbage, lemon, with rice, and tentsuyu sauce",
             price: 6,
-            options: [''],
+            options: [],
             imageUrl: "/src/assets/tempurabento.jpg",
             alt: "Tempura bento box with fried shrimp and cabbage"
         }
@@ -134,7 +134,7 @@ export const data = {
             name: "Espresso",
             desc: "2 shots with optional sugar. Delivered in a paper cup",
             price: 3,
-            options: ['With sugar'],
+            options: ['With sugar','With cream'],
             imageUrl: "/src/assets/espresso.jpg",
             alt: "A cup of espresso on a plate"
         },{

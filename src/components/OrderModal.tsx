@@ -28,7 +28,7 @@ function OrderModal({ onClose, id }: OrderModalProps) {
         <div className="order-modal-description">
             <p>{data.restaurants[2].products[id].desc}</p>
         </div>
-        <OrderModalOptions />
+        <OrderModalOptions id={id} />
         <OrderModalButtons />
         
         </div>
@@ -37,20 +37,38 @@ function OrderModal({ onClose, id }: OrderModalProps) {
   }
   
 
-  function OrderModalOptions() {
+  function OrderModalOptions({id}: OrderModalProps) {
+    console.log(data.restaurants[2].products[id]);
+    if ((data.restaurants[2].products[id].options).length === 0) {
+        return <div className="order-modal-options"><p>No specifers for this product</p></div>;
+        
+      }
+      /* for( let i = 0; i < (data.restaurants[2].products[id].options).length; i++)
+        {
+            return(
+                <div className="order-modal-options">
+                <p className="order-modal-options-text">Specifiers</p>
+                <input type="checkbox" id="box1" name="option" value="0"/>
+                <label htmlFor="vehicle1"> {data.restaurants[2].products[id].options[i]}</label><br />
+                </div>
+            );
+        } */
     return (
         <div className="order-modal-options">
             <p className="order-modal-options-text">Specifiers</p>
+
+      
+
             <input type="checkbox" id="vehicle1" name="option" value="0"/>
-            <label htmlFor="vehicle1"> {data.restaurants[0].products[0].options[0]}</label><br />
+            <label htmlFor="vehicle1"> {data.restaurants[2].products[id].options[0]}</label><br />
             <input type="checkbox" id="vehicle2" name="option" value="Bike"/>
-            <label htmlFor="vehicle2"> {data.restaurants[0].products[0].options[1]}</label><br />
+            <label htmlFor="vehicle2"> {data.restaurants[2].products[id].options[1]}</label><br />
             <input type="checkbox" id="vehicle3" name="option" value="Bike"/>
-            <label htmlFor="vehicle3"> {data.restaurants[0].products[0].options[2]}</label><br />
+            <label htmlFor="vehicle3"> {data.restaurants[2].products[id].options[2]}</label><br />
             <input type="checkbox" id="vehicle4" name="option" value="Bike"/>
-            <label htmlFor="vehicle4"> {data.restaurants[0].products[0].options[3]}</label><br />
+            <label htmlFor="vehicle4"> {data.restaurants[2].products[0].options[3]}</label><br />
             <input type="checkbox" id="vehicle4" name="option" value="Bike"/>
-            <label htmlFor="vehicle4"> {data.restaurants[0].products[0].options[4]}</label><br />
+            <label htmlFor="vehicle4"> {data.restaurants[2].products[0].options[4]}</label><br />
         </div>
         
     );
