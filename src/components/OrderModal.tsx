@@ -1,14 +1,18 @@
 import {data} from '../modules/data.tsx';
+import { useState } from 'react';
 
 
 interface AmountContainerProps {
     amount: number;
+    
 }
 interface OrderModalProps {
     id: number;
+    
 }
 
 function OrderModal({ onClose, id }: OrderModalProps) {
+    const [amount, setAmount] = useState(2);
     
     
     
@@ -29,7 +33,7 @@ function OrderModal({ onClose, id }: OrderModalProps) {
             <p>{data.restaurants[2].products[id].desc}</p>
         </div>
         <OrderModalOptions id={id} />
-        <OrderModalButtons />
+        <OrderModalButtons  amount={amount}/>
         
         </div>
         
@@ -58,7 +62,7 @@ function OrderModal({ onClose, id }: OrderModalProps) {
             <p className="order-modal-options-text">Specifiers</p>
 
       
-
+        
             <input type="checkbox" id="vehicle1" name="option" value="0"/>
             <label htmlFor="vehicle1"> {data.restaurants[2].products[id].options[0]}</label><br />
             <input type="checkbox" id="vehicle2" name="option" value="Bike"/>
@@ -69,23 +73,26 @@ function OrderModal({ onClose, id }: OrderModalProps) {
             <label htmlFor="vehicle4"> {data.restaurants[2].products[0].options[3]}</label><br />
             <input type="checkbox" id="vehicle4" name="option" value="Bike"/>
             <label htmlFor="vehicle4"> {data.restaurants[2].products[0].options[4]}</label><br />
-        </div>
+  
+            </div>
         
     );
   }
 
 
   
-  function OrderModalButtons() {
+  function OrderModalButtons({amount}: AmountContainerProps) {
+    
     return (
         <div className="order-modal-buttons">
-            <AmountContainer amount={2} />
+            <AmountContainer amount={amount} />
             <AddToOrderButton /> 
         </div>
     );
   }
 
-  function AmountContainer(props: AmountContainerProps) {
+  function AmountContainer(props: AmountContainerProps,) {
+   
     //let amount = 1;
     return (
         <div className="amount-container">
@@ -103,4 +110,5 @@ function OrderModal({ onClose, id }: OrderModalProps) {
         </button>
     );
   }
+  
   export default OrderModal

@@ -247,7 +247,7 @@ header{
   color: #fff;
 }
 .restaurants-items-container{
-  height: 20.5rem;
+  height: 19.8rem;
   
   display: flex;
   gap: 1rem 2rem;
@@ -529,6 +529,7 @@ header{
   padding-left: 1rem;
   background-color: #444; 
   color: #fff;
+  font-size: 1.4rem;
 }
 .order-modal-options {
   height: 15rem; 
@@ -536,7 +537,7 @@ header{
   padding-left: 1rem;
   background-color: #333;
   color: #fff;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   input[type="checkbox"] {
       transform:scale(2, 2);
       

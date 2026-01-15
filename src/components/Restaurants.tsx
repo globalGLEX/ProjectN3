@@ -7,7 +7,7 @@ interface RestaurantsItemProps {
 }
 function Restaurants() {
     return (
-        <div className="restaurants"><h2>Restaurants</h2>
+        <div className="restaurants"><h1>Restaurants</h1>
             <div className="restaurants-items-container">
                 <RestaurantsItem imageUrl={data.restaurants[0].imageUrl} imageAlt={data.restaurants[0].imageUrlAlt} restaurantName={data.restaurants[0].name} />
                 <RestaurantsItem imageUrl={data.restaurants[1].imageUrl} imageAlt={data.restaurants[1].imageUrlAlt} restaurantName={data.restaurants[1].name}/>
