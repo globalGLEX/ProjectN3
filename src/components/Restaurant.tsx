@@ -1,5 +1,6 @@
 import {data} from '../modules/data.tsx';
 import OrderModal from './OrderModal.tsx';
+import type {OrderModalProps} from './OrderModal.tsx';
 
 
 import { useState } from 'react';
@@ -25,6 +26,8 @@ interface ProductProps {
     desc: string;
     price: number;
     id: number;
+    
+    
    
     
 }
@@ -206,7 +209,7 @@ function Restaurant() {
     </>   
     );
   }
-  function Backdrop({ onClose }) {
+  function Backdrop({ onClose }: OrderModalProps) {
     return <div className="backdrop" onClick={onClose}/>
   }
 

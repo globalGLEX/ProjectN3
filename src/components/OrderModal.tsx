@@ -6,8 +6,11 @@ interface AmountContainerProps {
     amount: number;
     
 }
-interface OrderModalProps {
+export interface OrderModalProps {
     id: number;
+    onClick?: React.MouseEvent<HTMLButtonElement>;
+    onClose?: React.MouseEventHandler<HTMLButtonElement>
+    
     
 }
 
