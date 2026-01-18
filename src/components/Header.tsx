@@ -1,6 +1,7 @@
 // src/components/Header.jsx
 // import React from 'react';
 import { useEffect } from "react";
+import cart from '../assets/cart32.png';
 
 function Header() {
 /*   useEffect(() => {
@@ -27,6 +28,7 @@ function HeaderRight() {
   
     return (
         <div className="header-right">
+                  <button className="cart"><img src={cart}></img></button>
                   <button className="login-button">Log in</button>
                   <button className="signup-button">Sign up</button>
                   
