@@ -2,10 +2,13 @@ import {data} from '../modules/data.tsx';
 import { useState } from 'react';
 
 
-interface AmountContainerProps {
+/* interface AmountContainerProps {
     amount: number;
     
-}
+  
+    
+    
+} */
 export interface OrderModalProps {
     id: number;
     onClick?: React.MouseEvent<HTMLButtonElement>;
@@ -15,7 +18,7 @@ export interface OrderModalProps {
 }
 
 function OrderModal({ onClose, id }: OrderModalProps) {
-    const [amount, setAmount] = useState(2);
+   /*  const [amount, setAmount] = useState(3); */
     
     
     
@@ -36,7 +39,7 @@ function OrderModal({ onClose, id }: OrderModalProps) {
             <p>{data.restaurants[2].products[id].desc}</p>
         </div>
         <OrderModalOptions id={id} />
-        <OrderModalButtons  amount={amount}/>
+        <OrderModalButtons />
         
         </div>
         
@@ -84,24 +87,31 @@ function OrderModal({ onClose, id }: OrderModalProps) {
 
 
   
-  function OrderModalButtons({amount}: AmountContainerProps) {
+  function OrderModalButtons() {
+  
     
     return (
         <div className="order-modal-buttons">
-            <AmountContainer amount={amount} />
+            <AmountContainer  />
             <AddToOrderButton /> 
         </div>
     );
   }
 
-  function AmountContainer(props: AmountContainerProps,) {
+  function AmountContainer() {
    
-    //let amount = 1;
+    const [counter, setCounter] = useState(1);
+    const incrementCounter = () => setCounter(counter + 1);
+    let decrementCounter = () => setCounter(counter - 1);
+    if(counter<=1) {
+      decrementCounter = () => setCounter(1);
+    }
+    
     return (
         <div className="amount-container">
-            <button id="amount-button-decrease">-</button>
-            <div className="amount-value">{props.amount}</div>
-            <button id="amount-button-increase">+</button>
+            <button id="amount-button-decrease" onClick={decrementCounter}>-</button>
+            <div className="amount-value">{counter}</div>
+            <button id="amount-button-increase" onClick={incrementCounter}>+</button>
         </div>
     );
   }
