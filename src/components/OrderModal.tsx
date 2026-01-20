@@ -11,6 +11,7 @@ import { useState } from 'react';
 } */
 export interface OrderModalProps {
     id: number;
+    counter?: number;
     onClick?: React.MouseEvent<HTMLButtonElement>;
     onClose?: React.MouseEventHandler<HTMLButtonElement>
     
@@ -18,10 +19,8 @@ export interface OrderModalProps {
 }
 
 function OrderModal({ onClose, id }: OrderModalProps) {
-   /*  const [amount, setAmount] = useState(3); */
-    
-    
-    
+   
+
     return(
         
         <div className="order-modal" >
@@ -39,7 +38,7 @@ function OrderModal({ onClose, id }: OrderModalProps) {
             <p>{data.restaurants[2].products[id].desc}</p>
         </div>
         <OrderModalOptions id={id} />
-        <OrderModalButtons />
+        <OrderModalButtons id={id}/>
         
         </div>
         
@@ -87,25 +86,26 @@ function OrderModal({ onClose, id }: OrderModalProps) {
 
 
   
-  function OrderModalButtons() {
+  function OrderModalButtons({id}: OrderModalProps) {
+    const [counter, setCounter] = useState(1);
   
     
     return (
         <div className="order-modal-buttons">
-            <AmountContainer  />
-            <AddToOrderButton /> 
+            <AmountContainer counter={counter} setCounter={setCounter} />
+            <AddToOrderButton id={id} counter={counter}/> 
         </div>
     );
   }
 
-  function AmountContainer() {
-   
-    const [counter, setCounter] = useState(1);
+  function AmountContainer({counter, setCounter}) {
+    
     const incrementCounter = () => setCounter(counter + 1);
     let decrementCounter = () => setCounter(counter - 1);
     if(counter<=1) {
       decrementCounter = () => setCounter(1);
     }
+    
     
     return (
         <div className="amount-container">
@@ -115,11 +115,11 @@ function OrderModal({ onClose, id }: OrderModalProps) {
         </div>
     );
   }
-  function AddToOrderButton() {
+  function AddToOrderButton( {id, counter}: OrderModalProps) {
     return (
         <button id="add-to-order-button">
             <p className="add-to-order-text">Add to order</p>
-            <p className="add-to-order-value">10.5 €</p>
+            <p className="add-to-order-value">{data.restaurants[2].products[id].price * counter} €</p>
         </button>
     );
   }
