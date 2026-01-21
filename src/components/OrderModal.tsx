@@ -17,7 +17,12 @@ export interface OrderModalProps {
     
     
 }
-
+interface CheckboxProps {
+    
+    option: string;
+    
+    
+}
 function OrderModal({ onClose, id }: OrderModalProps) {
    
 
@@ -44,14 +49,48 @@ function OrderModal({ onClose, id }: OrderModalProps) {
         
     )
   }
-  
+  function Checkbox({ option}: CheckboxProps){
+    return(
+            <div>
+                 <input type="checkbox" name="option" value={option} />
+                 <label htmlFor={option}> {option}</label><br />
+            </div>
+    )
+  }
 
   function OrderModalOptions({id}: OrderModalProps) {
-    console.log(data.restaurants[2].products[id]);
+    
     if ((data.restaurants[2].products[id].options).length === 0) {
         return <div className="order-modal-options"><p>No specifers for this product</p></div>;
         
-      }
+      } else {
+        
+        return (
+                
+            <div className="order-modal-options">
+                <p className="order-modal-options-text">Specifiers</p>
+            {data.restaurants[2].products[id].options.map(opt =>
+            <Checkbox key={opt}  option={opt} />
+            )}
+            
+            </div>
+            
+        );
+        }
+        /*  data.restaurants[2].products[id].options.map(function(option, i){
+            
+            return (
+                
+                <div className="order-modal-options">
+                    <p className="order-modal-options-text">Specifiers</p>
+                <Checkbox key={i} option={option} />
+                </div>
+                
+            );
+        })    */
+        
+      
+      
       /* for( let i = 0; i < (data.restaurants[2].products[id].options).length; i++)
         {
             return(
@@ -62,7 +101,8 @@ function OrderModal({ onClose, id }: OrderModalProps) {
                 </div>
             );
         } */
-    return (
+       
+    /* return (
         <div className="order-modal-options">
             <p className="order-modal-options-text">Specifiers</p>
 
@@ -81,7 +121,7 @@ function OrderModal({ onClose, id }: OrderModalProps) {
   
             </div>
         
-    );
+    ); */
   }
 
 
