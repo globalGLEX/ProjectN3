@@ -17,7 +17,8 @@ function Header() {
   return (
     <header id="header" >
     
-    <h1>ProjectN3</h1>
+    
+    <a href={`/restaurant/johnscafe`}><h1>ProjectN3</h1></a>
         <HeaderRight />
     </header>
   );

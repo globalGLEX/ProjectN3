@@ -552,6 +552,7 @@ header{
   font-size: 1.2rem;
   input[type="checkbox"] {
       transform:scale(2, 2);
+      margin-left: 0.5rem;
       
     }
 }

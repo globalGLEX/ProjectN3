@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './index.css'
+
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Categories from './components/Categories'
@@ -12,18 +13,12 @@ import OrderModal from './components/OrderModal'
   
   return (
     <>
-       
-<Header />
-<Categories />
-<Restaurants />
-
-
-<Restaurant />
-{/* <div className="clipping-container">
-        <PortalExample />
-      </div> */}
-
-<Footer />
+   
+      <Header />
+      <Categories />
+      <Restaurants />
+      <Restaurant />
+      <Footer />
 
     </>
   )

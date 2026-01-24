@@ -192,7 +192,7 @@ function Restaurant() {
             <p>{props.desc}</p>
             
             <h3 className="product-price">{props.price} €</h3>
-            <AddToCartButton />
+            {/* <AddToCartButton /> */}
         </div>
         <div className="product-image"><img src={props.imageUrl || 'https://placehold.co/200x200'} alt={props.imageAlt} /></div>
         
