@@ -1,14 +1,16 @@
 import {data} from '../modules/data.tsx';
 import OrderModal from './OrderModal.tsx';
 import type {OrderModalProps} from './OrderModal.tsx';
-
+import type {RestaurantsItemProps }from './Restaurants.tsx';
+import type Restaurants from './Restaurants.tsx';
 
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
 
 
-interface RestaurantImageProps {
+export interface RestaurantImageProps {
     /* list of props */
+    
     imageUrl: string;
     imageUrlAlt: string;
     logoUrl: string;
@@ -32,11 +34,14 @@ interface ProductProps {
     
 }
 
-function Restaurant() {
+function Restaurant({restId}: RestaurantsItemProps ) {
+    console.log(restId);
     return (
         <div className="restaurant">
           
-            <RestaurantImage imageUrl={data.restaurants[2].imageUrl} 
+            <RestaurantImage 
+                             restId={restId}
+                             imageUrl={data.restaurants[2].imageUrl} 
                              imageUrlAlt={data.restaurants[2].imageUrlAlt} 
                              logoUrl={data.restaurants[2].logoUrl} 
                              restaurantName={data.restaurants[2].name}/>

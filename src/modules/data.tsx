@@ -1,6 +1,7 @@
 export const data = { 
     
     restaurants: [{
+        restId: 0,
         name: "Fastburger",
         category: ['burger', 'american'],
         logoUrl: "/src/assets/fastburgerlogo.png",
@@ -62,6 +63,7 @@ export const data = {
             }
         ]
     },{
+        restId: 1,
         name: "Shohei Restaurant",
         category: "japanese",
         logoUrl: "/src/assets/shoheilogo.png",
@@ -112,7 +114,8 @@ export const data = {
         }
     
     ]
-    },{
+    },{ 
+        restId: 2,
         name: "John's Cafe",
         category: "cafe",
         logoUrl: "/src/assets/johnscafelogo.png",

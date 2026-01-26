@@ -2,7 +2,7 @@
 // import React from 'react';
 import { useEffect } from "react";
 import cart from '../assets/cart32.png';
-
+import { Link } from 'react-router-dom'
 function Header() {
 /*   useEffect(() => {
     
@@ -18,7 +18,7 @@ function Header() {
     <header id="header" >
     
     
-    <a href={`/restaurant/johnscafe`}><h1>ProjectN3</h1></a>
+    <Link to="/"><h1>ProjectN3</h1></Link>
         <HeaderRight />
     </header>
   );
