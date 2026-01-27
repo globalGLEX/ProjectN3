@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "restaurant/johnscafe",
+    path: "restaurant/:restaurantId",
     element: <><Header /> <Restaurant /><Footer /></>,
   },
 ]);

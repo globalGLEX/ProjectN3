@@ -6,6 +6,7 @@ import type Restaurants from './Restaurants.tsx';
 
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
+import { useParams } from "react-router-dom"
 
 
 export interface RestaurantImageProps {
@@ -28,25 +29,36 @@ interface ProductProps {
     desc: string;
     price: number;
     id: number;
+    restId: number;
+    
+    
+   
+    
+}
+interface restIdProps {
+   restId: number;
     
     
    
     
 }
 
-function Restaurant({restId}: RestaurantsItemProps ) {
-    console.log(restId);
+function Restaurant({restId}: restIdProps) {
+    
+    const  params  = useParams();
+     restId = params.restaurantId;
+  console.log(restId)
     return (
         <div className="restaurant">
           
             <RestaurantImage 
-                             restId={restId}
-                             imageUrl={data.restaurants[2].imageUrl} 
-                             imageUrlAlt={data.restaurants[2].imageUrlAlt} 
-                             logoUrl={data.restaurants[2].logoUrl} 
-                             restaurantName={data.restaurants[2].name}/>
-            <FoodCategories />
-            <Products />
+                             
+                             imageUrl={data.restaurants[restId].imageUrl} 
+                             imageUrlAlt={data.restaurants[restId].imageUrlAlt} 
+                             logoUrl={data.restaurants[restId].logoUrl} 
+                             restaurantName={data.restaurants[restId].name}/>
+            <FoodCategories restId={restId}/>
+            <Products restId={restId}/>
             
             
             
@@ -69,13 +81,13 @@ function Restaurant({restId}: RestaurantsItemProps ) {
         </div>
     );
   }
-  function FoodCategories() {
+  function FoodCategories({restId}: restIdProps) {
     return (
         <div className="restaurant-categories">
-            <FoodCategoryItem catName={data.restaurants[0].categories[0]}/>
-            <FoodCategoryItem catName={data.restaurants[0].categories[1]}/>
-            <FoodCategoryItem catName={data.restaurants[0].categories[2]}/>
-            <FoodCategoryItem catName={data.restaurants[0].categories[3]}/>
+            <FoodCategoryItem catName={data.restaurants[restId].categories[0]}/>
+            <FoodCategoryItem catName={data.restaurants[restId].categories[1]}/>
+            <FoodCategoryItem catName={data.restaurants[restId].categories[2]}/>
+            <FoodCategoryItem catName={data.restaurants[restId].categories[3]}/>
             
         </div>
     );
@@ -112,7 +124,7 @@ function Restaurant({restId}: RestaurantsItemProps ) {
 */  
 
 
-  function Products() {
+  function Products({restId}: restIdProps) {
     
 
     return (
@@ -125,54 +137,60 @@ function Restaurant({restId}: RestaurantsItemProps ) {
             <div className="products">
                         
                 <Product 
-                    id={data.restaurants[2].products[0].id}
-                    name={data.restaurants[2].products[0].name}
-                    desc={data.restaurants[2].products[0].desc}
-                    price={data.restaurants[2].products[0].price}
-                    imageUrl={data.restaurants[2].products[0].imageUrl}
-                    imageAlt={data.restaurants[2].products[0].alt}
+                    restId={restId}
+                    id={data.restaurants[restId].products[0].id}
+                    name={data.restaurants[restId].products[0].name}
+                    desc={data.restaurants[restId].products[0].desc}
+                    price={data.restaurants[restId].products[0].price}
+                    imageUrl={data.restaurants[restId].products[0].imageUrl}
+                    imageAlt={data.restaurants[restId].products[0].alt}
                     />
                 <Product 
-                     id={data.restaurants[2].products[1].id}
-                     name={data.restaurants[2].products[1].name}
-                     desc={data.restaurants[2].products[1].desc}
-                     price={data.restaurants[2].products[1].price}
-                     imageUrl={data.restaurants[2].products[1].imageUrl}
-                     imageAlt={data.restaurants[2].products[1].alt}
+                     restId={restId}
+                     id={data.restaurants[restId].products[1].id}
+                     name={data.restaurants[restId].products[1].name}
+                     desc={data.restaurants[restId].products[1].desc}
+                     price={data.restaurants[restId].products[1].price}
+                     imageUrl={data.restaurants[restId].products[1].imageUrl}
+                     imageAlt={data.restaurants[restId].products[1].alt}
                      />
                 <Product 
-                    id={data.restaurants[2].products[2].id}
-                    name={data.restaurants[2].products[2].name}
-                    desc={data.restaurants[2].products[2].desc}
-                    price={data.restaurants[2].products[2].price}
-                    imageUrl={data.restaurants[2].products[2].imageUrl}
-                    imageAlt={data.restaurants[2].products[2].alt}
+                    restId={restId}
+                    id={data.restaurants[restId].products[2].id}
+                    name={data.restaurants[restId].products[2].name}
+                    desc={data.restaurants[restId].products[2].desc}
+                    price={data.restaurants[restId].products[2].price}
+                    imageUrl={data.restaurants[restId].products[2].imageUrl}
+                    imageAlt={data.restaurants[restId].products[2].alt}
                     />
                 <Product 
-                    id={data.restaurants[2].products[3].id}
-                    name={data.restaurants[2].products[3].name}
-                    desc={data.restaurants[2].products[3].desc}
-                    price={data.restaurants[2].products[3].price}
-                    imageUrl={data.restaurants[2].products[3].imageUrl}
-                    imageAlt={data.restaurants[2].products[3].alt}
+                    restId={restId}
+                    id={data.restaurants[restId].products[3].id}
+                    name={data.restaurants[restId].products[3].name}
+                    desc={data.restaurants[restId].products[3].desc}
+                    price={data.restaurants[restId].products[3].price}
+                    imageUrl={data.restaurants[restId].products[3].imageUrl}
+                    imageAlt={data.restaurants[restId].products[3].alt}
                     />
                 <Product 
-                    id={data.restaurants[2].products[4].id}
-                    name={data.restaurants[2].products[4].name}
-                    desc={data.restaurants[2].products[4].desc}
-                    price={data.restaurants[2].products[4].price}
-                    imageUrl={data.restaurants[2].products[4].imageUrl}
-                    imageAlt={data.restaurants[2].products[4].alt}
+                    restId={restId}
+                    id={data.restaurants[restId].products[4].id}
+                    name={data.restaurants[restId].products[4].name}
+                    desc={data.restaurants[restId].products[4].desc}
+                    price={data.restaurants[restId].products[4].price}
+                    imageUrl={data.restaurants[restId].products[4].imageUrl}
+                    imageAlt={data.restaurants[restId].products[4].alt}
                     />
-                <Product 
-                    id={data.restaurants[2].products[5].id}
-                    name={data.restaurants[2].products[5].name}
-                    desc={data.restaurants[2].products[5].desc}
-                    price={data.restaurants[2].products[5].price}
-                    imageUrl={data.restaurants[2].products[5].imageUrl}
-                    imageAlt={data.restaurants[2].products[5].alt}
+                {/* <Product SHOHEI HAS NO 6TH PRODUCT..
+                    restId={restId}
+                    id={data.restaurants[restId].products[5].id}
+                    name={data.restaurants[restId].products[5].name}
+                    desc={data.restaurants[restId].products[5].desc}
+                    price={data.restaurants[restId].products[5].price}
+                    imageUrl={data.restaurants[restId].products[5].imageUrl}
+                    imageAlt={data.restaurants[restId].products[5].alt}
                     
-                    />
+                    /> */}
                 
             
 
@@ -203,7 +221,7 @@ function Restaurant({restId}: RestaurantsItemProps ) {
         
     </div>
         {showModal && createPortal(
-          <OrderModal id={id} onClose={() => (setShowModal(false), setShowBackdrop(false))} />,
+          <OrderModal  restId={props.restId} id={id} onClose={() => (setShowModal(false), setShowBackdrop(false))} />,
           document.getElementById('modal-root')
         )}
         {showBackdrop && createPortal(

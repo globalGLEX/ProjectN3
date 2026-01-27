@@ -69,7 +69,7 @@ export const data = {
         logoUrl: "/src/assets/shoheilogo.png",
         imageUrl: "/src/assets/shohei.jpg",
         imageUrlAlt: "Japanese restaurant",
-        categories: ['Burgers','Fries', 'Drinks', 'Salads'],
+        categories: ['Seafood','Rice', 'Soup'],
         products: [{
             
             id: 0,

@@ -11,19 +11,19 @@ function Restaurants() {
     return (
         <div className="restaurants"><h1>Restaurants</h1>
             <div className="restaurants-items-container">
-                <Link to="restaurant/johnscafe">
+                <Link to="restaurant/0">
                 <RestaurantsItem restId={data.restaurants[0].restId} 
                                  imageUrl={data.restaurants[0].imageUrl} 
                                  imageAlt={data.restaurants[0].imageUrlAlt} 
                                  restaurantName={data.restaurants[0].name} />
                 </Link>
-                <Link to="restaurant/johnscafe">
+                <Link to="restaurant/1">
                 <RestaurantsItem restId={data.restaurants[1].restId} 
                                 imageUrl={data.restaurants[1].imageUrl} 
                                 imageAlt={data.restaurants[1].imageUrlAlt} 
                                 restaurantName={data.restaurants[1].name}/>
                 </Link>
-                <Link to="restaurant/johnscafe">
+                <Link to="restaurant/2">
                 <RestaurantsItem restId={data.restaurants[2].restId} 
                                 imageUrl={data.restaurants[2].imageUrl} 
                                 imageAlt={data.restaurants[2].imageUrlAlt} 
@@ -43,7 +43,7 @@ function Restaurants() {
             <div className="restaurants-item" onClick={() => (setRestId(props.restId)) }>
 
                 
-                <h1>{props.restaurantName} restId {props.restId}</h1>
+                <h1>{props.restaurantName} </h1>
                 <img src={props.imageUrl || 'https://placehold.co/400x200'} alt={props.imageAlt} />
 
             </div>
