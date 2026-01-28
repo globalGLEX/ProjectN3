@@ -51,8 +51,7 @@ function Restaurant({restId}: restIdProps) {
     return (
         <div className="restaurant">
           
-            <RestaurantImage 
-                             
+            <RestaurantImage  
                              imageUrl={data.restaurants[restId].imageUrl} 
                              imageUrlAlt={data.restaurants[restId].imageUrlAlt} 
                              logoUrl={data.restaurants[restId].logoUrl} 

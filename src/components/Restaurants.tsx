@@ -7,11 +7,12 @@ export interface RestaurantsItemProps {
     imageUrl: string;
     imageAlt: string;
 }
+
 function Restaurants() {
     return (
         <div className="restaurants"><h1>Restaurants</h1>
             <div className="restaurants-items-container">
-                <Link to="restaurant/0">
+               <Link to="restaurant/0">
                 <RestaurantsItem restId={data.restaurants[0].restId} 
                                  imageUrl={data.restaurants[0].imageUrl} 
                                  imageAlt={data.restaurants[0].imageUrlAlt} 

@@ -4,23 +4,38 @@ import japanese from '../assets/categories-japanese.jpg';
 import pizza from '../assets/categories-pizza.jpg';
 import wraps from '../assets/categories-wraps.jpg';
 import cafe from '../assets/categories-cafe.jpg';
-
+import { useState } from 'react';
+interface CategoryItemProps {
+    img: string;
+    alt: string;
+    text: string;
+}
 
 function Categories() {
+
+
     return (
         <div className="categories"><h2>Categories</h2>
             <div className="category-items-container">
-                <div className="category-item"> <img src={burger} alt="Burger" /><p>Burger</p></div>
-                <div className="category-item"><img src={american} alt="American BBQ" /><p>American</p></div>
-                <div className="category-item"><img src={cafe} alt="Cafe food" /><p>Cafe</p></div>
-                <div className="category-item"><img src={japanese} alt="Japanese ramen" /><p>Japanese</p></div>
-                <div className="category-item"><img src={wraps} alt="Wraps" /><p>Wraps</p></div>
-                <div className="category-item"><img src={pizza} alt="Pizza" /><p>Pizza</p></div>
+                <CategoryItem img={burger} alt={"Burger"} text={"Burger"}  />
+                <CategoryItem img={american} alt={"American BBQ"} text={"American"} />
+                <CategoryItem img={cafe} alt={"Cafe food"} text={"Cafe"} />
+                <CategoryItem img={japanese} alt={"Japanese ramen"} text={"Japanese"} />
+                <CategoryItem img={wraps} alt={"Wraps"} text={"Wraps"} />
+                <CategoryItem img={pizza} alt={"Pizza"} text={"Pizza"} />
             </div>
             
         </div>
     );
   }
+function CategoryItem(props: CategoryItemProps){
+    return (
+            <>  
+                <div className="category-item"> <img src={props.img} alt={props.alt} /><p>{props.text}</p></div>
+                
+            </>  
+    );
+}
  /*  function CategoriesCarousel() {
     return (
             
