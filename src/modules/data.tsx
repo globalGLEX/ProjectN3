@@ -11,6 +11,7 @@ export const data = {
         products :[{
                 id: 0,
                 name: "Cheeseburger",
+                productCategory: "Burgers",
                 desc: "Classic burger with ketchup, mayo, pickles and onion slices",
                 price: 6,
                 options: ['No pickles','No mayo','No ketchup','No onion', 'No cheese'],
@@ -20,6 +21,7 @@ export const data = {
              {
                 id: 1,
                 name: "Fries",
+                productCategory: "Fries",
                 desc: "Medium size crispy fries",
                 price: 3,
                 options: ['With ketchup'],
@@ -29,6 +31,7 @@ export const data = {
             {
                 id: 2,
                 name: "Coca Cola 0.33l",
+                productCategory: "Drinks",
                 desc: "Regular Coke with optional ice",
                 price: 1.5,
                 options: ['With ice'],
@@ -38,6 +41,7 @@ export const data = {
             {
                 id: 3,
                 name: "Fanta 0.33l",
+                productCategory: "Drinks",
                 desc: "Regular Fanta with optional ice",
                 price: 1.5,
                 options: ['With ice'],
@@ -47,6 +51,7 @@ export const data = {
             {
                 id: 4,
                 name: "Caesar salad",
+                productCategory: "",
                 desc: "Salad with chicken, cheese, bread cubes, lettuce",
                 price: 3.5,
                 options: ['Without chicken', 'Without cheese', 'Without bread cubes'],
@@ -55,6 +60,7 @@ export const data = {
             },{
                 id: 5,
                 name: "Chocolate ice cream",
+                productCategory: "Ice Cream",
                 desc: "Creamy chocolate taste, 150g portion size",
                 price: 3.5,
                 options: [],
@@ -74,6 +80,7 @@ export const data = {
             
             id: 0,
             name: "Pork Ramen",
+            productCategory: "Soup",
             desc: "Noodles, pork, boiled egg, onion, shrimp and nori sheet  ",
             price: 6,
             options: ['No shrimp', 'No nori sheet', 'No egg'],
@@ -82,6 +89,7 @@ export const data = {
         },{
             id: 1,
             name: "Katsu curry rice",
+            productCategory: "Rice",
             desc: "Crispy, deep-fried cutlet (katsu) served alongside Japanese-style curry and steamed rice.",
             price: 6.5,
             options: [],
@@ -90,6 +98,7 @@ export const data = {
         },{
             id: 2,
             name: "Sushi selection",
+            productCategory: "Seafood",
             desc: "Tuna, steamed carrot and tofu sushi, 6 pieces",
             price: 7,
             options: [],
@@ -98,6 +107,7 @@ export const data = {
         },{
             id: 3,
             name: "Tuna nigiri",
+            productCategory: "Seafood",
             desc: "Tuna and rice with chilli topping",
             price: 1.5,
             options: ['Without chilli topping'],
@@ -106,6 +116,7 @@ export const data = {
         },{
             id: 4,
             name: "Tempura bento box",
+            productCategory: "Rice",
             desc: "Crispy, deep-fried shrimp with cabbage, lemon, with rice, and tentsuyu sauce",
             price: 6,
             options: [],
@@ -121,11 +132,12 @@ export const data = {
         logoUrl: "/src/assets/johnscafelogo.png",
         imageUrl: "/src/assets/johnscafe.jpg",
         imageUrlAlt: "Cafe counter with cakes",
-        categories: ['Coffee','Cocoa', 'Milkshakes', 'Sandwiches'],
+        categories: ['Coffee','Cocoa', 'Ice cream', 'Cake'],
         products: [{
              
             id: 0,
             name: "Cappuchino",
+            productCategory: "Coffee",
             desc: "With sugar and cream. Delivered in a paper cup",
             price: 3.5,
             options: [],
@@ -135,6 +147,7 @@ export const data = {
              
             id: 1,
             name: "Espresso",
+            productCategory: "Coffee",
             desc: "2 shots with optional sugar. Delivered in a paper cup",
             price: 3,
             options: ['With sugar','With cream'],
@@ -144,6 +157,7 @@ export const data = {
              
             id: 2,
             name: "Cupcake with creamy icing",
+            productCategory: "Cake",
             desc: "",
             price: 3,
             options: [],
@@ -153,6 +167,7 @@ export const data = {
              
             id: 3,
             name: "Cheesecake",
+            productCategory: "Cake",
             desc: "With strawberry and orange jello",
             price: 3.5,
             options: [],
@@ -162,6 +177,7 @@ export const data = {
             
             id: 4,
             name: "Biscuit cheesecake",
+            productCategory: "Cake",
             desc: "With chocolate icing and biscuit pieces",
             price: 4,
             options: [],
@@ -171,6 +187,7 @@ export const data = {
              
             id: 5,
             name: "Chocolate ice cream",
+            productCategory: "Ice cream",
             desc: "One 50g ball",
             price: 2.5,
             options: [],
