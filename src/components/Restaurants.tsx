@@ -1,14 +1,21 @@
 import {data} from '../modules/data.tsx';
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
+import Categories from "./Categories";
+
+
 export interface RestaurantsItemProps {
     restId: number;
     restaurantName: string;
     imageUrl: string;
     imageAlt: string;
+    
 }
 
-function Restaurants() {
+function Restaurants(catId, setCatId) {
+    
+    if(catId !== data.restaurants[0].category){
+        
     return (
         <div className="restaurants"><h1>Restaurants</h1>
             <div className="restaurants-items-container">
@@ -18,7 +25,7 @@ function Restaurants() {
                                  imageAlt={data.restaurants[0].imageUrlAlt} 
                                  restaurantName={data.restaurants[0].name} />
                 </Link>
-                <Link to="restaurant/1">
+                 <Link to="restaurant/1">
                 <RestaurantsItem restId={data.restaurants[1].restId} 
                                 imageUrl={data.restaurants[1].imageUrl} 
                                 imageAlt={data.restaurants[1].imageUrlAlt} 
@@ -29,10 +36,13 @@ function Restaurants() {
                                 imageUrl={data.restaurants[2].imageUrl} 
                                 imageAlt={data.restaurants[2].imageUrlAlt} 
                                 restaurantName={data.restaurants[2].name}/>
-                </Link>
+                </Link> 
             </div>
         </div>
-    );
+    );} else {
+         
+         console.log(catId);
+    }
   }
   export default Restaurants
 

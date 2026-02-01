@@ -5,34 +5,41 @@ import pizza from '../assets/categories-pizza.jpg';
 import wraps from '../assets/categories-wraps.jpg';
 import cafe from '../assets/categories-cafe.jpg';
 import { useState } from 'react';
+
 interface CategoryItemProps {
     img: string;
     alt: string;
     text: string;
+    cat: string;
+    
 }
 
-function Categories() {
-
+export function Categories() {
+    const [catId, setCatId] = useState('all');
 
     return (
         <div className="categories"><h2>Categories</h2>
             <div className="category-items-container">
-                <CategoryItem img={burger} alt={"Burger"} text={"Burger"}  />
-                <CategoryItem img={american} alt={"American BBQ"} text={"American"} />
-                <CategoryItem img={cafe} alt={"Cafe food"} text={"Cafe"} />
-                <CategoryItem img={japanese} alt={"Japanese ramen"} text={"Japanese"} />
-                <CategoryItem img={wraps} alt={"Wraps"} text={"Wraps"} />
-                <CategoryItem img={pizza} alt={"Pizza"} text={"Pizza"} />
+                <CategoryItem cat="burger" img={burger} alt={"Burger"} text={"Burger"}  />
+                <CategoryItem cat="american" img={american} alt={"American BBQ"} text={"American"} />
+                <CategoryItem cat="cafe" img={cafe} alt={"Cafe food"} text={"Cafe"} />
+                <CategoryItem cat="japanese" img={japanese} alt={"Japanese ramen"} text={"Japanese"} />
+                <CategoryItem cat="wraps" img={wraps} alt={"Wraps"} text={"Wraps"} />
+                <CategoryItem cat="pizza" img={pizza} alt={"Pizza"} text={"Pizza"} />
             </div>
             
         </div>
     );
   }
 function CategoryItem(props: CategoryItemProps){
+    
+    const [catId, setCatId] = useState('all');
+/*     console.log(catId) */
     return (
-            <>  
-                <div className="category-item"> <img src={props.img} alt={props.alt} /><p>{props.text}</p></div>
-                
+            <> 
+            
+                <div className="category-item" onClick={() => {(setCatId(props.cat)); console.log(props.cat)} }> <img src={props.img} alt={props.alt} /><p>{props.text}</p></div>
+             
             </>  
     );
 }
