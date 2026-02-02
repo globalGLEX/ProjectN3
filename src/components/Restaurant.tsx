@@ -22,8 +22,8 @@ export interface RestaurantImageProps {
 interface FoodCategoryItemProps{
     
     catName: string;
-    productCatId: any;
     LevelContext: any;
+    catState: any;
    
 }
 interface ProductProps {
@@ -38,21 +38,23 @@ interface ProductProps {
 }
 interface restIdProps {
    restId: number;
-   productCatId: any; 
-   setProductCatId: any;
    category: any;
+   catState: any;
+   setCatState: any;
+
+
    
 }
-export const CatContext = createContext("");
+export const CatContext = createContext(null);
 function Restaurant({restId}: restIdProps) {
     
-    const [productCatId, setProductCatId] = useState({});
-    const [catState, setCatState] = useState("Seafood"); ///needs to reset when going to other restos etc
+    
+    const [catState, setCatState] = useState("All"); ///needs to reset when going to other restos etc
     const category = useContext(CatContext);
     
     const  params  = useParams();
      restId = params.restaurantId;
-  console.log(restId)
+  /* console.log(restId) */
     return (
         <div className="restaurant">
           
@@ -61,9 +63,9 @@ function Restaurant({restId}: restIdProps) {
                              imageUrlAlt={data.restaurants[restId].imageUrlAlt} 
                              logoUrl={data.restaurants[restId].logoUrl} 
                              restaurantName={data.restaurants[restId].name}/>
-             <CatContext value={catState}> {/* lets all inside these to access catState */}
+             <CatContext value={{catState, setCatState}}> {/* lets all inside these to access catState */}
 
-            <FoodCategories restId={restId} productCatId={productCatId}/>
+            <FoodCategories restId={restId}/>
             <Products restId={restId}/>
             
             </CatContext> 
@@ -87,25 +89,40 @@ function Restaurant({restId}: restIdProps) {
         </div>
     );
   }
-  function FoodCategories({restId, productCatId, category}: restIdProps) {
-    
-    return (
+  function FoodCategories({restId}: restIdProps) {
+    /* console.log(data.restaurants[restId].categories[0]) */
+    const foodCatArr = [];
+    console.log("arr length "+ data.restaurants[restId].categories.length)
+    for( let i=0; i < data.restaurants[restId].categories.length; i++){
+        foodCatArr.push(
+            <FoodCategoryItem catName={data.restaurants[restId].categories[i]}/>
+        )
+    }
+    /* return (
         <div className="restaurant-categories">
-            
-            <FoodCategoryItem productCatId={productCatId} catName={data.restaurants[restId].categories[0]}/>
-            <FoodCategoryItem productCatId={productCatId} catName={data.restaurants[restId].categories[1]}/>
-            <FoodCategoryItem productCatId={productCatId} catName={data.restaurants[restId].categories[2]}/>
-            <FoodCategoryItem productCatId={productCatId} catName={data.restaurants[restId].categories[3]}/>
-            
+            <FoodCategoryItem catName={"All"}/>
+            <FoodCategoryItem catName={data.restaurants[restId].categories[0]}/>
+            <FoodCategoryItem catName={data.restaurants[restId].categories[1]}/>
+            <FoodCategoryItem catName={data.restaurants[restId].categories[2]}/>
+            <FoodCategoryItem catName={data.restaurants[restId].categories[3]}/>
+           
         </div>
-    );
+    ); */
+    return( <div className="restaurant-categories">
+            <FoodCategoryItem catName={"All"}/>
+            {foodCatArr}
+            </div>)
+    
   }
   function FoodCategoryItem(props: FoodCategoryItemProps) {
     const category = useContext(CatContext); //the comp asks LevelContext's closest value, so can send 11 here from outside.
     
     return (
-        <button  className="restaurant-category-item" ><p>{props.catName}</p></button>
-    );
+        
+        <button  className="restaurant-category-item" 
+        onClick={() => {(category.setCatState(props.catName)); console.log(props.catName)} }><p>{props.catName}</p></button>
+       
+        );
   }
 
 
@@ -133,32 +150,41 @@ function Restaurant({restId}: restIdProps) {
 */  
 
 
-  function Products({restId, productCatId}: restIdProps) {
-    /* for(let i=0, i<5, i++) loops through the 5 products */
-    /* if(productCatId !== data.restaurants[restId].products[i].productCategory){  etc here ig*/
+  function Products({restId, productCatId, catState}: restIdProps) {
+    
     const category = useContext(CatContext);
-
     const productArr = [];
-    for( let i=0; i<5; i++){
-        if(category == data.restaurants[restId].products[i].productCategory){
-            productArr.push(
-                            
-                    <Product 
-                        restId={restId}
-                        id={data.restaurants[restId].products[i].id}
-                        name={data.restaurants[restId].products[i].name}
-                        desc={data.restaurants[restId].products[i].desc}
-                        price={data.restaurants[restId].products[i].price}
-                        imageUrl={data.restaurants[restId].products[i].imageUrl}
-                        imageAlt={data.restaurants[restId].products[i].alt}
-                        />
-                    )}
-
-
-
-
-
+    
    
+    for( let i=0; i<5; i++){
+        
+            if(category.catState == "All"){
+                productArr.push(
+                <Product 
+                                restId={restId}
+                                id={data.restaurants[restId].products[i].id}
+                                name={data.restaurants[restId].products[i].name}
+                                desc={data.restaurants[restId].products[i].desc}
+                                price={data.restaurants[restId].products[i].price}
+                                imageUrl={data.restaurants[restId].products[i].imageUrl}
+                                imageAlt={data.restaurants[restId].products[i].alt}
+                                />)
+                        
+                    } else if(category.catState == data.restaurants[restId].products[i].productCategory){
+                        productArr.push(
+                         
+                         
+                            <Product 
+                                restId={restId}
+                                id={data.restaurants[restId].products[i].id}
+                                name={data.restaurants[restId].products[i].name}
+                                desc={data.restaurants[restId].products[i].desc}
+                                price={data.restaurants[restId].products[i].price}
+                                imageUrl={data.restaurants[restId].products[i].imageUrl}
+                                imageAlt={data.restaurants[restId].products[i].alt}
+                                />)
+                    }
+  
 } return(
     <div>
               {/*   <div className="products-category-title">
@@ -239,4 +265,5 @@ function Restaurant({restId}: restIdProps) {
       </>
     );
   } */
+
   export default Restaurant
