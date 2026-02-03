@@ -19,7 +19,7 @@ import Restaurant from "./components/Restaurant";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <><Header /> <Categories /> <Restaurants /> <Footer /></>,
+    element: <><Header /> <Restaurants /> <Footer /></>,
     errorElement: <ErrorPage />,
   },
   {

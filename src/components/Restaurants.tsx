@@ -1,6 +1,8 @@
 import {data} from '../modules/data.tsx';
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
+import { createContext } from 'react';
+import { useContext } from 'react';
 import Categories from "./Categories";
 
 
@@ -11,14 +13,55 @@ export interface RestaurantsItemProps {
     imageAlt: string;
     
 }
+export const RestaurantsCatContext = createContext(null);
 
-function Restaurants(catId, setCatId) {
-    
-    if(catId !== data.restaurants[0].category){
+function Restaurants() {
+    const [restaurantsCatState, setRestaurantsCatState] = useState("all"); 
+    const restaurantsCategory = useContext(RestaurantsCatContext);
+    const restaurantsArr = [];
+    console.log("")
+    for( let i=0; i<3; i++){
+    if(restaurantsCatState == "all"){
+        restaurantsArr.push(
+            <Link to={"restaurant/" + [i]}>
+                <RestaurantsItem restId={data.restaurants[i].restId} 
+                                 imageUrl={data.restaurants[i].imageUrl} 
+                                 imageAlt={data.restaurants[i].imageUrlAlt} 
+                                 restaurantName={data.restaurants[i].name} />
+                </Link>)
+    }else if(data.restaurants[i].category.includes(restaurantsCatState)){
         
-    return (
+            restaurantsArr.push(
+                <Link to={"restaurant/" + [i]}>
+                <RestaurantsItem restId={data.restaurants[i].restId} 
+                                 imageUrl={data.restaurants[i].imageUrl} 
+                                 imageAlt={data.restaurants[i].imageUrlAlt} 
+                                 restaurantName={data.restaurants[i].name} />
+                </Link>)
+        }
+    
+    }return(
+    <>
+     <RestaurantsCatContext value={{restaurantsCatState, setRestaurantsCatState}}>
+    <Categories />
+    <div className="restaurants"><h1>Restaurants</h1>
+    
+        <div className="restaurants-items-container">
+            {restaurantsArr}
+        </div>
+    </div>
+    </RestaurantsCatContext>
+    </>);
+}    
+
+    {/* return (
+        <>
+        <RestaurantsCatContext value={{restaurantsCatState, setRestaurantsCatState}}>
+        <Categories />
         <div className="restaurants"><h1>Restaurants</h1>
+        
             <div className="restaurants-items-container">
+                
                <Link to="restaurant/0">
                 <RestaurantsItem restId={data.restaurants[0].restId} 
                                  imageUrl={data.restaurants[0].imageUrl} 
@@ -37,13 +80,17 @@ function Restaurants(catId, setCatId) {
                                 imageAlt={data.restaurants[2].imageUrlAlt} 
                                 restaurantName={data.restaurants[2].name}/>
                 </Link> 
+
             </div>
         </div>
-    );} else {
+        </RestaurantsCatContext>
+        </>
+    );} else if {
          
          console.log(catId);
     }
-  }
+}
+  } */}
   export default Restaurants
 
   function RestaurantsItem(props: RestaurantsItemProps) {

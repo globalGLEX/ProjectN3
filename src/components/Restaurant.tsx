@@ -22,7 +22,6 @@ export interface RestaurantImageProps {
 interface FoodCategoryItemProps{
     
     catName: string;
-    LevelContext: any;
     catState: any;
    
 }
@@ -98,16 +97,6 @@ function Restaurant({restId}: restIdProps) {
             <FoodCategoryItem catName={data.restaurants[restId].categories[i]}/>
         )
     }
-    /* return (
-        <div className="restaurant-categories">
-            <FoodCategoryItem catName={"All"}/>
-            <FoodCategoryItem catName={data.restaurants[restId].categories[0]}/>
-            <FoodCategoryItem catName={data.restaurants[restId].categories[1]}/>
-            <FoodCategoryItem catName={data.restaurants[restId].categories[2]}/>
-            <FoodCategoryItem catName={data.restaurants[restId].categories[3]}/>
-           
-        </div>
-    ); */
     return( <div className="restaurant-categories">
             <FoodCategoryItem catName={"All"}/>
             {foodCatArr}
