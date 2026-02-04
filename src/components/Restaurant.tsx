@@ -40,9 +40,7 @@ interface restIdProps {
    category: any;
    catState: any;
    setCatState: any;
-
-
-   
+  
 }
 export const CatContext = createContext(null);
 function Restaurant({restId}: restIdProps) {
@@ -73,9 +71,6 @@ function Restaurant({restId}: restIdProps) {
     </div>
     );
   }
-
-
-
 
   function RestaurantImage(props: RestaurantImageProps) {
     return (
@@ -114,38 +109,12 @@ function Restaurant({restId}: restIdProps) {
         );
   }
 
-
-
-  /* function ModalTest(){
-    const dialog = document.getElementsByClassName("dial");
-    const showButton = document.querySelector("dialog + button");
-    const closeButton = document.querySelector("dialog button");
-    const shoot = () => {
-        
-      alert("test");
-      console.log(dialog);
-     
-      } 
-    return(
-        <div>
-        <dialog className="dial">
-        <button onClick={shoot}>Close</button>
-        <p>This modal dialog has a groovy backdrop!</p>
-        </dialog>
-        <button onClick={shoot}>Show the dialog </button>
-        </div>
-    )
-  }
-*/  
-
-
   function Products({restId, productCatId, catState}: restIdProps) {
     
     const category = useContext(CatContext);
     const productArr = [];
-    
-   
-    for( let i=0; i<5; i++){
+      
+    for( let i=0; i<data.restaurants[restId].products.length; i++){
         
             if(category.catState == "All"){
                 productArr.push(
@@ -185,16 +154,12 @@ function Restaurant({restId}: restIdProps) {
     </div>)
         
   }
-  
 
-  
   function Product(props: ProductProps) {
     const [showModal, setShowModal] = useState(false);
     const [showBackdrop, setShowBackdrop] = useState(false);
     const [id, setId] = useState({});
-    
-    
-   
+     
     return (
     <>
     <div className="product" onClick={() => (setId(props.id),setShowModal(true), setShowBackdrop(true))}>
@@ -231,28 +196,5 @@ function Restaurant({restId}: restIdProps) {
         
     );
   }
-
-  /*  function ModalContent({ onClose }) {
-    return (
-      <div className="modal">
-        <div>I'm a modal dialog</div>
-        <button onClick={onClose}>Close</button>
-      </div>
-    );
-  } */
-  /*  function PortalExample() {
-    const [showModal, setShowModal] = useState(false);
-    return (
-      <>
-        <button onClick={() => setShowModal(true)}>
-          Show modal using a portal
-        </button>
-        {showModal && createPortal(
-          <OrderModal onClose={() => setShowModal(false)} />,
-          document.body
-        )}
-      </>
-    );
-  } */
 
   export default Restaurant

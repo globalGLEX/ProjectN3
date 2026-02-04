@@ -20,7 +20,7 @@ function Restaurants() {
     const restaurantsCategory = useContext(RestaurantsCatContext);
     const restaurantsArr = [];
     console.log("")
-    for( let i=0; i<3; i++){
+    for( let i=0; i<data.restaurants.length; i++){
     if(restaurantsCatState == "all"){
         restaurantsArr.push(
             <Link to={"restaurant/" + [i]}>
@@ -54,43 +54,7 @@ function Restaurants() {
     </>);
 }    
 
-    {/* return (
-        <>
-        <RestaurantsCatContext value={{restaurantsCatState, setRestaurantsCatState}}>
-        <Categories />
-        <div className="restaurants"><h1>Restaurants</h1>
-        
-            <div className="restaurants-items-container">
-                
-               <Link to="restaurant/0">
-                <RestaurantsItem restId={data.restaurants[0].restId} 
-                                 imageUrl={data.restaurants[0].imageUrl} 
-                                 imageAlt={data.restaurants[0].imageUrlAlt} 
-                                 restaurantName={data.restaurants[0].name} />
-                </Link>
-                 <Link to="restaurant/1">
-                <RestaurantsItem restId={data.restaurants[1].restId} 
-                                imageUrl={data.restaurants[1].imageUrl} 
-                                imageAlt={data.restaurants[1].imageUrlAlt} 
-                                restaurantName={data.restaurants[1].name}/>
-                </Link>
-                <Link to="restaurant/2">
-                <RestaurantsItem restId={data.restaurants[2].restId} 
-                                imageUrl={data.restaurants[2].imageUrl} 
-                                imageAlt={data.restaurants[2].imageUrlAlt} 
-                                restaurantName={data.restaurants[2].name}/>
-                </Link> 
-
-            </div>
-        </div>
-        </RestaurantsCatContext>
-        </>
-    );} else if {
-         
-         console.log(catId);
-    }
-}
-  } */}
+    
   export default Restaurants
 
   function RestaurantsItem(props: RestaurantsItemProps) {
