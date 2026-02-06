@@ -11,6 +11,7 @@ import ErrorPage from "./error-page";
 
 import Categories from "./components/Categories";
 import Header from "./components/Header";
+
 import Footer from "./components/Footer";
 import Restaurants from "./components/Restaurants";
 import Restaurant from "./components/Restaurant";

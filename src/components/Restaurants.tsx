@@ -6,6 +6,7 @@ import { useContext } from 'react';
 import Categories from "./Categories";
 
 
+
 export interface RestaurantsItemProps {
     restId: number;
     restaurantName: string;
@@ -44,6 +45,7 @@ function Restaurants() {
     <>
      <RestaurantsCatContext value={{restaurantsCatState, setRestaurantsCatState}}>
     <Categories />
+    
     <div className="restaurants"><h1>Restaurants</h1>
     
         <div className="restaurants-items-container">
