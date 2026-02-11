@@ -48,7 +48,7 @@ function Restaurants() {
     
     <div className="restaurants"><h1>Restaurants</h1>
     
-        <div className="restaurants-items-container">
+        <div className="restaurants-items-container" tabIndex="-1">
             {restaurantsArr}
         </div>
     </div>

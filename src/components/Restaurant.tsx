@@ -162,7 +162,7 @@ function Restaurant({restId}: restIdProps) {
      
     return (
     <>
-    <div className="product" onClick={() => (setId(props.id),setShowModal(true), setShowBackdrop(true))}>
+    <button className="product" onClick={() => (setId(props.id),setShowModal(true), setShowBackdrop(true))}>
         <div className="product-text"> 
             <h2>{props.name}</h2>
             <p>{props.desc}</p>
@@ -172,7 +172,7 @@ function Restaurant({restId}: restIdProps) {
         </div>
         <div className="product-image"><img src={props.imageUrl || 'https://placehold.co/200x200'} alt={props.imageAlt} /></div>
         
-    </div>
+    </button>
         {showModal && createPortal(
           <OrderModal  restId={props.restId} id={id} onClose={() => (setShowModal(false), setShowBackdrop(false))} />,
           document.getElementById('modal-root')

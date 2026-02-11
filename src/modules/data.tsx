@@ -64,7 +64,7 @@ export const data = {
                 desc: "Creamy chocolate taste, 150g portion size",
                 price: 3.5,
                 options: [],
-                imageUrl: "/src/assets/katsucurryrice.jpg",
+                imageUrl: "/src/assets/icecream.jpg",
                 alt: "A cheeseburger on wooden table"
             }
         ]
