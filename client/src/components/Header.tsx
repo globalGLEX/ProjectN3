@@ -46,7 +46,33 @@ function HeaderRight() {
     );
   }
 export function Cart({onClose}){
+ // var orderJSON = JSON.stringify(document.getElementsByClassName("cart-content").innerText);
 
+
+ 
+ 
+  
+  async function onSubmit(){
+    console.log("clicked");
+    const element: HTMLCollectionOf<Element> = document.getElementsByClassName("cart-content")
+    const orderText = element[0].textContent;
+    let orderID = 1;
+    var timeNow = new Date();
+    var timeLocal = ( timeNow.getMonth() + 1 ) + '/' + timeNow.getDate() + '/' + timeNow.getFullYear() + ' ' + timeNow.getHours() + ':' + timeNow.getMinutes();
+    
+
+    console.log(JSON.stringify( element[0].textContent))
+    const response = await fetch("http://localhost:3000/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      
+      body: JSON.stringify({ "orderID": orderID,"orderTime": timeLocal, "order": orderText}) 
+      // …
+    });
+    
+  }
 
   return(
     <>
@@ -54,7 +80,7 @@ export function Cart({onClose}){
     <button className="cart-close-button" onClick={onClose} autoFocus>X</button>
       <h2>Your order</h2>
     <CartContent />
-    <button className="checkout-button">Checkout</button>
+    <button className="checkout-button" onClick={onSubmit}>Checkout</button>
     </div>
     </>
 
@@ -65,17 +91,20 @@ function CartBackdrop( {onClose} ) {
 }
 
 function CartContent() {
+  
+ 
   return (
   <>
   <div className="cart-content">
     <CartContentItem amount={1} productName="Cheeseburger" productPrice={3}/>
     <CartContentItem amount={1} productName="Fries" productPrice={3}/>
-    
+    <div className="cart-total"><p> <b>Total: 12 € </b></p></div>
   </div>
-  <div className="cart-total"><p> <b>Total: 12 € </b></p></div>
+  
   </>)
 }
 function CartContentItem(props: CartContentItemProps) {
+ 
   return (
     <>
   <p> x{props.amount} - <b>{props.productName}</b> - <b>{props.productPrice}€</b> </p>
