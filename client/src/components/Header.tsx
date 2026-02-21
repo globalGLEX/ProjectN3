@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { createPortal } from 'react-dom';
 
 interface CartContentItemProps {
+  index: number;
   amount: number;
   productName: string;
   productPrice: number;
@@ -48,10 +49,6 @@ function HeaderRight() {
 export function Cart({onClose}){
  // var orderJSON = JSON.stringify(document.getElementsByClassName("cart-content").innerText);
 
-
- 
- 
-  
   async function onSubmit(){
     console.log("clicked");
     const element: HTMLCollectionOf<Element> = document.getElementsByClassName("cart-content")
@@ -92,25 +89,36 @@ function CartBackdrop( {onClose} ) {
 
 function CartContent() {
   
- 
+  
   return (
   <>
   <div className="cart-content">
-    <CartContentItem amount={1} productName="Cheeseburger" productPrice={3}/>
-    <CartContentItem amount={1} productName="Fries" productPrice={3}/>
+    <CartContentItem index={0} amount={1} productName="Cheeseburger" productPrice={3}/>
+    <CartContentItem index={1} amount={1} productName="Fries" productPrice={3}/>
+    
     <div className="cart-total"><p> <b>Total: 12 € </b></p></div>
   </div>
   
   </>)
 }
 function CartContentItem(props: CartContentItemProps) {
- 
+  
   return (
-    <>
-  <p> x{props.amount} - <b>{props.productName}</b> - <b>{props.productPrice}€</b> </p>
-  <p className="cart-option-line"> • without buns</p>
-  </>
+    <div className="cart-content-item">
+  <div className="cart-product-line"><p> x{props.amount} - <b>{props.productName}</b> - <b>{props.productPrice}€</b> </p>
+  <button onClick={() => removeItem(props.index)}>X</button></div>
+  <p className="cart-option-line"> • without buns</p> 
+  </div>
 )
+}
+function removeItem(index: number){
+  console.log("item removed"+ index)
+  const element = document.getElementsByClassName("cart-content");
+  console.log(element[0].children[index])
+  element[0].children[index].remove();
+
+  
+
 }
 export default Header
 
