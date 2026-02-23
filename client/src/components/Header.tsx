@@ -5,6 +5,10 @@ import cart from '../assets/cart32.png';
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
+import { createContext } from 'react';
+import { useContext } from 'react';
+
+import { MyContext } from "../main.tsx";
 
 interface CartContentItemProps {
   index: number;
@@ -29,14 +33,30 @@ function Header() {
 function HeaderRight() {
   const [showModal, setShowModal] = useState(false);
   const [showBackdrop, setShowBackdrop] = useState(false);
-  
+  var [answer, setAnswer] = useState("empty");
+  async function requestCart(answer, setAnswer){
+    
+
+    const response2 = await fetch("http://localhost:3000/cart", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    });
+    let resp = await response2.json();
+    setAnswer(resp.order);
+    console.log(answer);
+  }
+
+
+
     return (
         <div className="header-right">
-                  <button className="cart" onClick={() => (setShowModal(true), setShowBackdrop(true))}><img src={cart} ></img></button>
+                  <button className="cart" onClick={() => (requestCart(answer, setAnswer),setShowModal(true), setShowBackdrop(true))}><img src={cart} ></img></button>
                   <button className="login-button">Log in</button>
                   <button className="signup-button">Sign up</button>
                   {showModal && createPortal(
-          <Cart  onClose={() => (setShowModal(false), setShowBackdrop(false))} />,
+          <Cart answer={answer} onClose={() => (setShowModal(false), setShowBackdrop(false))} />,
           document.getElementById('modal2-root')
         )}
         {showBackdrop && createPortal(
@@ -46,7 +66,7 @@ function HeaderRight() {
         </div>
     );
   }
-export function Cart({onClose}){
+export function Cart({onClose, answer}){
  // var orderJSON = JSON.stringify(document.getElementsByClassName("cart-content").innerText);
 
   async function onSubmit(){
@@ -59,7 +79,7 @@ export function Cart({onClose}){
     
 
     console.log(JSON.stringify( element[0].textContent))
-    const response = await fetch("http://localhost:3000/", {
+    const response = await fetch("http://localhost:3000/cart", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -68,15 +88,16 @@ export function Cart({onClose}){
       body: JSON.stringify({ "orderID": orderID,"orderTime": timeLocal, "order": orderText}) 
       // …
     });
-    
+    /* const answer = await response.json();
+    console.log( answer.order) */
   }
 
   return(
     <>
     <div className="cart-modal">
     <button className="cart-close-button" onClick={onClose} autoFocus>X</button>
-      <h2>Your order</h2>
-    <CartContent />
+      <h2>Your order from server: {answer}</h2>
+    <CartContent answer={answer} />
     <button className="checkout-button" onClick={onSubmit}>Checkout</button>
     </div>
     </>
@@ -87,14 +108,15 @@ function CartBackdrop( {onClose} ) {
   return <div className="backdrop" onClick={onClose}/>
 }
 
-function CartContent() {
-  
+function CartContent(answer) {
+  const ct = useContext(MyContext);
+  //console.log( ct[0].amount + ct[0].name)
   
   return (
   <>
   <div className="cart-content">
-    <CartContentItem index={0} amount={1} productName="Cheeseburger" productPrice={3}/>
-    <CartContentItem index={1} amount={1} productName="Fries" productPrice={3}/>
+    <CartContentItem index={0} amount={ct[1].amount} productName={ct[1].name} productPrice={ct[1].price}/>
+    <CartContentItem index={1} amount={1} productName="fries" productPrice={3}/>
     
     <div className="cart-total"><p> <b>Total: 12 € </b></p></div>
   </div>
@@ -114,7 +136,7 @@ function CartContentItem(props: CartContentItemProps) {
 function removeItem(index: number){
   console.log("item removed"+ index)
   const element = document.getElementsByClassName("cart-content");
-  console.log(element[0].children[index])
+  //console.log(element[0].children[index])
   element[0].children[index].remove();
 
   

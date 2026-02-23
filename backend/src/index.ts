@@ -24,7 +24,7 @@ const app: Express = express();
 const port = process.env.PORT || 3000;
 app.use(cors(corsOptions));
 app.use(express.json());
-
+app.set("orderitem1" , {})
 /* Define a route for the root path ("/")
  using the HTTP GET method */
  //Action when the endpoint recieves GET:
@@ -33,9 +33,20 @@ app.get("/", (req: Request, res: Response) => {
   
   
 });
+app.post('/', (req: Request, res: Response) => {
+  // res.send("POST Request Called"); // as response
+   res.send(req.body);
+});
+app.get('/cart', (req: Request, res: Response) => {
+  // res.send("POST Request Called"); // as response
+  var or = req.app.get('orderitem1');
+   res.send(or);
+});
+
 
  //Action when the endpoint recieves POST:
-app.post('/', (req: Request, res: Response) => {
+app.post('/addtoorder', (req: Request, res: Response) => {
+      app.set("orderitem1" , req.body);
      // res.send("POST Request Called"); // as response
       res.send(req.body);
   });

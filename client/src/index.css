@@ -746,6 +746,7 @@ header{
   gap: 0rem 2rem;
   justify-content: center;
   border-radius: 2rem;
+  cursor: pointer;
   
 }
 /* for small mobile, but use max-width */

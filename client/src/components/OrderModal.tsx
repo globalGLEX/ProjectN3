@@ -24,6 +24,8 @@ interface CheckboxProps {
     
     
 }
+
+
 function OrderModal({ onClose, id, restId }: OrderModalProps) {
    
 
@@ -157,8 +159,20 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
     );
   }
   function AddToOrderButton( {id, restId,  counter}: OrderModalProps) {
+    async function onClick(){
+        const response = await fetch("http://localhost:3000/addtoorder", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            
+            body: JSON.stringify({  "order": "two burger 7eur"}) 
+            // …
+          })
+        
+    }
     return (
-        <button id="add-to-order-button">
+        <button id="add-to-order-button" onClick={() => onClick()}>
             <p className="add-to-order-text">Add to order</p>
             <p className="add-to-order-value">{data.restaurants[restId].products[id].price * counter} €</p>
         </button>

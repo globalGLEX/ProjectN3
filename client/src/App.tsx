@@ -10,16 +10,13 @@ import OrderModal from './components/OrderModal'
 
 
  function App() {
-  
+  const myState2 = [{amount: 12, name: "Cheeseburger", price: 3},
+    {amount: 5, name: "Sushi", price: 4}
+];
+ //useState must be in func component
   return (
     <>
    
-      <Header />
-      <Categories />
-      <Restaurants />
-      <Restaurant />
-      <Footer />
-
     </>
   )
 }
