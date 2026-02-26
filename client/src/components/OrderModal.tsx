@@ -27,7 +27,7 @@ interface CheckboxProps {
 
 
 function OrderModal({ onClose, id, restId }: OrderModalProps) {
-   
+    //const [isChecked, setIsChecked] = useState(false);
 
     return(
         
@@ -45,7 +45,7 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
         <div className="order-modal-description">
             <p>{data.restaurants[restId].products[id].desc}</p>
         </div>
-        <OrderModalOptions restId={restId} id={id} />
+        <OrderModalOptions restId={restId} id={id}  />
         <OrderModalButtons restId={restId} id={id}/>
         
         </div>
@@ -62,6 +62,7 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
   }
 
   function OrderModalOptions({id, restId}: OrderModalProps) {
+   
     
     if ((data.restaurants[restId].products[id].options).length === 0) {
         return <div className="order-modal-options"><p>No specifers for this product</p></div>;
@@ -166,7 +167,15 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
               "Content-Type": "application/json",
             },
             
-            body: JSON.stringify({  "order": "two burger 7eur"}) 
+            body: JSON.stringify({  
+                "product": data.restaurants[restId].products[id].name,
+                "productPrice": data.restaurants[restId].products[id].price,
+                "options": "wo sth",
+                "amount": counter,
+                "totalPrice": data.restaurants[restId].products[id].price * counter
+                
+
+             }) 
             // …
           })
         

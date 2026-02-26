@@ -39,8 +39,7 @@ app.post('/', (req: Request, res: Response) => {
 });
 app.get('/cart', (req: Request, res: Response) => {
   // res.send("POST Request Called"); // as response
-  var or = req.app.get('orderitem1');
-   res.send(or);
+  
 });
 
 
@@ -50,6 +49,10 @@ app.post('/addtoorder', (req: Request, res: Response) => {
      // res.send("POST Request Called"); // as response
       res.send(req.body);
   });
+  app.get('/addtoorder', (req: Request, res: Response) => {
+    var or = req.app.get('orderitem1');
+   res.send(or);
+});
 
 
 
