@@ -15,6 +15,7 @@ interface CartContentItemProps {
   amount: number;
   productName: string;
   productPrice: number;
+  productOptions: string;
 }
 function Header() {
   
@@ -128,7 +129,7 @@ function CartBackdrop( {onClose} ) {
 }
 
 function CartContent({answer, allCart}) {
-  const ct = useContext(MyContext);
+  //const ct = useContext(MyContext);
   console.log("in cartcontent" + allCart)
   
   
@@ -136,7 +137,7 @@ function CartContent({answer, allCart}) {
   return (
   <>
   <div className="cart-content">
-    <CartContentItem index={0} amount={answer[3]} productName={answer[0]} productPrice={answer[1]}/>
+    <CartContentItem index={0} amount={answer[3]} productName={answer[0]} productPrice={answer[1]} productOptions={answer[2]}/>
     
     
    {/*  {allCart} */}
@@ -151,7 +152,7 @@ function CartContentItem(props: CartContentItemProps) {
     <div className="cart-content-item">
   <div className="cart-product-line"><p> x{props.amount} - <b>{props.productName}</b> - <b>{props.productPrice}€</b> </p>
   <button onClick={() => removeItem(props.index)}>X</button></div>
-  <p className="cart-option-line"> • without buns</p> 
+  <p className="cart-option-line"> • {props.productOptions}</p> 
   </div>
 )
 }

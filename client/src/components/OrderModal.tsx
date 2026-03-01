@@ -1,5 +1,7 @@
 import {data} from '../modules/data.tsx';
 import { useState } from 'react';
+import { createContext } from 'react';
+import { useContext } from 'react';
 
 
 /* interface AmountContainerProps {
@@ -25,10 +27,11 @@ interface CheckboxProps {
     
 }
 
-
+const OptionsContext = createContext("");
 function OrderModal({ onClose, id, restId }: OrderModalProps) {
     //const [isChecked, setIsChecked] = useState(false);
-
+    const [optionsState, setOptionsState] = useState("");
+    
     return(
         
         <div className="order-modal" >
@@ -45,24 +48,31 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
         <div className="order-modal-description">
             <p>{data.restaurants[restId].products[id].desc}</p>
         </div>
-        <OrderModalOptions restId={restId} id={id}  />
-        <OrderModalButtons restId={restId} id={id}/>
-        
+        <OptionsContext value={optionsState}>
+            <OrderModalOptions restId={restId} id={id}  />
+            <OrderModalButtons restId={restId} id={id}/>
+        </OptionsContext>
         </div>
         
     )
   }
   function Checkbox({ option}: CheckboxProps){
+    const opti = useContext(OptionsContext);
     return(
             <div>
+                 
                  <input type="checkbox" name="option" value={option} />
                  <label htmlFor={option}> {option}</label><br />
+                 
             </div>
     )
   }
-
+//•
   function OrderModalOptions({id, restId}: OrderModalProps) {
    
+    const opti = useContext(OptionsContext);
+    console.log(opti);
+    //setOptionsState("dd")
     
     if ((data.restaurants[restId].products[id].options).length === 0) {
         return <div className="order-modal-options"><p>No specifers for this product</p></div>;
@@ -73,63 +83,19 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
                 
             <div className="order-modal-options">
                 <p className="order-modal-options-text">Specifiers</p>
+                <form  id='my-form'>   
             {data.restaurants[restId].products[id].options.map(opt =>
             <Checkbox key={opt}  option={opt} />
-            )}
             
+            )}
+            </form>
             </div>
             
         );
         }
-        /*  data.restaurants[2].products[id].options.map(function(option, i){
-            
-            return (
-                
-                <div className="order-modal-options">
-                    <p className="order-modal-options-text">Specifiers</p>
-                <Checkbox key={i} option={option} />
-                </div>
-                
-            );
-        })    */
-        
-      
-      
-      /* for( let i = 0; i < (data.restaurants[2].products[id].options).length; i++)
-        {
-            return(
-                <div className="order-modal-options">
-                <p className="order-modal-options-text">Specifiers</p>
-                <input type="checkbox" id="box1" name="option" value="0"/>
-                <label htmlFor="vehicle1"> {data.restaurants[2].products[id].options[i]}</label><br />
-                </div>
-            );
-        } */
-       
-    /* return (
-        <div className="order-modal-options">
-            <p className="order-modal-options-text">Specifiers</p>
-
-      
-        
-            <input type="checkbox" id="vehicle1" name="option" value="0"/>
-            <label htmlFor="vehicle1"> {data.restaurants[2].products[id].options[0]}</label><br />
-            <input type="checkbox" id="vehicle2" name="option" value="Bike"/>
-            <label htmlFor="vehicle2"> {data.restaurants[2].products[id].options[1]}</label><br />
-            <input type="checkbox" id="vehicle3" name="option" value="Bike"/>
-            <label htmlFor="vehicle3"> {data.restaurants[2].products[id].options[2]}</label><br />
-            <input type="checkbox" id="vehicle4" name="option" value="Bike"/>
-            <label htmlFor="vehicle4"> {data.restaurants[2].products[0].options[3]}</label><br />
-            <input type="checkbox" id="vehicle4" name="option" value="Bike"/>
-            <label htmlFor="vehicle4"> {data.restaurants[2].products[0].options[4]}</label><br />
   
-            </div>
-        
-    ); */
   }
-
-
-  
+ 
   function OrderModalButtons({id, restId}: OrderModalProps) {
     const [counter, setCounter] = useState(1);
   
@@ -160,8 +126,26 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
     );
   }
   function AddToOrderButton( {id, restId,  counter}: OrderModalProps) {
-    async function onClick(){
+    const [optio, setOptio] = useState("no-options");
+    async function onSubmit(e) {
+       
+       e.preventDefault();
+       var form = document.querySelector('form');
+       var formData = new FormData(form)
+      console.log(formData.getAll('option'))
+      var allOptions = JSON.stringify(formData.getAll('option'));
+      console.log(allOptions)
+      setOptio(allOptions)
+
+       
+       
+       /*  for(var pair of formData.entries()){
+        console.log(pair);
+        setOptio(pair[0] + pair)
+        console.log("optio is "+ pair);
+        }     */
         const response = await fetch("http://localhost:3000/addtoorder", {
+            
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -170,7 +154,7 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
             body: JSON.stringify({  
                 "product": data.restaurants[restId].products[id].name,
                 "productPrice": data.restaurants[restId].products[id].price,
-                "options": "wo sth",
+                "options": optio,
                 "amount": counter,
                 "totalPrice": data.restaurants[restId].products[id].price * counter
                 
@@ -181,7 +165,7 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
         
     }
     return (
-        <button id="add-to-order-button" onClick={() => onClick()}>
+        <button id="add-to-order-button" form='my-form' type="submit" method="post" onClick={(e) => onSubmit(e)} >
             <p className="add-to-order-text">Add to order</p>
             <p className="add-to-order-value">{data.restaurants[restId].products[id].price * counter} €</p>
         </button>
