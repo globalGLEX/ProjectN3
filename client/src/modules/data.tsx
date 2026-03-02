@@ -14,7 +14,7 @@ export const data = {
                 productCategory: "Burgers",
                 desc: "Classic burger with ketchup, mayo, pickles and onion slices",
                 price: 6,
-                options: ['No pickles','No mayo','No ketchup','No onion', 'No cheese'],
+                options: ['No pickles ','No mayo ','No ketchup ','No onion ', 'No cheese '],
                 imageUrl: "/src/assets/categories-burger.jpg",
                 alt: "A cheeseburger on wooden table"
             },
@@ -54,7 +54,7 @@ export const data = {
                 productCategory: "",
                 desc: "Salad with chicken, cheese, bread cubes, lettuce",
                 price: 3.5,
-                options: ['Without chicken', 'Without cheese', 'Without bread cubes'],
+                options: ['No chicken ', 'No cheese ', 'No bread cubes '],
                 imageUrl: "/src/assets/caesar.jpg",
                 alt: "A cheeseburger on wooden table"
             },{
@@ -83,7 +83,7 @@ export const data = {
             productCategory: "Soup",
             desc: "Noodles, pork, boiled egg, onion, shrimp and nori sheet  ",
             price: 6,
-            options: ['No shrimp', 'No nori sheet', 'No egg'],
+            options: ['No shrimp ', 'No nori sheet ', 'No egg '],
             imageUrl: "/src/assets/porkramen.jpg",
             alt: "A bowl of pork ramen"
         },{
@@ -110,7 +110,7 @@ export const data = {
             productCategory: "Seafood",
             desc: "Tuna and rice with chilli topping",
             price: 1.5,
-            options: ['Without chilli topping'],
+            options: ['No chilli topping'],
             imageUrl: "/src/assets/tunanigiri.jpg",
             alt: "Tuna nigiri held up with chopsticks"
         },{
@@ -150,7 +150,7 @@ export const data = {
             productCategory: "Coffee",
             desc: "2 shots with optional sugar. Delivered in a paper cup",
             price: 3,
-            options: ['With sugar','With cream'],
+            options: ['•With sugar ','•With cream '],
             imageUrl: "/src/assets/espresso.jpg",
             alt: "A cup of espresso on a plate"
         },{

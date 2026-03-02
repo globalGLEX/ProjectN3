@@ -2,6 +2,7 @@ import {data} from '../modules/data.tsx';
 import { useState } from 'react';
 import { createContext } from 'react';
 import { useContext } from 'react';
+import { useEffect } from 'react';
 
 
 /* interface AmountContainerProps {
@@ -126,24 +127,22 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
     );
   }
   function AddToOrderButton( {id, restId,  counter}: OrderModalProps) {
-    const [optio, setOptio] = useState("no-options");
+    const [optio, setOptio] = useState("no options");
     async function onSubmit(e) {
        
        e.preventDefault();
-       var form = document.querySelector('form');
-       var formData = new FormData(form)
-      console.log(formData.getAll('option'))
-      var allOptions = JSON.stringify(formData.getAll('option'));
-      console.log(allOptions)
-      setOptio(allOptions)
+      
+        var form = document.querySelector('form');
+        if( typeof FormData != null ){
+            var formData = new FormData(form)
+            console.log(formData.getAll('option'))
+            var allOptions = formData.getAll('option');
+            console.log(allOptions)
+            setOptio(allOptions) }
 
-       
-       
-       /*  for(var pair of formData.entries()){
-        console.log(pair);
-        setOptio(pair[0] + pair)
-        console.log("optio is "+ pair);
-        }     */
+    }
+    useEffect(() => { //need to wait for state variable "optio" to change before fetch
+        const fetchData = async () => {
         const response = await fetch("http://localhost:3000/addtoorder", {
             
             method: "POST",
@@ -157,13 +156,17 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
                 "options": optio,
                 "amount": counter,
                 "totalPrice": data.restaurants[restId].products[id].price * counter
-                
 
              }) 
             // …
           })
         
-    }
+        }
+        fetchData();
+        },[optio]); 
+         
+    
+    
     return (
         <button id="add-to-order-button" form='my-form' type="submit" method="post" onClick={(e) => onSubmit(e)} >
             <p className="add-to-order-text">Add to order</p>

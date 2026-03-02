@@ -138,10 +138,11 @@ function CartContent({answer, allCart}) {
   <>
   <div className="cart-content">
     <CartContentItem index={0} amount={answer[3]} productName={answer[0]} productPrice={answer[1]} productOptions={answer[2]}/>
+    <CartContentItem index={0} amount={answer[3]} productName={answer[0]} productPrice={answer[1]} productOptions={answer[2]}/>
+
     
-    
-   {/*  {allCart} */}
-    <div className="cart-total"><p> <b>Total: 12 € </b></p></div>
+    {allCart} 
+    <div className="cart-total"><p> <b>Total: {answer[3] * answer[1]} € </b></p></div>
   </div>
   
   </>)
@@ -151,8 +152,12 @@ function CartContentItem(props: CartContentItemProps) {
   return (
     <div className="cart-content-item">
   <div className="cart-product-line"><p> x{props.amount} - <b>{props.productName}</b> - <b>{props.productPrice}€</b> </p>
-  <button onClick={() => removeItem(props.index)}>X</button></div>
-  <p className="cart-option-line"> • {props.productOptions}</p> 
+  <button onClick={() => removeItem(props.index)}>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"  viewBox="0 0 16 13">
+  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+</svg>
+  </button></div>
+  <p className="cart-option-line">  {props.productOptions}</p> 
   </div>
 )
 }
