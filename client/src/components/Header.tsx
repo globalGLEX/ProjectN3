@@ -116,7 +116,7 @@ console.log("in cart " + allCart)
     <>
     <div className="cart-modal">
     <button className="cart-close-button" onClick={onClose} autoFocus>X</button>
-      <h2>Your order from server: {answer[0]}</h2>
+      <h2>Your order:</h2>
     <CartContent allCart= {allCart} answer={answer} />
     <button className="checkout-button" onClick={onSubmit}>Checkout</button>
     </div>

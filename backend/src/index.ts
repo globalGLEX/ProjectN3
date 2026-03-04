@@ -45,9 +45,10 @@ app.get('/cart', (req: Request, res: Response) => {
 
  //Action when the endpoint recieves POST:
 app.post('/addtoorder', (req: Request, res: Response) => {
-      app.set("orderitem1" , req.body);
-     // res.send("POST Request Called"); // as response
-      res.send(req.body);
+      
+  app.set("orderitem1" , req.body);
+  // res.send("POST Request Called"); // as response
+   res.send(req.body);
   });
   app.get('/addtoorder', (req: Request, res: Response) => {
     var or = req.app.get('orderitem1');

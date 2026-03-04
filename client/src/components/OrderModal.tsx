@@ -83,7 +83,7 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
         return (
                 
             <div className="order-modal-options">
-                <p className="order-modal-options-text">Specifiers</p>
+                <p className="order-modal-options-text">Options</p>
                 <form  id='my-form'>   
             {data.restaurants[restId].products[id].options.map(opt =>
             <Checkbox key={opt}  option={opt} />
@@ -128,21 +128,25 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
   }
   function AddToOrderButton( {id, restId,  counter}: OrderModalProps) {
     const [optio, setOptio] = useState("no options");
-    async function onSubmit(e) {
+    function onSubmit(e) {
        
-       e.preventDefault();
+        e.preventDefault();
+       
+         var form = document.querySelector('form');
+         if( typeof FormData != null ){
+             var formData = new FormData(form)
+             console.log(formData.getAll('option'))
+             var allOptions = formData.getAll('option');
+             console.log(allOptions)
+             setOptio(allOptions) }
+             
+         }  
+ 
+         
       
-        var form = document.querySelector('form');
-        if( typeof FormData != null ){
-            var formData = new FormData(form)
-            console.log(formData.getAll('option'))
-            var allOptions = formData.getAll('option');
-            console.log(allOptions)
-            setOptio(allOptions) }
-
-    }
     useEffect(() => { //need to wait for state variable "optio" to change before fetch
         const fetchData = async () => {
+    
         const response = await fetch("http://localhost:3000/addtoorder", {
             
             method: "POST",
@@ -164,8 +168,8 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
         }
         fetchData();
         },[optio]); 
-         
-    
+        
+  
     
     return (
         <button id="add-to-order-button" form='my-form' type="submit" method="post" onClick={(e) => onSubmit(e)} >
