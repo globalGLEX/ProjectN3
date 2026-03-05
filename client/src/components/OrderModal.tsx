@@ -128,45 +128,53 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
   }
   function AddToOrderButton( {id, restId,  counter}: OrderModalProps) {
     const [optio, setOptio] = useState("no options");
+    
     function onSubmit(e) {
        
         e.preventDefault();
        
          var form = document.querySelector('form');
-         if( typeof FormData != null ){
+         console.log(document.querySelector('form'))//null
+         if( form !== null  ){
              var formData = new FormData(form)
              console.log(formData.getAll('option'))
              var allOptions = formData.getAll('option');
              console.log(allOptions)
-             setOptio(allOptions) }
+             setOptio(allOptions) } else {
+               
+                setOptio(""); 
+             } 
+
              
          }  
  
-         
+         const sendData = async () => { //send options state and all else
+    
+            const response = await fetch("http://localhost:3000/addtoorder", {
+                
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                
+                body: JSON.stringify({  
+                    "product": data.restaurants[restId].products[id].name,
+                    "productPrice": data.restaurants[restId].products[id].price,
+                    "options": optio,
+                    "amount": counter,
+                    "totalPrice": data.restaurants[restId].products[id].price * counter
+    
+                 }) 
+                // …
+              })
+            
+            }
       
     useEffect(() => { //need to wait for state variable "optio" to change before fetch
-        const fetchData = async () => {
-    
-        const response = await fetch("http://localhost:3000/addtoorder", {
-            
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            
-            body: JSON.stringify({  
-                "product": data.restaurants[restId].products[id].name,
-                "productPrice": data.restaurants[restId].products[id].price,
-                "options": optio,
-                "amount": counter,
-                "totalPrice": data.restaurants[restId].products[id].price * counter
-
-             }) 
-            // …
-          })
-        
-        }
-        fetchData();
+       if (optio != "no options"){
+        sendData();
+        //setOptio("no options");
+       }
         },[optio]); 
         
   
