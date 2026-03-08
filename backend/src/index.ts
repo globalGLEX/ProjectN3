@@ -42,15 +42,18 @@ app.get('/cart', (req: Request, res: Response) => {
   
 });
 
-
+const array1: any[] = [];
  //Action when the endpoint recieves POST:
 app.post('/addtoorder', (req: Request, res: Response) => {
       
   app.set("orderitem1" , req.body);
+ 
+  array1.push(req.body);
+  app.set("array1", array1);
   // res.send("POST Request Called"); // as response
-   res.send(req.body);
+   res.send(array1);
   });
-  app.get('/addtoorder', (req: Request, res: Response) => {
+app.get('/addtoorder', (req: Request, res: Response) => {
     var or = req.app.get('orderitem1');
    res.send(or);
 });

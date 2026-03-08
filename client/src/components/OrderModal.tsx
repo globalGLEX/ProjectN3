@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { createContext } from 'react';
 import { useContext } from 'react';
 import { useEffect } from 'react';
+import allCart from './Header.tsx'
 
 
 /* interface AmountContainerProps {
@@ -15,7 +16,7 @@ import { useEffect } from 'react';
 export interface OrderModalProps {
     id: number;
     counter?: number;
-    onClick?: React.MouseEvent<HTMLButtonElement>;
+    onClick?: React.MouseEvent<HTMLButtonElement>; 
     onClose?: React.MouseEventHandler<HTMLButtonElement>;
     restId: number;
     
@@ -127,9 +128,9 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
     );
   }
   function AddToOrderButton( {id, restId,  counter}: OrderModalProps) {
-    const [optio, setOptio] = useState("no options");
+    const [optio, setOptio] = useState<string | FormDataEntryValue[]>("no options");
     
-    function onSubmit(e) {
+    function onSubmit(e: React.MouseEvent<HTMLButtonElement>) {
        
         e.preventDefault();
        

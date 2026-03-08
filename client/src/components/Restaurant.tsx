@@ -109,7 +109,7 @@ function Restaurant({restId}: restIdProps) {
         );
   }
 
-  function Products({restId, productCatId, catState}: restIdProps) {
+  function Products({restId}: restIdProps) {
     
     const category = useContext(CatContext);
     const productArr = [];

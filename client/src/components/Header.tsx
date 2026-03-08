@@ -12,9 +12,9 @@ import { MyContext } from "../main.tsx";
 
 interface CartContentItemProps {
   index: number;
-  amount: number;
+  amount: string | number;
   productName: string;
-  productPrice: number;
+  productPrice: string | number;
   productOptions: string;
 }
 function Header() {
@@ -34,10 +34,12 @@ function Header() {
 function HeaderRight() {
   const [showModal, setShowModal] = useState(false);
   const [showBackdrop, setShowBackdrop] = useState(false);
-  var [answer, setAnswer] = useState("empty");
-  var allCart = ["allcart default item"];
+  var [answer, setAnswer] = useState("");
+  let [allCart, setAllCart] = useState<any[]>([]);
   
-  async function requestCart(answer, setAnswer, allCart){
+  async function requestCart(answer: string | number,
+                             setAnswer: React.Dispatch<React.SetStateAction<any>>,
+                             allCart: any[]){
     
 
     const response2 = await fetch("http://localhost:3000/addtoorder", {
@@ -57,16 +59,24 @@ function HeaderRight() {
                 " options"+ resp.options,
                 " amount"+  resp.amount, 
                 " total price"+  resp.totalPrice]); */
+                
                 setAnswer([resp.product, 
                   resp.productPrice,
                   resp.options,
                   resp.amount, 
                   resp.totalPrice]);
-                 // allCart.push(answer[3],answer[0],answer[1])
-                
+                  //setallcart was here
+    console.log(answer)            
     console.log(allCart);
   }
-
+  useEffect(() => { 
+    if(answer.length > 1){
+    setAllCart(allCart => [...allCart,
+      <CartContentItem index={0} amount={answer[3]} productName={answer[0]} productPrice={answer[1]} productOptions={answer[2]}/>
+     
+    ])
+    }//setAllcart was originally answer[3] + answer[2] + etc
+   },[answer]); 
 
 
     return (
@@ -75,7 +85,7 @@ function HeaderRight() {
                   <button className="login-button">Log in</button>
                   <button className="signup-button">Sign up</button>
                   {showModal && createPortal(
-          <Cart answer={answer} allCart={allCart}onClose={() => (setShowModal(false), setShowBackdrop(false))} />,
+          <Cart answer={answer} allCart={allCart} onClose={() => (setShowModal(false), setShowBackdrop(false))} />,
           document.getElementById('modal2-root')
         )}
         {showBackdrop && createPortal(
@@ -130,18 +140,22 @@ function CartBackdrop( {onClose} ) {
 
 function CartContent({answer, allCart}) {
   //const ct = useContext(MyContext);
-  console.log("in cartcontent" + allCart)
+ // useEffect(() => {
+    console.log("in cartcontent " + allCart)
+    // },[allCart]); 
+  
   
   
   
   return (
   <>
   <div className="cart-content">
+   {/*  <CartContentItem index={0} amount={answer[3]} productName={answer[0]} productPrice={answer[1]} productOptions={answer[2]}/>
     <CartContentItem index={0} amount={answer[3]} productName={answer[0]} productPrice={answer[1]} productOptions={answer[2]}/>
-    <CartContentItem index={0} amount={answer[3]} productName={answer[0]} productPrice={answer[1]} productOptions={answer[2]}/>
-
+ */}
     
-    {allCart} 
+    {allCart}
+
     <div className="cart-total"><p> <b>Total: {answer[3] * answer[1]} € </b></p></div>
   </div>
   
