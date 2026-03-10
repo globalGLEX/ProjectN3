@@ -181,7 +181,7 @@ header{
   height: 3rem;
   width: 6rem;
   border: none;
-  background: #fff;
+  background: #a5f1f1;
   justify-content: center;
   border-radius: 2rem;
   color: #444444;
@@ -469,7 +469,7 @@ header{
   border: 2px solid rgb(248, 248, 248);
   border-radius: 1rem;
   text-align: center;
-  background-color: #444;
+  background-color: #568080;
   color: #fff;
   cursor: pointer;
 
@@ -502,7 +502,7 @@ header{
 .product {
   display: flex;
   position: relative;
-  background: #444;
+  background: #555;
  /*  border: 2px solid green; */
   border-radius: 1rem;
   border: none;
@@ -522,7 +522,7 @@ header{
   height: 200px;
   width: 60%;
   padding: 0rem;
-  background: #444;
+  background: #555;
   color: #fff;
 }
 .product-text .add-to-cart-button {
@@ -558,7 +558,7 @@ header{
   height: 200px;
   width: 200px;
   margin-left: 6%;
-  background-color: #444;
+  background-color: #555;
   
   /* background: url(https://placehold.co/200x200); */
 }
@@ -645,14 +645,14 @@ header{
   height: 4rem; 
   padding: 1rem;
   padding-left: 1rem;
-  background-color: #444;
+  background-color: #555;
   color: #fff;
 }
 .order-modal-price {
   height: 3rem; 
   padding: 0.5rem;
   padding-left: 1rem;
-  background-color: #444;
+  background-color: #555;
   color: #fff;
 }
 .order-modal-description {
@@ -707,7 +707,7 @@ header{
   height: 4rem;
   width: 10rem;
   padding: 0.5rem;
-  background: #fff;
+  background: #a5f1f1;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -742,7 +742,7 @@ header{
   width: 18rem;
   padding-top: 1.2rem;
   border: none;
-  background: #6fdbee;
+  background: #a5f1f1;
   display: flex;
   flex-direction: row;
   gap: 0rem 2rem;
