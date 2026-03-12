@@ -150,7 +150,7 @@ export const data = {
             productCategory: "Coffee",
             desc: "2 shots with optional sugar. Delivered in a paper cup",
             price: 3,
-            options: ['•With sugar ','•With cream '],
+            options: ['With sugar ','With cream '],
             imageUrl: "/src/assets/espresso.jpg",
             alt: "A cup of espresso on a plate"
         },{

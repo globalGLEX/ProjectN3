@@ -49,25 +49,20 @@ function HeaderRight() {
       }
     });
     let resp = await response2.json();
-/*     setAnswer("product:" + " " + resp.product + 
-              " price:" + " " + resp.productPrice +
-              " options:" + " " + resp.options +
-              " amount:" + " " + resp.amount + 
-              " total price:" + " " + resp.totalPrice);  */
-             /*  setAnswer(["product"+ resp.product, 
-                " price"+  resp.productPrice,
-                " options"+ resp.options,
-                " amount"+  resp.amount, 
-                " total price"+  resp.totalPrice]); */
-                
-                setAnswer([resp.product, 
+     
+               //for(let a=0; a < resp.length; a++){ 
+                 setAnswer( 
+                  [resp.product, 
                   resp.productPrice,
                   resp.options,
                   resp.amount, 
-                  resp.totalPrice]);
-                  //setallcart was here
-    console.log(answer)            
-    console.log(allCart);
+                  resp.totalPrice]
+                 );  
+                 
+                //}
+                 
+    console.log("answer: "+ answer)            
+    console.log("allCart: "+ allCart);
   }
   useEffect(() => { 
     if(answer.length > 1){
@@ -75,7 +70,7 @@ function HeaderRight() {
       <CartContentItem index={0} amount={answer[3]} productName={answer[0]} productPrice={answer[1]} productOptions={answer[2]}/>
      
     ])
-    }//setAllcart was originally answer[3] + answer[2] + etc
+    }
    },[answer]); 
 
 

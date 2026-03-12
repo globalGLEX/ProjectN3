@@ -13,9 +13,9 @@ interface CategoryItemProps {
     alt: string;
     text: string;
     cat: any;
-    restaurantsCatState: any;
+ /*    restaurantsCatState: any;
    setRestaurantsCatState: any;
-   restaurantsCategory: any;
+   restaurantsCategory: any; */
     
 }
 

@@ -1,6 +1,7 @@
 // src/index.ts
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
+const Database = require('better-sqlite3');
 var cors = require('cors');
 var corsOptions = {
   origin: 'http://localhost:5173',
@@ -13,7 +14,29 @@ var corsOptions = {
  */
 dotenv.config();
 
+const db = new Database('orders.db');
 
+db.exec(`
+  CREATE TABLE IF NOT EXISTS orders (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    client TEXT NOT NULL,
+    orderText TEXT NOT NULL
+  )
+`);
+const insert = db.prepare('INSERT INTO orders (client, orderText) VALUES (?, ?)');
+
+// Execute the statement with different values
+insert.run('Ali', 'x6 burger 3eur');
+
+
+// Query the database for all users
+const rows = db.prepare('SELECT * FROM orders').all();
+
+// Display the results
+console.log(rows);
+
+// Close the database connection
+db.close();
 
 /*
  * Create an Express application and get the
@@ -42,20 +65,21 @@ app.get('/cart', (req: Request, res: Response) => {
   
 });
 
-const array1: any[] = [];
+const array2: any[] = [];
  //Action when the endpoint recieves POST:
 app.post('/addtoorder', (req: Request, res: Response) => {
       
   app.set("orderitem1" , req.body);
  
-  array1.push(req.body);
-  app.set("array1", array1);
+  //array2.push(req.body);
+  app.set("array2", array2);
   // res.send("POST Request Called"); // as response
-   res.send(array1);
+   res.send(array2);
   });
 app.get('/addtoorder', (req: Request, res: Response) => {
     var or = req.app.get('orderitem1');
    res.send(or);
+   //res.send(array2);
 });
 
 
