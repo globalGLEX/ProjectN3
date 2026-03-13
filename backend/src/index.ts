@@ -14,29 +14,7 @@ var corsOptions = {
  */
 dotenv.config();
 
-const db = new Database('orders.db');
 
-db.exec(`
-  CREATE TABLE IF NOT EXISTS orders (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    client TEXT NOT NULL,
-    orderText TEXT NOT NULL
-  )
-`);
-const insert = db.prepare('INSERT INTO orders (client, orderText) VALUES (?, ?)');
-
-// Execute the statement with different values
-insert.run('Ali', 'x6 burger 3eur');
-
-
-// Query the database for all users
-const rows = db.prepare('SELECT * FROM orders').all();
-
-// Display the results
-console.log(rows);
-
-// Close the database connection
-db.close();
 
 /*
  * Create an Express application and get the
@@ -70,15 +48,36 @@ const array2: any[] = [];
 app.post('/addtoorder', (req: Request, res: Response) => {
       
   app.set("orderitem1" , req.body);
- 
+  const db = new Database('orders.db');
+db.exec(`
+  CREATE TABLE IF NOT EXISTS orders (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    client TEXT NOT NULL,
+    orderText TEXT NOT NULL
+  )
+`);
+const insert = db.prepare('INSERT INTO orders (client, orderText) VALUES (?, ?)');
+// Execute the statement with different values
+const orderText = req.body;
+console.log(orderText)
+insert.run('clien1', JSON.stringify(orderText));
+// Query the database for all users
+const rows = db.prepare('SELECT * FROM orders').all();
+// Display the results
+console.log(rows);
+// Close the database connection
+db.close();
   //array2.push(req.body);
-  app.set("array2", array2);
+  //app.set("array2", array2);
   // res.send("POST Request Called"); // as response
-   res.send(array2);
+   res.send(req.body);
   });
 app.get('/addtoorder', (req: Request, res: Response) => {
-    var or = req.app.get('orderitem1');
-   res.send(or);
+    //var or = req.app.get('orderitem1');
+    const db = new Database('orders.db');
+    const rows = db.prepare('SELECT orderText FROM orders ORDER BY id DESC LIMIT 1').get(); //one with highest id
+    db.close();
+   res.send(rows.orderText);
    //res.send(array2);
 });
 
