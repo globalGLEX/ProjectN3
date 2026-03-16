@@ -28,7 +28,14 @@ interface CheckboxProps {
     
     
 }
-
+function getOrCreateCartId() {
+    let cartId = localStorage.getItem('cartId');
+    if (!cartId) {
+      cartId = crypto.randomUUID(); // generates unique ID like "f47ac10b-58cc-..."
+      localStorage.setItem('cartId', cartId);
+    }
+    return cartId;
+  }
 const OptionsContext = createContext("");
 function OrderModal({ onClose, id, restId }: OrderModalProps) {
     //const [isChecked, setIsChecked] = useState(false);
@@ -136,20 +143,37 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
        
          var form = document.querySelector('form');
          console.log(document.querySelector('form'))//null
+         let allOptions: string[] | FormDataEntryValue[] = [];
          if( form !== null  ){
              var formData = new FormData(form)
-             console.log(formData.getAll('option'))
-             var allOptions = formData.getAll('option');
+             //console.log(formData.getAll('option'))
+             allOptions = formData.getAll('option');
              console.log(allOptions)
              setOptio(allOptions) } else {
                
                 setOptio(""); 
              } 
 
+             const item = {  
+                "product": data.restaurants[restId].products[id].name,
+                "productPrice": data.restaurants[restId].products[id].price,
+                "options": allOptions,
+                "amount": counter,
+                "totalPrice": data.restaurants[restId].products[id].price * counter
+    
+             };
+
+             const cartId: string = getOrCreateCartId();
+             const cart: object[] = JSON.parse(localStorage.getItem('cart') || '[]');
+             cart.push({ ...item, cartId });
+             localStorage.setItem('cart', JSON.stringify(cart));
+             console.log(cart)
+
              
          }  
- 
-         const sendData = async () => { //send options state and all else
+         
+        
+         const sendData = async (cartId: string, cart: object[]) => { 
     
             const response = await fetch("http://localhost:3000/addtoorder", {
                 
@@ -158,23 +182,18 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
                   "Content-Type": "application/json",
                 },
                 
-                body: JSON.stringify({  
-                    "product": data.restaurants[restId].products[id].name,
-                    "productPrice": data.restaurants[restId].products[id].price,
-                    "options": optio,
-                    "amount": counter,
-                    "totalPrice": data.restaurants[restId].products[id].price * counter
-    
-                 }) 
+                body: JSON.stringify( cart)
                 // …
               })
             
             }
-      
-    useEffect(() => { //need to wait for state variable "optio" to change before fetch
-       if (optio != "no options"){
-        sendData();
-        //setOptio("no options");
+     //need to wait for state variable "optio" to change before fetch 
+        useEffect(() => { 
+            if (optio !== "no options"){
+                const cartId = localStorage.getItem('cartId') ?? '';
+                const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            sendData(cartId, cart);
+        
        }
         },[optio]); 
         
