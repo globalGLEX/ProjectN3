@@ -22,7 +22,7 @@ export interface RestaurantImageProps {
 interface FoodCategoryItemProps{
     
     catName: string;
-    catState: any;
+    catState?: any;
    
 }
 interface ProductProps {
@@ -37,9 +37,9 @@ interface ProductProps {
 }
 interface restIdProps {
    restId: number;
-   category: any;
-   catState: any;
-   setCatState: any;
+   category?: any;
+   catState?: any;
+   setCatState?: any;
   
 }
 export const CatContext = createContext(null);
@@ -50,7 +50,7 @@ function Restaurant({restId}: restIdProps) {
     const category = useContext(CatContext);
     
     const  params  = useParams();
-     restId = params.restaurantId;
+     restId = Number(params.restaurantId); 
   /* console.log(restId) */
     return (
         <div className="restaurant">
@@ -174,7 +174,7 @@ function Restaurant({restId}: restIdProps) {
         
     </button>
         {showModal && createPortal(
-          <OrderModal  restId={props.restId} id={id} onClose={() => (setShowModal(false), setShowBackdrop(false))} />,
+          <OrderModal  restId={props.restId} id={props.id} onClose={() => (setShowModal(false), setShowBackdrop(false))} />,
           document.getElementById('modal-root')
         )}
         {showBackdrop && createPortal(

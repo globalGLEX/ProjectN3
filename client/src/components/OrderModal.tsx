@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { createContext } from 'react';
 import { useContext } from 'react';
 import { useEffect } from 'react';
-import allCart from './Header.tsx'
+//import allCart from './Header.tsx'
+import type { Dispatch, SetStateAction } from 'react';
 
 
 /* interface AmountContainerProps {
@@ -16,8 +17,9 @@ import allCart from './Header.tsx'
 export interface OrderModalProps {
     id: number;
     counter?: number;
-    onClick?: React.MouseEvent<HTMLButtonElement>; 
-    onClose?: React.MouseEventHandler<HTMLButtonElement>;
+    
+    onClick?: React.MouseEvent<HTMLButtonElement> 
+    onClose?: React.MouseEventHandler<HTMLDivElement> | undefined;
     restId: number;
     
     
@@ -39,7 +41,7 @@ function getOrCreateCartId() {
 const OptionsContext = createContext("");
 function OrderModal({ onClose, id, restId }: OrderModalProps) {
     //const [isChecked, setIsChecked] = useState(false);
-    const [optionsState, setOptionsState] = useState("");
+    //const [optionsState, setOptionsState] = useState("");
     
     return(
         
@@ -57,16 +59,16 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
         <div className="order-modal-description">
             <p>{data.restaurants[restId].products[id].desc}</p>
         </div>
-        <OptionsContext value={optionsState}>
+        {/* <OptionsContext value={optionsState}> */}
             <OrderModalOptions restId={restId} id={id}  />
             <OrderModalButtons restId={restId} id={id}/>
-        </OptionsContext>
+        {/* </OptionsContext> */}
         </div>
         
     )
   }
   function Checkbox({ option}: CheckboxProps){
-    const opti = useContext(OptionsContext);
+    //const opti = useContext(OptionsContext);
     return(
             <div>
                  
@@ -79,8 +81,8 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
 //•
   function OrderModalOptions({id, restId}: OrderModalProps) {
    
-    const opti = useContext(OptionsContext);
-    console.log(opti);
+    //const opti = useContext(OptionsContext);
+    //console.log(opti);
     //setOptionsState("dd")
     
     if ((data.restaurants[restId].products[id].options).length === 0) {
@@ -106,7 +108,7 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
   }
  
   function OrderModalButtons({id, restId}: OrderModalProps) {
-    const [counter, setCounter] = useState(1);
+    const [counter, setCounter] = useState<number>(1);
   
     
     return (
@@ -117,7 +119,7 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
     );
   }
 
-  function AmountContainer({counter, setCounter}) {
+  function AmountContainer({counter, setCounter}: {counter: number, setCounter: Dispatch<SetStateAction<number>>}) {
     
     const incrementCounter = () => setCounter(counter + 1);
     let decrementCounter = () => setCounter(counter - 1);

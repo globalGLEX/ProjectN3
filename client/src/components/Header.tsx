@@ -5,10 +5,7 @@ import cart from '../assets/cart32.png';
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
-import { createContext } from 'react';
-import { useContext } from 'react';
 
-import { MyContext } from "../main.tsx";
 
 interface CartContentItemProps {
   index: number;
@@ -90,7 +87,7 @@ function HeaderRight() {
         </div>
     );
   }
-export function Cart({onClose, answer, allCart}){
+export function Cart({onClose, answer, allCart}: {onClose: React.MouseEventHandler<HTMLButtonElement> | undefined, answer:any, allCart: any[]}){
  // var orderJSON = JSON.stringify(document.getElementsByClassName("cart-content").innerText);
 console.log("in cart " + allCart)
   async function onSubmit(){
@@ -129,11 +126,11 @@ console.log("in cart " + allCart)
 
   )
 }
-function CartBackdrop( {onClose} ) {
+function CartBackdrop( {onClose}: {onClose: React.MouseEventHandler<HTMLDivElement> | undefined} ) {
   return <div className="backdrop" onClick={onClose}/>
 }
 
-function CartContent({answer, allCart}) {
+function CartContent({answer, allCart}: {answer: any, allCart: any[]}) {
   //const ct = useContext(MyContext);
  // useEffect(() => {
     console.log("in cartcontent " + allCart)
