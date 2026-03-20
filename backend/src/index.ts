@@ -38,9 +38,9 @@ app.post('/', (req: Request, res: Response) => {
   // res.send("POST Request Called"); // as response
    res.send(req.body);
 });
-app.get('/cart', (req: Request, res: Response) => {
+app.post('/cart', (req: Request, res: Response) => {
   // res.send("POST Request Called"); // as response
-  
+  res.send(req.body);
 });
 
 const array2: any[] = [];
@@ -59,8 +59,10 @@ db.exec(`
 const insert = db.prepare('INSERT INTO orders (client, orderText) VALUES (?, ?)');
 // Execute the statement with different values
 const orderText = req.body;
-console.log(orderText)
-insert.run('clien1', JSON.stringify(orderText));
+const clientID = req.body.cartId;
+console.log("req.body " + req.body)
+console.log("vb cartid " + req.body[0].cartId)
+insert.run(req.body[0].cartId, JSON.stringify(orderText));
 // Query the database for all users
 const rows = db.prepare('SELECT * FROM orders').all();
 // Display the results

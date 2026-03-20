@@ -169,7 +169,7 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
              const cart: object[] = JSON.parse(localStorage.getItem('cart') || '[]');
              cart.push({ ...item, cartId });
              localStorage.setItem('cart', JSON.stringify(cart));
-             console.log(cart)
+             console.log("locstorage cart: " + cart[0].cartId)
 
              
          }  

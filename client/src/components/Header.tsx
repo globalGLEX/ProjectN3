@@ -7,13 +7,19 @@ import { useState } from 'react';
 import { createPortal } from 'react-dom';
 
 
+
 interface CartContentItemProps {
-  index: number;
+ // index: number;
   amount: string | number;
   productName: string;
   productPrice: string | number;
-  productOptions: string;
+  productOptions: string[];
+  setAllCart?: React.Dispatch<React.SetStateAction<any[]>>;
+  indexToRemove?: number;
+ 
 }
+
+
 function Header() {
   
   return (
@@ -31,53 +37,67 @@ function Header() {
 function HeaderRight() {
   const [showModal, setShowModal] = useState(false);
   const [showBackdrop, setShowBackdrop] = useState(false);
-  var [answer, setAnswer] = useState("");
+  let [answer, setAnswer] = useState<any[]>([]);
   let [allCart, setAllCart] = useState<any[]>([]);
   
   async function requestCart(answer: string | number,
                              setAnswer: React.Dispatch<React.SetStateAction<any>>,
-                             allCart: any[]){
+                             allCart: any[],
+                             setAllCart: React.Dispatch<React.SetStateAction<any[]>> 
+                            ){
+                             
     
 
-    const response2 = await fetch("http://localhost:3000/addtoorder", {
+  /*   const response2 = await fetch("http://localhost:3000/addtoorder", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       }
     });
-    let resp = await response2.json();
-     
-               //for(let a=0; a < resp.length; a++){ 
-                 setAnswer( 
-                  [resp.product, 
-                  resp.productPrice,
-                  resp.options,
-                  resp.amount, 
-                  resp.totalPrice]
-                 );  
+    let resp = await response2.json(); */
+    let resp = JSON.parse(localStorage.getItem('cart'))
+    console.log("resp is " + resp[0].options)
+
+          let answerArray: any[] = [];
+          for(let a=0; a < resp.length; a++){ 
                  
-                //}
+            answerArray.push( 
+            
+            <CartContentItem indexToRemove={a} setAllCart={setAllCart}   amount={resp[a].amount} productName={resp[a].product} productPrice={resp[a].productPrice} productOptions={resp[a].options}/>
+            /* [resp[a].product, 
+            resp[a].productPrice,
+            resp[a].options,
+            resp[a].amount, 
+            resp[a].totalPrice] */
+
+          )
                  
-    console.log("answer: "+ answer)            
+          }
+          setAnswer(answerArray);  
+                 
+    console.log("answerA: "+ answerArray)            
     console.log("allCart: "+ allCart);
   }
   useEffect(() => { 
-    if(answer.length > 1){
-    setAllCart(allCart => [...allCart,
+    if(answer.length > 0){
+      setAllCart(answer)
+    /* setAllCart(allCart => [...allCart,
       <CartContentItem index={0} amount={answer[3]} productName={answer[0]} productPrice={answer[1]} productOptions={answer[2]}/>
      
-    ])
+    ]) */
+    } else {
+      setAllCart(["Nothing added yet"])
     }
    },[answer]); 
 
 
     return (
         <div className="header-right">
-                  <button className="cart" onClick={() => (requestCart(answer, setAnswer, allCart),setShowModal(true), setShowBackdrop(true))}><img src={cart} ></img></button>
+                  <button className="cart" onClick={() => (requestCart(answer, setAnswer, allCart, setAllCart),setShowModal(true), setShowBackdrop(true))}><img src={cart} ></img></button>
                   <button className="login-button">Log in</button>
                   <button className="signup-button">Sign up</button>
                   {showModal && createPortal(
-          <Cart answer={answer} allCart={allCart} onClose={() => (setShowModal(false), setShowBackdrop(false))} />,
+          <Cart answer={answer} allCart={allCart} setAllCart={setAllCart} onClose={() => (setShowModal(false), setShowBackdrop(false))} />,
           document.getElementById('modal2-root')
         )}
         {showBackdrop && createPortal(
@@ -87,14 +107,14 @@ function HeaderRight() {
         </div>
     );
   }
-export function Cart({onClose, answer, allCart}: {onClose: React.MouseEventHandler<HTMLButtonElement> | undefined, answer:any, allCart: any[]}){
+export function Cart({onClose, answer, allCart, setAllCart}: {onClose: React.MouseEventHandler<HTMLButtonElement> | undefined, answer:any, allCart: any[], setAllCart: React.Dispatch<React.SetStateAction<any[]>>}){
  // var orderJSON = JSON.stringify(document.getElementsByClassName("cart-content").innerText);
 console.log("in cart " + allCart)
   async function onSubmit(){
     console.log("clicked");
     const element: HTMLCollectionOf<Element> = document.getElementsByClassName("cart-content")
-    const orderText = element[0].textContent;
-    let orderID = 1;
+    const orderText = JSON.parse(localStorage.getItem('cart'))
+    let orderID = localStorage.getItem('cartId');
     var timeNow = new Date();
     var timeLocal = ( timeNow.getMonth() + 1 ) + '/' + timeNow.getDate() + '/' + timeNow.getFullYear() + ' ' + timeNow.getHours() + ':' + timeNow.getMinutes();
     
@@ -119,7 +139,7 @@ console.log("in cart " + allCart)
     <div className="cart-modal">
     <button className="cart-close-button" onClick={onClose} autoFocus>X</button>
       <h2>Your order:</h2>
-    <CartContent allCart= {allCart} answer={answer} />
+    <CartContent allCart= {allCart} setAllCart={setAllCart} answer={answer} />
     <button className="checkout-button" onClick={onSubmit}>Checkout</button>
     </div>
     </>
@@ -130,7 +150,7 @@ function CartBackdrop( {onClose}: {onClose: React.MouseEventHandler<HTMLDivEleme
   return <div className="backdrop" onClick={onClose}/>
 }
 
-function CartContent({answer, allCart}: {answer: any, allCart: any[]}) {
+function CartContent({ answer, allCart, setAllCart}: { answer: any, allCart: any[], setAllCart: React.Dispatch<React.SetStateAction<any[]>>}) {
   //const ct = useContext(MyContext);
  // useEffect(() => {
     console.log("in cartcontent " + allCart)
@@ -142,39 +162,57 @@ function CartContent({answer, allCart}: {answer: any, allCart: any[]}) {
   return (
   <>
   <div className="cart-content">
-   {/*  <CartContentItem index={0} amount={answer[3]} productName={answer[0]} productPrice={answer[1]} productOptions={answer[2]}/>
-    <CartContentItem index={0} amount={answer[3]} productName={answer[0]} productPrice={answer[1]} productOptions={answer[2]}/>
- */}
     
-    {allCart}
-
+{/*     {allCart.map((item: any, index: number) => (
+  <CartContentItem
+    key={index}
+    index={index}
+    amount={item.amount}
+    productName={item.product}
+    productPrice={item.productPrice}
+    productOptions={item.options}
+    setAllCart={setAllCart}
+  />
+))} */}
+        {allCart}
     <div className="cart-total"><p> <b>Total: {answer[3] * answer[1]} € </b></p></div>
   </div>
   
   </>)
 }
 function CartContentItem(props: CartContentItemProps) {
+  function removeItem(  indexToRemove: number, setAllCart: React.Dispatch<React.SetStateAction<any[]>>){
+    //removes if index 1 or sth but a wont work. items come back on reopen. needs "index: number" in brackets before.
+    /* console.log("item removed"+ index)
+    const element = document.getElementsByClassName("cart-content");
+    console.log(element[0].children.item(indexToRemove))
+    element[0].children.item(index).remove(); */
+  
+    
+    //removes from cart if no index in removeitem round brackets. visually gone only on reopen. setallcart line not working.
+    //using [a] works too.
+    const cart: object[] = JSON.parse(localStorage.getItem('cart') || '[]');
+    const updatedCart = cart.filter((_, index) => index !== indexToRemove);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+    setAllCart(updatedCart);  
+    console.log("newcart" + updatedCart )
+  
+    
+  
+  }
   
   return (
     <div className="cart-content-item">
   <div className="cart-product-line"><p> x{props.amount} - <b>{props.productName}</b> - <b>{props.productPrice}€</b> </p>
-  <button onClick={() => removeItem(props.index)}>
+  <button onClick={() => removeItem(props.indexToRemove, props.setAllCart)}>
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"  viewBox="0 0 16 13">
   <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
 </svg>
   </button></div>
-  <p className="cart-option-line">  {props.productOptions}</p> 
+  <p className="cart-option-line">  {props.productOptions?.join(', ') ?? ''}</p> 
   </div>
 )
 }
-function removeItem(index: number){
-  console.log("item removed"+ index)
-  const element = document.getElementsByClassName("cart-content");
-  //console.log(element[0].children[index])
-  element[0].children[index].remove();
 
-  
-
-}
 export default Header
 
