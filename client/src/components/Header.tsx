@@ -56,39 +56,10 @@ function HeaderRight() {
     });
     let resp = await response2.json(); */
     let resp = JSON.parse(localStorage.getItem('cart'))
-    console.log("resp is " + resp[0].options)
-
-          let answerArray: any[] = [];
-          for(let a=0; a < resp.length; a++){ 
-                 
-            answerArray.push( 
-            
-            <CartContentItem indexToRemove={a} setAllCart={setAllCart}   amount={resp[a].amount} productName={resp[a].product} productPrice={resp[a].productPrice} productOptions={resp[a].options}/>
-            /* [resp[a].product, 
-            resp[a].productPrice,
-            resp[a].options,
-            resp[a].amount, 
-            resp[a].totalPrice] */
-
-          )
-                 
-          }
-          setAnswer(answerArray);  
-                 
-    console.log("answerA: "+ answerArray)            
-    console.log("allCart: "+ allCart);
+    setAllCart(resp); // just set the raw data
+    
   }
-  useEffect(() => { 
-    if(answer.length > 0){
-      setAllCart(answer)
-    /* setAllCart(allCart => [...allCart,
-      <CartContentItem index={0} amount={answer[3]} productName={answer[0]} productPrice={answer[1]} productOptions={answer[2]}/>
-     
-    ]) */
-    } else {
-      setAllCart(["Nothing added yet"])
-    }
-   },[answer]); 
+ 
 
 
     return (
@@ -174,7 +145,19 @@ function CartContent({ answer, allCart, setAllCart}: { answer: any, allCart: any
     setAllCart={setAllCart}
   />
 ))} */}
-        {allCart}
+        {allCart.map((item: any, index: number) => (
+  <CartContentItem
+    key={index}
+    indexToRemove={index}
+    setAllCart={setAllCart}
+    amount={item.amount}
+    productName={item.product}
+    productPrice={item.productPrice}
+    productOptions={item.options}
+  />
+))}
+
+        
     <div className="cart-total"><p> <b>Total: {answer[3] * answer[1]} € </b></p></div>
   </div>
   
