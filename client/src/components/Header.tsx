@@ -108,7 +108,7 @@ console.log("in cart " + allCart)
   return(
     <>
     <div className="cart-modal">
-    <button className="cart-close-button" onClick={onClose} autoFocus>X</button>
+    <button className="cart-close-button" onClick={onClose} autoFocus><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 13"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"></path></svg></button>
       <h2>Your order:</h2>
     <CartContent allCart= {allCart} setAllCart={setAllCart} answer={answer} />
     <button className="checkout-button" onClick={onSubmit}>Checkout</button>
@@ -129,7 +129,7 @@ function CartContent({ answer, allCart, setAllCart}: { answer: any, allCart: any
   
   
   
-  
+  const priceArr: number[] = [];
   return (
   <>
   <div className="cart-content">
@@ -158,9 +158,11 @@ function CartContent({ answer, allCart, setAllCart}: { answer: any, allCart: any
 ))}
 
         
-    <div className="cart-total"><p> <b>Total: {answer[3] * answer[1]} € </b></p></div>
+   
   </div>
-  
+  <div className="cart-total"> <b>&nbsp; Total: </b> 
+    {allCart.reduce((acc: number, item: any) => acc + item.amount * item.productPrice, 0)} € &nbsp;
+    </div>
   </>)
 }
 function CartContentItem(props: CartContentItemProps) {
