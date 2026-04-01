@@ -174,7 +174,7 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
              
          }  
          
-        
+     /*  Not currently sending individual products to the backend
          const sendData = async (cartId: string, cart: object[]) => { 
     
             const response = await fetch("http://localhost:3000/addtoorder", {
@@ -199,7 +199,7 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
        }
         },[optio]); 
         
-  
+   */
     
     return (
         <button id="add-to-order-button" form='my-form' type="submit" method="post" onClick={(e) => onSubmit(e)} >

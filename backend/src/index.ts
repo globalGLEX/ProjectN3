@@ -43,44 +43,46 @@ app.post('/cart', (req: Request, res: Response) => {
   res.send(req.body);
 });
 
-const array2: any[] = [];
+//const array2: any[] = [];
  //Action when the endpoint recieves POST:
-app.post('/addtoorder', (req: Request, res: Response) => {
+app.post('/checkout', (req: Request, res: Response) => {
       
-  app.set("orderitem1" , req.body);
+  app.set("checkout1" , req.body);
   const db = new Database('orders.db');
 db.exec(`
   CREATE TABLE IF NOT EXISTS orders (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
+    orderTime TEXT NOT NULL,
     client TEXT NOT NULL,
     orderText TEXT NOT NULL
   )
 `);
-const insert = db.prepare('INSERT INTO orders (client, orderText) VALUES (?, ?)');
+const insert = db.prepare('INSERT INTO orders (orderTime, client, orderText) VALUES (?, ?, ?)');
 // Execute the statement with different values
-const orderText = req.body;
-const clientID = req.body.cartId;
-console.log("req.body " + req.body)
-console.log("vb cartid " + req.body[0].cartId)
-insert.run(req.body[0].cartId, JSON.stringify(orderText));
+
+
+const orderTime = req.body.orderTime;
+const client = req.body.orderId;
+const orderText = req.body.order;
+console.log("req.body " + req.body.cartId)
+//console.log("vb cartid " + req.body[0].cartId)
+insert.run(orderTime, client, JSON.stringify(orderText));
 // Query the database for all users
 const rows = db.prepare('SELECT * FROM orders').all();
 // Display the results
 console.log(rows);
 // Close the database connection
 db.close();
-  //array2.push(req.body);
-  //app.set("array2", array2);
-  // res.send("POST Request Called"); // as response
+
    res.send(req.body);
   });
-app.get('/addtoorder', (req: Request, res: Response) => {
-    //var or = req.app.get('orderitem1');
+app.get('/checkout', (req: Request, res: Response) => {
+    
     const db = new Database('orders.db');
     const rows = db.prepare('SELECT orderText FROM orders ORDER BY id DESC LIMIT 1').get(); //one with highest id
     db.close();
    res.send(rows.orderText);
-   //res.send(array2);
+  
 });
 
 

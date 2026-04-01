@@ -85,19 +85,20 @@ console.log("in cart " + allCart)
     console.log("clicked");
     const element: HTMLCollectionOf<Element> = document.getElementsByClassName("cart-content")
     const orderText = JSON.parse(localStorage.getItem('cart'))
-    let orderID = localStorage.getItem('cartId');
+    let orderId = localStorage.getItem('cartId');
+    console.log(orderId)
     var timeNow = new Date();
     var timeLocal = ( timeNow.getMonth() + 1 ) + '/' + timeNow.getDate() + '/' + timeNow.getFullYear() + ' ' + timeNow.getHours() + ':' + timeNow.getMinutes();
     
 
     console.log(JSON.stringify( element[0].textContent))
-    const response = await fetch("http://localhost:3000/cart", {
+    const response = await fetch("http://localhost:3000/checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       
-      body: JSON.stringify({ "orderID": orderID,"orderTime": timeLocal, "order": orderText}) 
+      body: JSON.stringify({ "orderId": orderId,"orderTime": timeLocal, "order": orderText}) 
       // …
     });
     /* const answer = await response.json();
