@@ -9,6 +9,7 @@ import { useContext } from 'react';
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useParams } from "react-router-dom"
+import type { Dispatch, SetStateAction } from 'react';
 
 
 export interface RestaurantImageProps {
@@ -42,12 +43,15 @@ interface restIdProps {
    setCatState?: any;
   
 }
-export const CatContext = createContext(null);
+const CatContext = createContext<{
+  catState: string;
+  setCatState: Dispatch<SetStateAction<string>>;
+} | null>(null);
 function Restaurant({restId}: restIdProps) {
     
     
     const [catState, setCatState] = useState("All"); ///needs to reset when going to other restos etc
-    const category = useContext(CatContext);
+    //const category = useContext(CatContext);
     
     const  params  = useParams();
      restId = Number(params.restaurantId); 
@@ -99,7 +103,7 @@ function Restaurant({restId}: restIdProps) {
     
   }
   function FoodCategoryItem(props: FoodCategoryItemProps) {
-    const category = useContext(CatContext); //the comp asks LevelContext's closest value, so can send 11 here from outside.
+    const category = useContext(CatContext)!; //the comp asks LevelContext's closest value, so can send 11 here from outside.
     
     return (
         
@@ -111,7 +115,7 @@ function Restaurant({restId}: restIdProps) {
 
   function Products({restId}: restIdProps) {
     
-    const category = useContext(CatContext);
+    const category = useContext(CatContext)!;
     const productArr = [];
       
     for( let i=0; i<data.restaurants[restId].products.length; i++){
@@ -175,11 +179,11 @@ function Restaurant({restId}: restIdProps) {
     </button>
         {showModal && createPortal(
           <OrderModal  restId={props.restId} id={props.id} onClose={() => (setShowModal(false), setShowBackdrop(false))} />,
-          document.getElementById('modal-root')
+          document.getElementById('modal-root')!
         )}
         {showBackdrop && createPortal(
           <Backdrop onClose={() => (setShowModal(false), setShowBackdrop(false))} />,
-          document.getElementById('backdrop-root')
+          document.getElementById('backdrop-root')!
         )}
         
     </>   

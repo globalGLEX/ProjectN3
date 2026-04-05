@@ -1,12 +1,8 @@
-// src/components/Header.jsx
-// import React from 'react';
-import { useEffect } from "react";
+
 import cart from '../assets/cart32.png';
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
-
-
 
 interface CartContentItemProps {
  // index: number;
@@ -14,22 +10,17 @@ interface CartContentItemProps {
   productName: string;
   productPrice: string | number;
   productOptions: string[];
-  setAllCart?: React.Dispatch<React.SetStateAction<any[]>>;
-  indexToRemove?: number;
+  setAllCart: React.Dispatch<React.SetStateAction<any[]>>;
+  indexToRemove: number;
  
 }
-
 
 function Header() {
   
   return (
     <header id="header" >
-    
-    
     <Link to="/"><h1>ProjectN3</h1></Link>
-        <HeaderRight />
-       
-       
+        <HeaderRight />    
     </header>
   );
 }
@@ -40,11 +31,7 @@ function HeaderRight() {
   let [answer, setAnswer] = useState<any[]>([]);
   let [allCart, setAllCart] = useState<any[]>([]);
   
-  async function requestCart(answer: string | number,
-                             setAnswer: React.Dispatch<React.SetStateAction<any>>,
-                             allCart: any[],
-                             setAllCart: React.Dispatch<React.SetStateAction<any[]>> 
-                            ){
+  async function requestCart(setAllCart: React.Dispatch<React.SetStateAction<any[]>>){
                              
     
 
@@ -55,36 +42,34 @@ function HeaderRight() {
       }
     });
     let resp = await response2.json(); */
-    let resp = JSON.parse(localStorage.getItem('cart'))
+    let resp = JSON.parse(localStorage.getItem('cart') || '[]')
     setAllCart(resp); // just set the raw data
     
   }
- 
-
 
     return (
         <div className="header-right">
-                  <button className="cart" onClick={() => (requestCart(answer, setAnswer, allCart, setAllCart),setShowModal(true), setShowBackdrop(true))}><img src={cart} ></img></button>
+                  <button className="cart" onClick={() => (requestCart(setAllCart),setShowModal(true), setShowBackdrop(true))}><img src={cart} ></img></button>
                   <button className="login-button">Log in</button>
                   <button className="signup-button">Sign up</button>
                   {showModal && createPortal(
           <Cart answer={answer} allCart={allCart} setAllCart={setAllCart} onClose={() => (setShowModal(false), setShowBackdrop(false))} />,
-          document.getElementById('modal2-root')
+          document.getElementById('modal2-root')!
         )}
         {showBackdrop && createPortal(
           <CartBackdrop onClose={() => (setShowModal(false), setShowBackdrop(false))} />,
-          document.getElementById('backdrop2-root')
+          document.getElementById('backdrop2-root')!
         )}    
         </div>
     );
   }
-export function Cart({onClose, answer, allCart, setAllCart}: {onClose: React.MouseEventHandler<HTMLButtonElement> | undefined, answer:any, allCart: any[], setAllCart: React.Dispatch<React.SetStateAction<any[]>>}){
+export function Cart({onClose, answer, allCart, setAllCart}: {onClose: React.MouseEventHandler<HTMLButtonElement> | undefined, answer:any[], allCart: any[], setAllCart: React.Dispatch<React.SetStateAction<any[]>>}){
  // var orderJSON = JSON.stringify(document.getElementsByClassName("cart-content").innerText);
 console.log("in cart " + allCart)
   async function onSubmit(){
     console.log("clicked");
     const element: HTMLCollectionOf<Element> = document.getElementsByClassName("cart-content")
-    const orderText = JSON.parse(localStorage.getItem('cart'))
+    const orderText = JSON.parse(localStorage.getItem('cart')|| '[]')
     let orderId = localStorage.getItem('cartId');
     console.log(orderId)
     var timeNow = new Date();
@@ -101,8 +86,6 @@ console.log("in cart " + allCart)
       body: JSON.stringify({ "orderId": orderId,"orderTime": timeLocal, "order": orderText}) 
       // …
     });
-    /* const answer = await response.json();
-    console.log( answer.order) */
     
   }
 
@@ -122,15 +105,10 @@ function CartBackdrop( {onClose}: {onClose: React.MouseEventHandler<HTMLDivEleme
   return <div className="backdrop" onClick={onClose}/>
 }
 
-function CartContent({ answer, allCart, setAllCart}: { answer: any, allCart: any[], setAllCart: React.Dispatch<React.SetStateAction<any[]>>}) {
-  //const ct = useContext(MyContext);
- // useEffect(() => {
+function CartContent({ answer, allCart, setAllCart}: { answer: any[], allCart: any[], setAllCart: React.Dispatch<React.SetStateAction<any[]>>}) {
+
     console.log("in cartcontent " + allCart)
-    // },[allCart]); 
-  
-  
-  
-  const priceArr: number[] = [];
+
   return (
   <>
   <div className="cart-content">
@@ -157,9 +135,7 @@ function CartContent({ answer, allCart, setAllCart}: { answer: any, allCart: any
     productOptions={item.options}
   />
 ))}
-
-        
-   
+ 
   </div>
   <div className="cart-total"> <b>&nbsp; Total: </b> 
     {allCart.reduce((acc: number, item: any) => acc + item.amount * item.productPrice, 0)} € &nbsp;
@@ -168,23 +144,13 @@ function CartContent({ answer, allCart, setAllCart}: { answer: any, allCart: any
 }
 function CartContentItem(props: CartContentItemProps) {
   function removeItem(  indexToRemove: number, setAllCart: React.Dispatch<React.SetStateAction<any[]>>){
-    //removes if index 1 or sth but a wont work. items come back on reopen. needs "index: number" in brackets before.
-    /* console.log("item removed"+ index)
-    const element = document.getElementsByClassName("cart-content");
-    console.log(element[0].children.item(indexToRemove))
-    element[0].children.item(index).remove(); */
-  
-    
-    //removes from cart if no index in removeitem round brackets. visually gone only on reopen. setallcart line not working.
-    //using [a] works too.
+
     const cart: object[] = JSON.parse(localStorage.getItem('cart') || '[]');
     const updatedCart = cart.filter((_, index) => index !== indexToRemove);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
     setAllCart(updatedCart);  
     console.log("newcart" + updatedCart )
-  
-    
-  
+
   }
   
   return (

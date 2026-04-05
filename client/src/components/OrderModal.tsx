@@ -15,12 +15,12 @@ import type { Dispatch, SetStateAction } from 'react';
     
 } */
 export interface OrderModalProps {
-    id: number;
+    id?: number;
     counter?: number;
     
     onClick?: React.MouseEvent<HTMLButtonElement> 
-    onClose?: React.MouseEventHandler<HTMLDivElement> | undefined;
-    restId: number;
+    onClose?: React.MouseEventHandler<HTMLButtonElement> | undefined;
+    restId?: number;
     
     
 }
@@ -48,16 +48,16 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
         <div className="order-modal" >
             <button id="closeButton" onClick={onClose} autoFocus>X</button>
             
-        <div className="order-modal-image"><img src={data.restaurants[restId].products[id].imageUrl} alt={data.restaurants[0].products[id].alt} /></div>
+        <div className="order-modal-image"><img src={data.restaurants[restId!].products[id!].imageUrl} alt={data.restaurants[0].products[id].alt} /></div>
         <div className="order-modal-title">
-            <h1>{data.restaurants[restId].products[id].name}</h1>
+            <h1>{data.restaurants[restId!].products[id!].name}</h1>
             
         </div>
         <div className="order-modal-price">
-            <h2>{data.restaurants[restId].products[id].price} €</h2>
+            <h2>{data.restaurants[restId!].products[id!].price} €</h2>
         </div>
         <div className="order-modal-description">
-            <p>{data.restaurants[restId].products[id].desc}</p>
+            <p>{data.restaurants[restId!].products[id!].desc}</p>
         </div>
         {/* <OptionsContext value={optionsState}> */}
             <OrderModalOptions restId={restId} id={id}  />
@@ -85,7 +85,7 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
     //console.log(opti);
     //setOptionsState("dd")
     
-    if ((data.restaurants[restId].products[id].options).length === 0) {
+    if ((data.restaurants[restId!].products[id!].options).length === 0) {
         return <div className="order-modal-options"><p>No specifers for this product</p></div>;
         
       } else {
@@ -95,7 +95,7 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
             <div className="order-modal-options">
                 <p className="order-modal-options-text">Options</p>
                 <form  id='my-form'>   
-            {data.restaurants[restId].products[id].options.map(opt =>
+            {data.restaurants[restId!].products[id!].options.map(opt =>
             <Checkbox key={opt}  option={opt} />
             
             )}
@@ -157,11 +157,11 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
              } 
 
              const item = {  
-                "product": data.restaurants[restId].products[id].name,
-                "productPrice": data.restaurants[restId].products[id].price,
+                "product": data.restaurants[restId!].products[id!].name,
+                "productPrice": data.restaurants[restId!].products[id!].price,
                 "options": allOptions,
                 "amount": counter,
-                "totalPrice": data.restaurants[restId].products[id].price * counter
+                "totalPrice": data.restaurants[restId!].products[id!].price * counter!
     
              };
 
@@ -204,7 +204,7 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
     return (
         <button id="add-to-order-button" form='my-form' type="submit" method="post" onClick={(e) => onSubmit(e)} >
             <p className="add-to-order-text">Add to order</p>
-            <p className="add-to-order-value">{data.restaurants[restId].products[id].price * counter} €</p>
+            <p className="add-to-order-value">{data.restaurants[restId!].products[id!].price * counter!} €</p>
         </button>
     );
   }
