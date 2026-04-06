@@ -2,8 +2,8 @@ import {data} from '../modules/data.tsx';
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
 import { createContext } from 'react';
-import { useContext } from 'react';
 import Categories from "./Categories";
+import type { Dispatch, SetStateAction } from 'react';
 
 
 
@@ -14,11 +14,14 @@ export interface RestaurantsItemProps {
     imageAlt: string;
     
 }
-export const RestaurantsCatContext = createContext(null);
+export const RestaurantsCatContext = createContext<{
+    restaurantsCatState: string;
+    setRestaurantsCatState: Dispatch<SetStateAction<string>>;
+  } | null>(null);
 
 function Restaurants() {
     const [restaurantsCatState, setRestaurantsCatState] = useState("all"); 
-    const restaurantsCategory = useContext(RestaurantsCatContext);
+   // const restaurantsCategory = useContext(RestaurantsCatContext);
     const restaurantsArr = [];
     console.log("")
     for( let i=0; i<data.restaurants.length; i++){
@@ -48,7 +51,7 @@ function Restaurants() {
     
     <div className="restaurants"><h1>Restaurants</h1>
     
-        <div className="restaurants-items-container" tabIndex="-1">
+        <div className="restaurants-items-container" tabIndex={-1}>
             {restaurantsArr}
         </div>
     </div>

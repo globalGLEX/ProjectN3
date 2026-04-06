@@ -25,7 +25,7 @@ export function Categories() {
    console.log(data.restaurants.length)
     return (
         <div className="categories"><h2>Categories</h2>
-            <div className="category-items-container" tabIndex="-1">
+            <div className="category-items-container" tabIndex={-1}>
            
                 <CategoryItem cat="all" img={all} alt={"Wide selection of foods"} text={"All"}  />
                 <CategoryItem cat="burger" img={burger} alt={"Burger"} text={"Burger"}  />
@@ -40,12 +40,15 @@ export function Categories() {
   }
 function CategoryItem(props: CategoryItemProps){
     
-    const restaurantsCategory = useContext(RestaurantsCatContext);
+    const restaurantsCategory = useContext(RestaurantsCatContext)!;
   
     return (
             <> 
             
-                <button className="category-item" onClick={() => {(restaurantsCategory.setRestaurantsCatState(props.cat)); console.log("ddds")} }> <img src={props.img} alt={props.alt} /><p>{props.text}</p></button>
+                <button className="category-item" onClick={() => {(restaurantsCategory.setRestaurantsCatState(props.cat))}}> 
+                    <img src={props.img} alt={props.alt} />
+                    <p>{props.text}</p>
+                </button>
              
             </>  
     );

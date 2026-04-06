@@ -1,25 +1,13 @@
 import {data} from '../modules/data.tsx';
 import { useState } from 'react';
-import { createContext } from 'react';
-import { useContext } from 'react';
-import { useEffect } from 'react';
-//import allCart from './Header.tsx'
 import type { Dispatch, SetStateAction } from 'react';
 
 
-/* interface AmountContainerProps {
-    amount: number;
-    
-  
-    
-    
-} */
 export interface OrderModalProps {
     id?: number;
-    counter?: number;
-    
+    counter?: number; 
     onClick?: React.MouseEvent<HTMLButtonElement> 
-    onClose?: React.MouseEventHandler<HTMLButtonElement> | undefined;
+    onClose?: React.MouseEventHandler<HTMLElement> | undefined;
     restId?: number;
     
     
@@ -27,8 +15,7 @@ export interface OrderModalProps {
 interface CheckboxProps {
     
     option: string;
-    
-    
+        
 }
 function getOrCreateCartId() {
     let cartId = localStorage.getItem('cartId');
@@ -38,17 +25,15 @@ function getOrCreateCartId() {
     }
     return cartId;
   }
-const OptionsContext = createContext("");
+
 function OrderModal({ onClose, id, restId }: OrderModalProps) {
-    //const [isChecked, setIsChecked] = useState(false);
-    //const [optionsState, setOptionsState] = useState("");
     
     return(
         
         <div className="order-modal" >
             <button id="closeButton" onClick={onClose} autoFocus>X</button>
             
-        <div className="order-modal-image"><img src={data.restaurants[restId!].products[id!].imageUrl} alt={data.restaurants[0].products[id].alt} /></div>
+        <div className="order-modal-image"><img src={data.restaurants[restId!].products[id!].imageUrl} alt={data.restaurants[0].products[id!].alt} /></div>
         <div className="order-modal-title">
             <h1>{data.restaurants[restId!].products[id!].name}</h1>
             
@@ -59,16 +44,16 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
         <div className="order-modal-description">
             <p>{data.restaurants[restId!].products[id!].desc}</p>
         </div>
-        {/* <OptionsContext value={optionsState}> */}
+       
             <OrderModalOptions restId={restId} id={id}  />
             <OrderModalButtons restId={restId} id={id}/>
-        {/* </OptionsContext> */}
+        
         </div>
         
     )
   }
   function Checkbox({ option}: CheckboxProps){
-    //const opti = useContext(OptionsContext);
+    
     return(
             <div>
                  
@@ -78,12 +63,8 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
             </div>
     )
   }
-//•
+
   function OrderModalOptions({id, restId}: OrderModalProps) {
-   
-    //const opti = useContext(OptionsContext);
-    //console.log(opti);
-    //setOptionsState("dd")
     
     if ((data.restaurants[restId!].products[id!].options).length === 0) {
         return <div className="order-modal-options"><p>No specifers for this product</p></div>;
@@ -94,12 +75,10 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
                 
             <div className="order-modal-options">
                 <p className="order-modal-options-text">Options</p>
-                <form  id='my-form'>   
-            {data.restaurants[restId!].products[id!].options.map(opt =>
-            <Checkbox key={opt}  option={opt} />
-            
-            )}
-            </form>
+                <form  id='my-form' method="post">   
+                    {data.restaurants[restId!].products[id!].options.map(opt =>
+                    <Checkbox key={opt}  option={opt} /> )}
+                </form>
             </div>
             
         );
@@ -109,8 +88,7 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
  
   function OrderModalButtons({id, restId}: OrderModalProps) {
     const [counter, setCounter] = useState<number>(1);
-  
-    
+
     return (
         <div className="order-modal-buttons">
             <AmountContainer counter={counter} setCounter={setCounter} />
@@ -126,8 +104,7 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
     if(counter<=1) {
       decrementCounter = () => setCounter(1);
     }
-    
-    
+
     return (
         <div className="amount-container">
             <button id="amount-button-decrease" onClick={decrementCounter}>-</button>
@@ -166,7 +143,7 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
              };
 
              const cartId: string = getOrCreateCartId();
-             const cart: object[] = JSON.parse(localStorage.getItem('cart') || '[]');
+             const cart: any[] = JSON.parse(localStorage.getItem('cart') || '[]');
              cart.push({ ...item, cartId });
              localStorage.setItem('cart', JSON.stringify(cart));
              console.log("locstorage cart: " + cart[0].cartId)
@@ -202,7 +179,7 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
    */
     
     return (
-        <button id="add-to-order-button" form='my-form' type="submit" method="post" onClick={(e) => onSubmit(e)} >
+        <button id="add-to-order-button" form='my-form' type="submit" onClick={(e) => onSubmit(e)} >
             <p className="add-to-order-text">Add to order</p>
             <p className="add-to-order-value">{data.restaurants[restId!].products[id!].price * counter!} €</p>
         </button>
