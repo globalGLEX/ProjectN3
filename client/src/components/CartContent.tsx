@@ -7,9 +7,11 @@ export default function CartContent({ answer, allCart, setAllCart}: { answer: an
   return (
   <>
   <div className="cart-content">
-    
-    {allCart.map((item: any, index: number) => (
-    <CartContentItem
+  {allCart.length === 0 ? (
+    <p>Nothing in the cart yet</p>
+  ) : (
+    allCart.map((item: any, index: number) => (
+      <CartContentItem
         key={index}
         indexToRemove={index}
         setAllCart={setAllCart}
@@ -17,10 +19,10 @@ export default function CartContent({ answer, allCart, setAllCart}: { answer: an
         productName={item.product}
         productPrice={item.productPrice}
         productOptions={item.options}
-    />
-))}
- 
-  </div>
+      />
+    ))
+  )}
+</div>
   <div className="cart-total"> <b>&nbsp; Total: </b> 
     {allCart.reduce((acc: number, item: any) => acc + item.amount * item.productPrice, 0)} € &nbsp;
     </div>

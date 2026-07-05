@@ -217,7 +217,7 @@ header{
 }
 .cart-modal h2{
   padding-bottom: 1rem;
-  margin-left: 1rem;
+  margin-left: 0rem;
   background-color: #e0e0e0;
 }
 
@@ -333,7 +333,7 @@ header{
 .category-item{
   background: #333;
   color: #fff;
-
+  cursor: pointer;
   border-radius: 1rem;
   border: none;
   text-align: center;
