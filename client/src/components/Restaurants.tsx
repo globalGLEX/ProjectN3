@@ -27,6 +27,7 @@ function Restaurants() {
     for( let i=0; i<data.restaurants.length; i++){
     if(restaurantsCatState == "all"){
         restaurantsArr.push(
+            //Link is a React Router component, navigates without a full page reload
             <Link to={"restaurant/" + [i]}>
                 <RestaurantsItem restId={data.restaurants[i].restId} 
                                  imageUrl={data.restaurants[i].imageUrl} 
@@ -60,9 +61,9 @@ function Restaurants() {
 }    
 
     
-  export default Restaurants
+export default Restaurants
 
-  function RestaurantsItem(props: RestaurantsItemProps) {
+function RestaurantsItem(props: RestaurantsItemProps) {
     const [restId, setRestId] = useState({});
 /*     console.log(restId); */
     return (
@@ -77,4 +78,4 @@ function Restaurants() {
 
        
     );
-  }
+}

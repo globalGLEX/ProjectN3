@@ -13,7 +13,6 @@ import type { Dispatch, SetStateAction } from 'react';
 
 
 export interface RestaurantImageProps {
-    /* list of props */
     
     imageUrl: string;
     imageUrlAlt: string;
@@ -47,8 +46,8 @@ const CatContext = createContext<{
   catState: string;
   setCatState: Dispatch<SetStateAction<string>>;
 } | null>(null);
-function Restaurant({restId}: restIdProps) {
-    
+
+function Restaurant({restId}: restIdProps) {    
     
     const [catState, setCatState] = useState("All"); ///needs to reset when going to other restos etc
     //const category = useContext(CatContext);
@@ -76,7 +75,7 @@ function Restaurant({restId}: restIdProps) {
     );
   }
 
-  function RestaurantImage(props: RestaurantImageProps) {
+function RestaurantImage(props: RestaurantImageProps) {
     return (
         <div className="restaurant-image">
             <img src={props.imageUrl || 'https://placehold.co/1920x600'} alt={props.imageUrlAlt} />
@@ -87,7 +86,8 @@ function Restaurant({restId}: restIdProps) {
         </div>
     );
   }
-  function FoodCategories({restId}: restIdProps) {
+//These categories are types of foods that a specific restaurant offers
+function FoodCategories({restId}: restIdProps) {
     /* console.log(data.restaurants[restId].categories[0]) */
     const foodCatArr = [];
     console.log("arr length "+ data.restaurants[restId].categories.length)
@@ -102,8 +102,8 @@ function Restaurant({restId}: restIdProps) {
             </div>)
     
   }
-  function FoodCategoryItem(props: FoodCategoryItemProps) {
-    const category = useContext(CatContext)!; //the comp asks LevelContext's closest value, so can send 11 here from outside.
+function FoodCategoryItem(props: FoodCategoryItemProps) {
+    const category = useContext(CatContext)!; //the component asks LevelContext's closest value, so can send 11 here from outside.
     
     return (
         
@@ -113,7 +113,7 @@ function Restaurant({restId}: restIdProps) {
         );
   }
 
-  function Products({restId}: restIdProps) {
+function Products({restId}: restIdProps) {
     
     const category = useContext(CatContext)!;
     const productArr = [];
@@ -159,7 +159,7 @@ function Restaurant({restId}: restIdProps) {
         
   }
 
-  function Product(props: ProductProps) {
+function Product(props: ProductProps) {
     const [showModal, setShowModal] = useState(false);
     const [showBackdrop, setShowBackdrop] = useState(false);
     const [id, setId] = useState({});
@@ -189,11 +189,11 @@ function Restaurant({restId}: restIdProps) {
     </>   
     );
   }
-  function Backdrop({ onClose }: OrderModalProps) {
+function Backdrop({ onClose }: OrderModalProps) {
     return <div className="backdrop" onClick={onClose}/>
   }
 
-  function AddToCartButton() {
+function AddToCartButton() {
     return (
        
             <button className="add-to-cart-button"> + </button>

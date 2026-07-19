@@ -19,6 +19,7 @@ interface CategoryItemProps {
     
 }
 
+//Categories of different types of foods
 export function Categories() {
    /*  const [catId, setCatId] = useState('all'); */
   

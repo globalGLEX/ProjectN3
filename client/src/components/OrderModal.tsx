@@ -63,7 +63,7 @@ function OrderModal({ onClose, id, restId }: OrderModalProps) {
             </div>
     )
   }
-
+//Some products have options such as "without ketchup"
   function OrderModalOptions({id, restId}: OrderModalProps) {
     
     if ((data.restaurants[restId!].products[id!].options).length === 0) {

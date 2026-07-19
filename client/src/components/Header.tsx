@@ -18,16 +18,16 @@ function Header() {
   );
 }
 
+//The right side of header, containing cart, login, signup buttons
 function HeaderRight() {
   const [showModal, setShowModal] = useState(false);
   const [showBackdrop, setShowBackdrop] = useState(false);
   let [answer, setAnswer] = useState<any[]>([]);
   let [allCart, setAllCart] = useState<any[]>([]);
   
+  //Gets the current cart contents from localStorage
   async function requestCart(setAllCart: React.Dispatch<React.SetStateAction<any[]>>){
                              
-    
-
   /*   const response2 = await fetch("http://localhost:3000/addtoorder", {
       method: "GET",
       headers: {
