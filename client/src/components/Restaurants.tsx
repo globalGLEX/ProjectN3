@@ -25,6 +25,7 @@ function Restaurants() {
     const restaurantsArr = [];
     console.log("")
     for( let i=0; i<data.restaurants.length; i++){
+    //if the category is "all", show all restaurants
     if(restaurantsCatState == "all"){
         restaurantsArr.push(
             //Link is a React Router component, navigates without a full page reload
@@ -34,6 +35,7 @@ function Restaurants() {
                                  imageAlt={data.restaurants[i].imageUrlAlt} 
                                  restaurantName={data.restaurants[i].name} />
                 </Link>)
+    //show restaurants that belong in the selected category
     }else if(data.restaurants[i].category.includes(restaurantsCatState)){
         
             restaurantsArr.push(

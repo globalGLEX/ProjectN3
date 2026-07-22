@@ -1,3 +1,5 @@
+//this file holds all information about restaurants and products
+
 export const data = { 
     
     restaurants: [{
