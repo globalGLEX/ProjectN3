@@ -786,3 +786,38 @@ footer p {
   padding-left: 1rem;
   text-align: left;
 }
+
+
+.login {
+  background: #fff;
+   padding: 20px;
+    border-radius: 8px;
+
+  width: 300px;
+   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+}
+.login form { 
+  display: flex;
+   flex-direction: column;
+    gap: 10px;
+     margin-top: 15px }
+
+.login input { 
+  padding: 8px;
+   font-size: 14px }
+
+.login button { 
+  padding: 10px;
+   background: #007BFF;
+    color: #fff;
+     border: none;
+      cursor: pointer }
+
+.login .closeLogin { 
+  margin-top: 10px;
+   background: none;
+    border: none;
+     color: #666;
+      cursor: pointer;
+       }

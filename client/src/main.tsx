@@ -19,6 +19,8 @@ import Restaurant from "./components/Restaurant";
 import { createContext } from 'react';
 import { useContext } from 'react';
 
+import Login from './components/Login'; 
+
 export const MyContext = createContext(null);
 /* const cart = useContext(CartContext); */
 
@@ -26,7 +28,7 @@ const router = createBrowserRouter([
   
   {
     path: "/",
-    element: <><Header /> <Restaurants /> <Footer /></>,
+    element: <><Header /> <Restaurants /> <Login /> <Footer /> </>,
     errorElement: <ErrorPage />,
   },
   {
