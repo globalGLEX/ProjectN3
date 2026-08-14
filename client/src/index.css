@@ -791,8 +791,9 @@ footer p {
 .login {
   background: #444;
   padding: 20px;
-  border-radius: 8px;
-  width: 350px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  width: 23rem;
   
   color: #fff;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -822,8 +823,8 @@ footer p {
 
 .closeLogin { 
   position: relative;
-  left: 17.5rem;
-  top: -3rem;
+  left: 18rem;
+  top: -2.5rem;
   height: 3rem;
   width: 3rem;
   border-radius: 25px;
