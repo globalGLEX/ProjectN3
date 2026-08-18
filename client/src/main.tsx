@@ -20,6 +20,7 @@ import { createContext } from 'react';
 import { useContext } from 'react';
 
 import Login from './components/Login'; 
+import Signup from './components/Signup'; 
 
 export const MyContext = createContext(null);
 /* const cart = useContext(CartContext); */
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
   
   {
     path: "/",
-    element: <><Header /> <Restaurants /> <Login /> <Footer /> </>,
+    element: <><Header /> <Restaurants /> <Login /> <Signup /><Footer /> </>,
     errorElement: <ErrorPage />,
   },
   {

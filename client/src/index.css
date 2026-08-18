@@ -832,3 +832,55 @@ footer p {
   background-color: #fff;
   cursor: pointer;
 }
+.signup {
+  background: #666;
+  padding: 20px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  width: 23rem;
+  height: 23rem;
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+}
+.signup h2 {
+ margin-top: 5rem;
+ margin-left: 1.5rem;
+
+
+}
+.signup form { 
+  
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 0rem;
+  
+}
+
+.signup input { 
+  padding: 8px;
+  font-size: 14px 
+}
+
+.continue-btn { 
+  padding: 10px;
+  margin-top: 25px;
+  background: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer 
+}
+
+.closeSignup { 
+  position: relative;
+  left: 18rem;
+  top: -7.5rem;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 25px;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+}
