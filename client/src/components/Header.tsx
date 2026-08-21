@@ -1,5 +1,7 @@
 
 import cart from '../assets/cart32.png';
+import Login from './Login';
+import Signup from './Signup';
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -21,6 +23,8 @@ function Header() {
 //The right side of header, containing cart, login, signup buttons
 function HeaderRight() {
   const [showModal, setShowModal] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showSignupModal, setShowSignupModal] = useState(false);
   const [showBackdrop, setShowBackdrop] = useState(false);
   let [answer, setAnswer] = useState<any[]>([]);
   let [allCart, setAllCart] = useState<any[]>([]);
@@ -43,8 +47,8 @@ function HeaderRight() {
     return (
         <div className="header-right">
                   <button className="cart" onClick={() => (requestCart(setAllCart),setShowModal(true), setShowBackdrop(true))}><img src={cart} ></img></button>
-                  <button className="login-button">Log in</button>
-                  <button className="signup-button">Sign up</button>
+                  <button className="login-button" onClick={() => (setShowLoginModal(true),setShowBackdrop(true))}>Log in</button>
+                  <button className="signup-button" onClick={() => (setShowSignupModal(true),setShowBackdrop(true))}>Sign up</button>
                   {showModal && createPortal(
           <Cart answer={answer} allCart={allCart} setAllCart={setAllCart} onClose={() => (setShowModal(false), setShowBackdrop(false))} />,
           document.getElementById('modal2-root')!
@@ -52,7 +56,8 @@ function HeaderRight() {
         {showBackdrop && createPortal(
           <CartBackdrop onClose={() => (setShowModal(false), setShowBackdrop(false))} />,
           document.getElementById('backdrop2-root')!
-        )}    
+        )} 
+        {/* {showLoginModal && <Login onClose={() => (setShowLoginModal(false), setShowBackdrop(false))} />}  */}  
         </div>
     );
   }

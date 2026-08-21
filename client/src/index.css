@@ -674,12 +674,14 @@ header{
   height: 15rem; 
   padding: 0.5rem;
   padding-left: 1rem;
+  overflow: scroll;
   background-color: #333;
   color: #fff;
   font-size: 1.2rem;
   input[type="checkbox"] {
       transform:scale(2, 2);
       margin-left: 0.5rem;
+      margin-top: 1.5rem;
       
     }
 }
