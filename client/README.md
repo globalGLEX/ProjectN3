@@ -1,15 +1,25 @@
-# ProjectN3
-
-ProjectN3 is a food delivery app for a fictional company.
+## ProjectN3 
+A is a food delivery app for a fictional company.
 I wanted to make sure I could build and integrate the frontend, express API and SQLite database and have data move through them before starting to use LLM's.
 The database file will be created automatically when the app is used. It stores orderId, orderTime and order(text).
 
-The stack is Vite + React + TS + node/express + SQLite.
+## Features
+- Restaurant browsing with category filtering
+- Menu with customizable item options via checkbox selection
+- Shopping cart with item removal and quantity tracking
+- Cart persisted in localStorage for guest users
+- Order submission with timestamp recording
+- SQLite database for order storage
+- REST API built with Express
+- Client-side routing with React Router
 
-Next planned features: Signup, Login, Authorization, possibly checkout page and payment integration.
+## Next planned features
+Signup, Login, Authorization, possibly checkout page and payment integration.
 
---Relevant files--
+## Tech stack 
+Vite + React + TS + node/express + SQLite.
 
+## Relevant files
 index.html - root divs for modals, backdrops, script connecting to main.tsx
 index.css - all css in one file
 main.tsx - entry point. Sets up React Router and renders the app
